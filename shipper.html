@@ -52,28 +52,26 @@
 				</div>
 
 				<div class="popupText">
-					
+					<div class="information-container">
+						<div class="information">
+							<pre>Name: </pre>
+							<p class="name">Nguyen Van A</p>
+						</div>
 
-				<div class="information-container">
-					<div class="information">
-						<pre>Name: </pre>
-						<p class="name">Nguyen Van A</p>
-					</div>
+						<div class="information">
+							<pre>Address: </pre>
+							<p class="name">702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+						</div>
 
-					<div class="information">
-						<pre>Address: </pre>
-						<p class="name">702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+						<div class="information">
+							<pre>Phone: </pre>
+							<p class="name">0123456789</p>
+						</div>
 					</div>
-
-					<div class="information">
-						<pre>Phone: </pre>
-						<p class="name">0123456789</p>
-					</div>
-				</div>
 				</div>
 			</div>
 
-			<div class="order"  onclick="popupFunction(event)">
+			<div class="order" onclick="popupFunction(event)">
 				<div class="activity">
 					<svg height="20" width="20">
 						<circle cx="15" cy="15" r="5" fill="red" />
@@ -100,8 +98,12 @@
 				<div class="popupText">That's what I'm talking about!</div>
 			</div>
 
-			<div id="info-popup" onclick="closeModal(event)">
-				<div class="body"></div>
+			<div id="info-popup">
+				<div>
+					<button onclick="closeModal(event)">
+					<img src="Asset/Icon/close.png" alt=""></button>
+					<div class="body"></div>
+				</div>
 			</div>
 		</div>
 		<!-- Footer of the page -->
