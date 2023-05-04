@@ -68,7 +68,7 @@ header {
   
   footer div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80%;
     max-width: 800px;
   }
@@ -81,4 +81,8 @@ header {
     font-weight: bold;
     font-size: large;
   }
-  
+.hover:hover{
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(245, 130, 23, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}

@@ -11,29 +11,67 @@
 </head>
 
 <body>
-	<!-- Header of the page -->
-	<header>
-		<div class="logo">
-			<img src="logo.png" alt="Web Group Logo">
-			<h1>Web Group</h1>
+    <!-- Header of the page -->
+    <header>
+        <div class="logo">
+          <img src="logo.png" alt="Web Group Logo">
+          <h1>Web Group</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#">My Account</a></li>
+          </ul>
+        </nav>
+      </header>   
+    <!-- Form to make an account -->
+    <div class="container">
+		<div class="form">
+			<h2>Login</h2>
+			<form>
+				<label for="email">Email</label>
+				<input type="text" name="email" placeholder="Enter Email">
+				<label for="password">Password</label>
+				<input type="password" name="password" placeholder="Enter Password">
+				<button class="hover" type="submit">Login</button>
+			</form>
+			<p>Don't have an account? <a class="hover" href="#">Register</a></p>
 		</div>
-		<nav>
-			<ul>
-				<li><a href="#">Log in</a></li>
-				<li><a href="#">My Account</a></li>
-			</ul>
-		</nav>
-	</header>
-	<!-- Footer of the page -->
-	<footer>
-		<div class="footer-links">
-			<a href="#">About</a>
-			<a href="#">Copyright</a>
-			<a href="#">Privacy</a>
-			<a href="#">Help</a>
-		</div>
-	</footer>
+    <!-- Form to register for an anccount -->
+    <div class="form-modal active" id="modal">
+      <div class="form-header">
+        <div class="form-title">Register for an Account</div>
+        <button data-close-button="" class="close-button">×</button>
+      </div>
 
+      <!-- body modal -->
+      <div class="form-body scrollable">
+        <!-- selection -->
+        <div class="question-selector">
+          <div>
+            <label for="questionType">Type of question:</label>
+            <select id="questionType" name="questionType">
+              <option value=""></option>
+              <option value="multiple-choice">Multiple choice</option>
+              <option value="short-answer">Short answer</option>
+              <option value="matching-question">Matching</option>
+            </select><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" class="overlay active"></div>
+	</div>
+    <!-- Footer of the page -->
+      <footer>
+        <div class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Copyright</a>
+          <a href="#">Privacy</a>
+          <a href="#">Help</a>
+        </div>
+      </footer>
+      
 </body>
 
 </html>

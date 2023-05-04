@@ -1,0 +1,133 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.form {
+	border: 1px solid var(--primary-color);
+	padding: 30px;
+	width: 400px;
+}
+
+.form h2 {
+	margin-top: 0;
+    color: var(--main-color);
+    font-size: 32px;
+}
+
+.form form {
+	display: flex;
+	flex-direction: column;
+}
+
+.form label {
+	margin-top: 10px;
+}
+
+.form input {
+	padding: 10px;
+	margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+input::placeholder {
+    color: var(--primary-color);
+}
+  
+
+.form button {
+	background-color: var(--secondary-color);
+	color: #fff;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.form button:hover {
+	background-color: var(--primary-color);
+}
+
+.form p {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.form a {
+	color: var(--secondary-color);
+	text-decoration: none;
+}
+
+
+.form a:hover {
+	color: var(--primary-color);
+	text-decoration: underline;
+}
+
+/* CSS for the register */
+#overlay{
+	position: fixed;
+	transition: 200ms ease-in-out;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .5);
+	pointer-events: none;
+  }
+  
+
+#overlay.active{
+	opacity: 1;
+	pointer-events: all;
+  }
+
+/* Form modol */
+.form-modal{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(0);
+	transition: 200ms ease-in-out;
+	border: var(--primary-color) 2px solid;
+	border-radius: 10px;
+	z-index: 10;
+	background-color: #faf7f4;
+	width: 900px;
+	max-width: 80%;
+	padding: 20px;
+  }
+  
+  .form-modal.active{
+	transform: translate(-50%,-50%) scale(1);
+  }
+  
+  .form-modal .form-header{
+	padding: 10px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: var(--primary-color) 1px groove;
+  }
+  
+  .form-header .form-title{
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--main-color);
+  }
+  
+  .form-header .close-button{
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: var(--primary-color);
+  }
+  
+  .form-body{
+	padding: 10px 15px;
+  }
