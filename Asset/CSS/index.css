@@ -1,0 +1,66 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.form {
+	border: 1px solid var(--primary-color);
+	padding: 30px;
+	width: 400px;
+}
+
+.form h2 {
+	margin-top: 0;
+    color: var(--main-color);
+    font-size: 32px;
+}
+
+.form form {
+	display: flex;
+	flex-direction: column;
+}
+
+.form label {
+	margin-top: 10px;
+}
+
+.form input {
+	padding: 10px;
+	margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+input::placeholder {
+    color: var(--primary-color);
+}
+  
+
+.form button {
+	background-color: var(--secondary-color);
+	color: #fff;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.form button:hover {
+	background-color: var(--primary-color);
+}
+
+.form p {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.form a {
+	color: var(--secondary-color);
+	text-decoration: none;
+}
+
+
+.form a:hover {
+	color: var(--primary-color);
+	text-decoration: underline;
+}
