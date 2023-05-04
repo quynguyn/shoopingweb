@@ -22,7 +22,7 @@
           </ul>
         </nav>
       </header>   
-    <!-- Form to make an Account -->
+    <!-- Form to make an account -->
     <div class="container">
 		<div class="form">
 			<h2>Login</h2>
@@ -35,6 +35,30 @@
 			</form>
 			<p>Don't have an account? <a class="hover" href="#">Register</a></p>
 		</div>
+    <!-- Form to register for an anccount -->
+    <div class="form-modal active" id="modal">
+      <div class="form-header">
+        <div class="form-title">Register for an Account</div>
+        <button data-close-button="" class="close-button">×</button>
+      </div>
+
+      <!-- body modal -->
+      <div class="form-body scrollable">
+        <!-- selection -->
+        <div class="question-selector">
+          <div>
+            <label for="questionType">Type of question:</label>
+            <select id="questionType" name="questionType">
+              <option value=""></option>
+              <option value="multiple-choice">Multiple choice</option>
+              <option value="short-answer">Short answer</option>
+              <option value="matching-question">Matching</option>
+            </select><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" class="overlay active"></div>
 	</div>
     <!-- Footer of the page -->
       <footer>
