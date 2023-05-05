@@ -46,21 +46,27 @@ function closeModal(modal) {
 
 // decide which div of the radio to be appear
 
+var check = ""
+
 function showDiv() {
     if (vendorRadio.checked) {
       vendorDiv.style.display = "block";
+      check = 'vendor'
     } else {
       vendorDiv.style.display = "none";
     }
   
     if (customerRadio.checked) {
       customerDiv.style.display = "block";
+      check = 'customer'
+
     } else {
       customerDiv.style.display = "none";
     }
   
     if (shipperRadio.checked) {
       shipperDiv.style.display = "block";
+      check = 'shipper'
     } else {
       shipperDiv.style.display = "none";
     }
@@ -76,6 +82,8 @@ function uncheck(){
   vendorRadio.checked = false;
   customerRadio.checked = false;
   shipperRadio.checked = false;
+
+  check=""
 
   vendorDiv.style.display = "none";
   customerDiv.style.display = "none";
@@ -98,18 +106,6 @@ function togglePasswordVisibility() {
   }
 }
 
-// add new account into the local storage as key and value
-function addNewAccount( name, password){
-
-  const newAccount = { name: 'John', age: 30 };
-  localStorage.setItem('myObject', JSON.stringify(myObject));
-  
-  const storedObject = JSON.parse(localStorage.getItem('myObject'));
-  console.log(storedObject.name); // outputs 'John'
-  
-
-}
-
 // Checking if the account is exits
 function logIn (username, password){
   const myValue = localStorage.getItem(username);
@@ -126,17 +122,18 @@ function logIn (username, password){
 const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
   event.preventDefault(); // prevent form submission from refreshing the page
-  const username = form.email.value; 
-  const password = form.password.value;
+  var username = form.email.value; 
+  var password = form.password.value;
   console.log(logIn(username,password))
   if(logIn(username,password)==false){
     displayErrorMessage();
   }
   else{
     // Open a new HTML file called "new-page.html"
+    form.email.value = null;
+    form.password.value = null;
     window.location.href = "myAccount.html";
   }
-  
 });
 
 // wrong username and password
@@ -162,5 +159,108 @@ function displayErrorMessage() {
     form.classList.remove('invalid');
     message.remove();
   }, 3000);
+}
+
+
+// add new account for vendor
+function addNewVendor(){
+  var newVendor = {
+    username: "",
+    password: 30,
+    profilePicture: "",
+    businessName: "",
+    businessAddress: ""
+  };
+  
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('passwordNew').value;
+  const profilePicture = document.getElementById('profile-picture').value;
+  const businessName = document.getElementById('business-name').value;
+  const businessAddress = document.getElementById('business-address').value;
+
+  newVendor.username = username;
+  newVendor.password = password;
+  newVendor.profilePicture = profilePicture;
+  newVendor.businessName = businessName;
+  newVendor.businessAddress = businessAddress;
+  // Convert object to string and save to local storage
+  localStorage.setItem('newVendor', JSON.stringify(newVendor));
+}
+
+// add new account for customer
+function addNewCustomer(){
+  var newCustormer = {
+    username: "",
+    password: 0,
+    profilePicture: "",
+    address: "",
+    name: ""
+  };
+  
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('passwordNew').value;
+  const profilePicture = document.getElementById('profile-picture').value;
+  const address = document.getElementById('address').value;
+  const name = document.getElementById('name').value;
+
+  newCustormer.username = username;
+  newCustormer.password = password;
+  newCustormer.profilePicture = profilePicture;
+  newCustormer.address = address;
+  newCustormer.name = name;
+  // Convert object to string and save to local storage
+  localStorage.setItem('newCustomer', JSON.stringify(newCustormer));
+}
+
+// add new account for shipper
+function addNewShipper(){
+  var newShipper = {
+    username: "",
+    password: 0,
+    profilePicture: "",
+    distributionHub: "",
+  };
+  
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('passwordNew').value;
+  const profilePicture = document.getElementById('profile-picture').value;
+  const distributionHub = document.getElementById('distribution-hub').value;
+ 
+
+  newShipper.username = username;
+  newShipper.password = password;
+  newShipper.profilePicture = profilePicture;
+  newShipper.distributionHub = distributionHub;
+  // Convert object to string and save to local storage
+  localStorage.setItem('newShipper', JSON.stringify(newShipper));
+}
+
+// create new account
+function addNewAccount() {
+  var message ="congratulation, please log in your account";
+  switch (check) {
+    case "vendor":
+      // code for vendor type
+      addNewVendor();
+      alert(message)
+      break;
+    case "customer":
+      // code for customer type
+      addNewCustomer()
+      alert(message)
+      break;
+      
+    case "shipper":
+      // code for shipper type
+      addNewShipper()
+      alert(message)
+      break;
+
+    default:
+      // code for unknown type
+      console.log("Unknown user type");
+      break;
+  }
+  
 }
 
