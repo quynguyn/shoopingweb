@@ -1,0 +1,56 @@
+.main-container {
+	margin: 5px;
+}
+
+.orders-container {
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.order {
+	margin: 5px;
+	border: 1px solid black;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.activity {
+	width: 15px;
+	height: 15px;
+}
+
+.information {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#info-popup {
+	z-index: 1;
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+#info-popup .body {
+	width: 400px;
+	background: #F7BE6D;
+	border: 1px solid #F05E16;
+	padding: 15px 25px;
+}
+
+.info-popup-data {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.popupText {
+	display: none;
+}
