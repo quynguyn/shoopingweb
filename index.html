@@ -7,6 +7,7 @@
     <title>Web</title>
     <link rel="stylesheet" href="Asset/CSS/style.css" />
     <link rel="stylesheet" href="Asset/CSS/index.css" />
+    <script defer src="Asset/JS/index.js" ></script>
   </head>
   <body>
     <!-- Header of the page -->
@@ -33,7 +34,7 @@
           <input type="password" name="password" placeholder="Enter Password" />
           <button class="hover" type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a class="hover" href="#">Register</a></p>
+        <p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
       </div>
       <!-- Form to register for an anccount -->
       <div class="form-modal active" id="modal">
@@ -44,8 +45,9 @@
 
         <!-- body modal -->
         <div class="form-body scrollable">
-          <!-- selection -->
+        <!-- modal to be pop up -->
           <div class="question-radio">
+              <!-- selection -->
             <div>
               <labe class="accountType" for="questionType"
                 >Type of question:</labe
@@ -96,7 +98,7 @@
                 </div>
               </div>
               <!-- Vendor account -->
-              <div class="vendor">
+              <div id="vendor-div" style="display: none;" class="vendor">
                 <div>
                   <label for="business-name">Business Name:</label>
                   <input type="text" id="business-name" name="business-name" />
@@ -111,18 +113,18 @@
                 </div>
               </div>
               <!-- Customer account -->
-              <div class="customer">
+              <div id="customer-div" style="display: none;" class="customer">
+                <div>
+                  <label for="address">Address:</label>
+                  <input type="text" id="address" name="address" />
+                </div>
                 <div>
                   <label for="name">Name:</label>
                   <input type="text" id="name" name="name" />
                 </div>
-                <div>
-                  <label for="address">Address:</label>
-                  <input type="address" id="address" name="address" />
-                </div>
               </div>
               <!-- Shipper account -->
-              <div class="shipper">
+              <div id="shipper-div" style="display: none;" class="shipper">
                 <label for="distribution-hub">Distribution Hub:</label>
                 <select id="distribution-hub" name="distribution-hub">
                   <option value="none"></option>
@@ -131,7 +133,8 @@
                   <option value="option3">Option 3</option>
                 </select>
               </div>
-              <div>
+              <!-- Submit account -->
+              <div class="submit-button">
                 <button class="hover" type="submit">Submit</button>
               </div>
             </form>
