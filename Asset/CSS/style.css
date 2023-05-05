@@ -86,3 +86,16 @@ header {
     transform: translateY(-0.1rem);
     transition: transform 150ms;
 }
+
+/* close button */
+.close-button{
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: var(--main-color);
+	border: 2px solid var(--secondary-color);
+	padding: 5px 10px;
+  }
