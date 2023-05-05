@@ -133,14 +133,38 @@ form.addEventListener('submit', (event) => {
   const password = form.password.value; // get the value of the password input
   
   if(logIn(username,password)==false){
-    form.classList.add('invalid')
-    const message = document.createElement('p');
-  message.textContent = '*Enter your username and password correctly';
-  message.classList.add('wrongInput');
-  form.appendChild(message);
-  setTimeout(() => {
-    form.classList.remove('animated');
-  }, 300);
+    displayErrorMessage();
   }
-
+  
 });
+
+// wrong username and password
+const messageClass = 'wrongInput';
+const messageText = '*Enter your username and password correctly';
+
+function displayErrorMessage() {
+  // Check if there is already a message element
+  const existingMessage = document.querySelector(`.${messageClass}`);
+  if (existingMessage) {
+    return; // Exit the function if a message element already exists
+  }
+  
+  // Add the 'invalid' class to the form and display the error message
+  form.classList.add('invalid');
+  const message = document.createElement('p');
+  message.textContent = messageText;
+  message.classList.add(messageClass);
+  form.appendChild(message);
+  
+  // Remove the 'invalid' class and the error message after a delay
+  setTimeout(() => {
+    form.classList.remove('invalid');
+    message.remove();
+  }, 3000);
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  displayErrorMessage();
+});
+
