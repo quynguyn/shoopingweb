@@ -30,9 +30,16 @@
         <form>
           <label for="email">Email</label>
           <input type="text" name="email" placeholder="Enter Email" />
-          <label for="password">Password</label>
-          <input type="password" name="password" placeholder="Enter Password" />
+          <label for="password">Password:</label>
+          <div class="password-container">
+            <input style="width: 90%;" type="password" id="password" name="password" placeholder="Enter Password" />
+            <button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">
+            &#8892
+            </button>
+          </div>
+
           <button class="hover" type="submit">Login</button>
+      
         </form>
         <p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
       </div>
@@ -86,7 +93,7 @@
                 </div>
                 <div>
                   <label for="password">Password:</label>
-                  <input type="password" id="password" name="password" />
+                  <input type="password" id="passwordNew" name="password" />
                 </div>
                 <div>
                   <label for="profile-picture">Profile Picture:</label>

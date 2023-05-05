@@ -99,3 +99,24 @@ header {
 	border: 2px solid var(--secondary-color);
 	padding: 5px 10px;
   }
+
+  .invalid{
+    animation: shake 300ms;
+  }
+  @keyframes shake{
+    25%{
+      transform: translateX(4px);
+    }
+    50%{
+      transform: translateX(-4px);
+    }
+    75%{
+      transform: translate(4px);
+    }
+  }
+  
+  .wrongInput{
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+  }
