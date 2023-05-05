@@ -112,15 +112,12 @@ function addNewAccount( name, password){
 
 // Checking if the account is exits
 function logIn (username, password){
-  const myValue = localStorage.getItem('username');
-  console.log(myValue);
+  const myValue = localStorage.getItem(username);
   if(myValue === null)
   {
-    console.log('false');
     return false;
   }
   else{
-    console.log('true');
     return true;
   }
 }
@@ -129,11 +126,15 @@ function logIn (username, password){
 const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
   event.preventDefault(); // prevent form submission from refreshing the page
-  const username = form.email.value; // get the value of the email input
-  const password = form.password.value; // get the value of the password input
-  
+  const username = form.email.value; 
+  const password = form.password.value;
+  console.log(logIn(username,password))
   if(logIn(username,password)==false){
     displayErrorMessage();
+  }
+  else{
+    // Open a new HTML file called "new-page.html"
+    window.location.href = "myAccount.html";
   }
   
 });
@@ -162,9 +163,4 @@ function displayErrorMessage() {
     message.remove();
   }, 3000);
 }
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  displayErrorMessage();
-});
 
