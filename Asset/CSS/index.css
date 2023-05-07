@@ -145,7 +145,7 @@ input::placeholder {
   }
   
 /* Vendor account */
-.form-body .inputData {
+.form-body .question-radio .inputData {
 	margin-top: 10px;
 	display: flex;
 	flex-direction: column;
@@ -157,11 +157,9 @@ input::placeholder {
 	margin-bottom: 5px;
   }
   
- .inputData input[type="text"],
- .inputData input[type="password"],
- .inputData input[type="file"],
- .inputData input[type="number"],
- .inputData textarea{
+ .question-radio input[type="text"],
+ .question-radio input[type="password"],
+ .question-radio input[type="file"] {
 	border: none;
 	border-radius: 5px;
 	padding: 10px;

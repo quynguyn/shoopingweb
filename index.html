@@ -30,10 +30,10 @@
         <h2>Login</h2>
         <form>
           <label for="email">Email</label>
-          <input type="text" name="email" placeholder="Enter Email" required />
+          <input type="text" name="email" placeholder="Enter Email" />
           <label for="password">Password:</label>
           <div class="password-container">
-            <input required style="width: 90%;" type="password" id="password" name="password" placeholder="Enter Password" />
+            <input style="width: 90%;" type="password" id="password" name="password" placeholder="Enter Password" />
             <button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">
             &#8892
             </button>
@@ -62,11 +62,11 @@
               >
               <div class="radio-group">
                 <label for="vendor"
-                  ><input required type="radio" name="role" id="vendor" value="vendor" />
+                  ><input type="radio" name="role" id="vendor" value="vendor" />
                   Vendor</label
                 >
                 <label for="customer"
-                  ><input required
+                  ><input
                     type="radio"
                     name="role"
                     id="customer"
@@ -75,7 +75,7 @@
                   Customer</label
                 >
                 <label for="shipper"
-                  ><input required
+                  ><input
                     type="radio"
                     name="role"
                     id="shipper"
@@ -90,15 +90,15 @@
               <div class="commonInformation">
                 <div>
                   <label for="username">Username:</label>
-                  <input required type="text" id="username" name="username" />
+                  <input type="text" id="username" name="username" />
                 </div>
                 <div>
                   <label for="password">Password:</label>
-                  <input required type="password" id="passwordNew" name="password" />
+                  <input type="password" id="passwordNew" name="password" />
                 </div>
                 <div>
                   <label for="profile-picture">Profile Picture:</label>
-                  <input required
+                  <input
                     type="file"
                     id="profile-picture"
                     name="profile-picture"
@@ -109,11 +109,11 @@
               <div id="vendor-div" style="display: none;" class="vendor">
                 <div>
                   <label for="business-name">Business Name:</label>
-                  <input required type="text" id="business-name" name="business-name" />
+                  <input type="text" id="business-name" name="business-name" />
                 </div>
                 <div>
                   <label for="business-address">Business Address:</label>
-                  <input required
+                  <input
                     type="text"
                     id="business-address"
                     name="business-address"
@@ -124,11 +124,11 @@
               <div id="customer-div" style="display: none;" class="customer">
                 <div>
                   <label for="address">Address:</label>
-                  <input required type="text" id="address" name="address" />
+                  <input type="text" id="address" name="address" />
                 </div>
                 <div>
                   <label for="name">Name:</label>
-                  <input required type="text" id="name" name="name" />
+                  <input type="text" id="name" name="name" />
                 </div>
               </div>
               <!-- Shipper account -->
