@@ -149,6 +149,8 @@ main {
   padding: 10px;
   min-width: 200px;
   z-index: 1;
+  transform: translateX(-50%);
+
 }
 
 .cart-dropdown.active {
@@ -157,7 +159,10 @@ main {
 
 .cart-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+
 }
 
 .cart-button {
@@ -169,18 +174,36 @@ main {
   font-size: 16px;
   padding: 8px 20px;
   margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-decoration: none;
+}
+
+.delete-button {
+  margin-left: 10px;
+
+  background-color: var(--main-color);
+  border-radius: 25px;
+  border: none;
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 20px;
+  margin-top: 10px;
+  text-decoration: none;
 }
 
 .cart-button:hover {
   background-color: var(--secondary-color);
 }
 
+.delete-button:hover {
+  background-color: var(--secondary-color);
+}
+
 .cart-button:first-child {
   margin-right: 10px;
 }
+
+
 
 
 

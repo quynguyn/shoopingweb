@@ -39,12 +39,49 @@ document.addEventListener("DOMContentLoaded", function () {
         showToast("Product added to cart!");
     });
 
+
+
+    // Drop-down small menu when click on the cart
+    const cartToggle = document.querySelector(".cart-toggle");
+    const cartDropdown = document.querySelector(".cart-dropdown");
+    const cartItemsList = document.querySelector(".cart-items-list");
+
+    cartToggle.addEventListener("click", function () {
+        cartDropdown.classList.toggle("active");
+    });
+
+    addToCartButton.addEventListener("click", function () {
+        const cartItem = document.createElement("li");
+        cartItem.textContent = productName;
+        cartItemsList.appendChild(cartItem);
+    });
+
+
+
+
+    // Clear cart button
+    const deleteButton = document.querySelector(".delete-button");
+
+    deleteButton.addEventListener("click", function () {
+        cartCount = 0;
+        cartItemsCount.textContent = cartCount;
+
+        console.log("Cart cleared!");
+
+        showToast("Cart cleared!");
+
+    });
+
+
     function showToast(message) {
         Toastify({
             text: message,
             duration: 3000,
             gravity: "top",
             position: "right",
+            close: true,
+            stopOnFocus: true,
+            newWindow: true,
         }).showToast();
     }
 
@@ -53,36 +90,4 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://m.media-amazon.com/images/I/61I0+HchVNL._AC_UF1000,1000_QL80_.jpg",
         "https://lh5.googleusercontent.com/yf9X7sSPIEG0_CcPbU3vG9saNAPrCUx1vMdg6nfZk6wCUDMUpweJml3ANHRl879phkgSEPddStkKLDOKlj7Z1b3Up816jSx8GF0tyzh9nY_6r81A_6RN7d7aymVrvc8Ux_-vfki-", "https://media.istockphoto.com/id/1005374664/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-thanh-ki%E1%BA%BFm-katana.jpg?s=170667a&w=0&k=20&c=TWRD6k5eBxIkwHYIq5JqQkt0vS_FcG9wICT7hyP_nCc=", "https://www.dragonsports.eu/531982-verylarge_default/katana-bushido-orochi-sharpened.jpg",
     ];
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Drop-down small menu when click on the cart
-const cartToggle = document.querySelector(".cart-toggle");
-const cartDropdown = document.querySelector(".cart-dropdown");
-const cartItemsList = document.querySelector(".cart-items-list");
-
-cartToggle.addEventListener("click", function () {
-    cartDropdown.classList.toggle("active");
-});
-
-addToCartButton.addEventListener("click", function () {
-    const cartItem = document.createElement("li");
-    cartItem.textContent = productName;
-    cartItemsList.appendChild(cartItem);
 });
