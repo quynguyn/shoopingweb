@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="Asset/CSS/style.css" />
+  <link rel="stylesheet" href="Asset/CSS/detail.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+</head>
+
+<body>
+  <!-- Header of the page -->
+  <header>
+    <div class="logo">
+      <img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+      <h1>Web Group</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">My Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <header>
+
+    <div class="mini-cart-container">
+      <div class="cart-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-items-count">0</span>
+      </div>
+      <div class="mini-cart">
+        <h3 class="mini-cart-title">🛒</h3>
+        <ul class="cart-items-list"></ul>
+        <div class="cart-total">
+          <span class="total-label">Total:</span>
+          <span class="total-amount">$0.00</span>
+        </div>
+        <button class="checkout-button">Checkout</button>
+      </div>
+    </div>
+
+  </header>
+  <main>
+
+    <section class="product">
+      <div class="product-images">
+
+        <img
+          src="https://bizweb.dktcdn.net/100/056/311/products/69325855-2853966461301514-8349733151492276224-n.jpg?v=1569232918883"
+          alt="Product Image" id="current-image">
+        <div class="arrow-buttons">
+          <button class="arrow-button" id="prev-button">&larr;</button>
+          <button class="arrow-button" id="next-button">&rarr;</button>
+        </div>
+      </div>
+
+      <h2 class="product-name">Strong Katana</h2>
+      <p class="price">$50.00</p>
+
+      <div class="options">
+        <div class="option-category">
+          <p>Sharpness:</p>
+          <button class="option-button" data-category="sharpness" data-option="low">Low</button>
+          <button class="option-button" data-category="sharpness" data-option="medium">Medium</button>
+          <button class="option-button" data-category="sharpness" data-option="high">High</button>
+        </div>
+        <div class="option-category">
+          <p>Length:</p>
+          <button class="option-button" data-category="length" data-option="short">Short</button>
+          <button class="option-button" data-category="length" data-option="medium">Medium</button>
+          <button class="option-button" data-category="length" data-option="long">Long</button>
+        </div>
+        <div class="option-category">
+          <p>Color:</p>
+          <button class="option-button" data-category="color" data-option="blue">Blue</button>
+          <button class="option-button" data-category="color" data-option="yellow">Yellow</button>
+          <button class="option-button" data-category="color" data-option="green">Green</button>
+        </div>
+        <div class="option-category">
+          <p>Material:</p>
+          <button class="option-button" data-category="material" data-option="iron">Iron</button>
+          <button class="option-button" data-category="material" data-option="wood">Wood</button>
+          <button class="option-button" data-category="material" data-option="inox">Inox</button>
+        </div>
+      </div>
+
+
+      <button class="add-to-cart">Add to Cart</button>
+
+      <div class="description">
+        <h2>Description</h2>
+        <p>This katana can cut through your soul.</p>
+      </div>
+
+      <div class="reviews">
+        <h2>Reviews</h2>
+        <div class="review">
+          <p class="username">Samurai</p>
+          <p class="rating">⭐⭐⭐⭐⭐</p>
+          <p class="comment">Yes, this is good.</p>
+        </div>
+        <div class="review">
+          <p class="username">Sparta</p>
+          <p class="rating">⭐⭐⭐⭐</p>
+          <p class="comment">I struggled cutting my onion. Not good at all.</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Copyright</a>
+      <a href="#">Privacy</a>
+      <a href="#">Help</a>
+    </div>
+  </footer>
+  <script defer src="Asset/JS/detail.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>

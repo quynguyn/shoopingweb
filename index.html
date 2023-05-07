@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web</title>
-    <link rel="stylesheet" href="Asset/CSS/style.css" />
-    <link rel="stylesheet" href="Asset/CSS/index.css" />
-    <script defer src="Asset/JS/index.js" ></script>
-  </head>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Web</title>
+	<link rel="stylesheet" href="Asset/CSS/style.css" />
+	<link rel="stylesheet" href="Asset/CSS/index.css" />
+	<script defer src="Asset/JS/index.js"></script>
+</head>
+
 <body>
+	<!-- Header of the page -->
+	<header>
+		<div class="logo">
+			<a href="">
+				<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			</a>
+			<h1>Web Group</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="#">Log in</a></li>
+				<li><a href="#">My Account</a></li>
+			</ul>
+		</nav>
+	</header>
+	<!-- Form to make an account -->
+	<div class="container">
+		<div class="form">
+			<h2>Login</h2>
+			<form>
+				<label for="email">Email</label>
+				<input type="text" name="email" placeholder="Enter Email" />
+				<label for="password">Password</label>
+				<input type="password" name="password" placeholder="Enter Password" />
+				<button class="hover" type="submit">Login</button>
+			</form>
+			<p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
+		</div>
+		<!-- Form to register for an anccount -->
+		<div class="form-modal" id="modal">
+			<div class="form-header">
+				<div class="form-title">Register for an Account</div>
+				<button data-close-button="" class="close-button">×</button>
+			</div>
     <!-- Header of the page -->
     <header>
       <div class="logo">
