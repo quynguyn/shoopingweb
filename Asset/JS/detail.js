@@ -78,11 +78,11 @@ const cartDropdown = document.querySelector(".cart-dropdown");
 const cartItemsList = document.querySelector(".cart-items-list");
 
 cartToggle.addEventListener("click", function () {
-  cartDropdown.classList.toggle("active");
+    cartDropdown.classList.toggle("active");
 });
 
 addToCartButton.addEventListener("click", function () {
-  const cartItem = document.createElement("li");
-  cartItem.textContent = productName;
-  cartItemsList.appendChild(cartItem);
+    const cartItem = document.createElement("li");
+    cartItem.textContent = productName;
+    cartItemsList.appendChild(cartItem);
 });

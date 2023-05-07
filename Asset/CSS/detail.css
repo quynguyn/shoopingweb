@@ -176,6 +176,7 @@ main {
 .cart-button:hover {
   background-color: var(--secondary-color);
 }
+
 .cart-button:first-child {
   margin-right: 10px;
 }
