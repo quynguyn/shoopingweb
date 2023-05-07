@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Toastify({
             text: message,
             duration: 3000,
-            gravity: "top",
+            gravity: "bottom",
             position: "right",
             close: true,
             stopOnFocus: true,
