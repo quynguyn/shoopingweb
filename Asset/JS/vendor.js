@@ -24,6 +24,8 @@ const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]");
 
+  console.log(document.querySelector("[data-open-modal]"))
+
 openButton.addEventListener('click', () => {
     console.log("run")
     modal.showModal()
