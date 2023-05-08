@@ -12,24 +12,21 @@ searchInput.addEventListener("input", e => {
         const isVisible = item.name.toLowerCase().includes(value)
         item.element.classList.toggle("hide", !isVisible)
     })
-})
+})  
 
-// function for open/close modal
+const openButton = document.querySelector("[data-open-modal]");
+const closeButton = document.querySelector("[data-close-modal]");
+const modal = document.querySelector("[data-modal]")
 
-// const openButton = document.querySelector("[data-open-modal]");
-// const closeButton = document.querySelector("[data-close-modal]");
-// const modal = document.querySelector("[data-modal]");
-
-// openButton.addEventListener('click', () => {
-//     console.log("run")
-//     modal.showModal()
-// });
-
-// closeButton.addEventListener('click', () => {
-//     modal.close()
-// });
-
-
+function openModal(){
+    modal.showModal()
+}
+function closeModal(){
+    modal.close()
+}
+function xemModal(){
+    console.log(modal)
+}
 
 
 /**fake data and clone box**/

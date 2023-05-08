@@ -13,17 +13,18 @@ const dbName = 'lazadaWebsite';
 
 const client = new MongoClient(uri);
 
-async function main() {
-  // Use connect method to connect to the server
-  await client.connect();
-  console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('products');
+async function run() {
+  try {
+    await client.connect();
+    // database and collection code goes here
+    const db = client.db("sample_guides");
+    const coll = db.collection("planets");
   
-  console.log(db.client)
+  console.log(collection)
   // the following code examples can be pasted here...
-
+  
   return 'done.';
+  }
 }
 
 main()

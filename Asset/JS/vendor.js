@@ -1,45 +1,23 @@
-const container = document.getElementById("container");
+const itemBoxTemplate = document.querySelector("[item-box-template]")
+const itemBoxContainer = document.querySelector("[item-box-container]")
 
-const product = {
-  name: "Product Name",
-  price: "$9.99",
-  image: "image.jpg",
-  description: "Product description goes here.",
-};
 
-for(var i = 0; i < 11; i++){
-
-const box = document.createElement("div");
-box.classList.add("box");
-
-const name = document.createElement("div");
-name.classList.add("name");
-name.textContent = product.name;
-
-const price = document.createElement("div");
-price.classList.add("price");
-price.textContent = product.price;
-
-const imageContainer = document.createElement("div");
-imageContainer.classList.add("image");
-const image = document.createElement("img");
-image.src = product.image;
-image.alt = product.name;
-imageContainer.appendChild(image);
-
-const description = document.createElement("div");
-description.classList.add("description");
-description.textContent = product.description;
-
-box.appendChild(name);
-box.appendChild(price);
-box.appendChild(imageContainer);
-box.appendChild(description);
-box.classList.add('hover')
-
-container.appendChild(box);
-
-}
+    .then(res => res.json())
+    .then(data => {
+        items = data.map(item => {
+            const box = itemBoxTemplate.content.cloneNode(true).children[0]
+            const name = box.querySelector("[item-name]")
+            const price = box.querySelector("[item-price]")
+            const image = box.querySelector("[item-image]")
+            const description = box.querySelector("[item-description]")
+            name.textContent = item.name
+            price.textContent = item.price
+            image.Content = item.image
+            description.textContent = item.description
+            itemBoxContainer.append(box)
+            return {name: item.name,price: item.price, element: box}
+        })
+    })
 
 // Open html dialog 
 const openButton = document.querySelector("[data-open-modal]");
