@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // CartCount start = 0
     let cartCount = 0;
-
+    //
 
 
 
