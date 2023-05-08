@@ -155,6 +155,16 @@ main {
   font-size: 24px;
   margin-bottom: 20px;
   margin-right: 180px;
+  padding-top: 20px;
+
+}
+
+.product h2,
+.product p.price {
+  flex-basis: 100%;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .product button.add-to-cart {
@@ -165,11 +175,13 @@ main {
   cursor: pointer;
   font-size: 16px;
   margin-top: 225px;
+  padding: 10px;
 }
 
 .product button.add-to-cart:hover {
   background-color: var(--secondary-color);
 }
+
 
 @media screen and (min-width: 768px) {
   .product {
@@ -179,13 +191,17 @@ main {
   }
 
   .product img {
-    flex: 1;
-    margin: 0;
+    flex: 1 1 320px;
     width: 320px;
   }
 
   .product h2,
-  .product p.price,
+  .product p.price {
+    flex: 1;
+    margin-right: 20px;
+    flex-direction: column;
+  }
+
   .product button.add-to-cart {
     flex: 2;
   }
@@ -203,7 +219,6 @@ main {
 .mini-cart-container {
   position: relative;
   cursor: pointer;
-
 }
 
 
