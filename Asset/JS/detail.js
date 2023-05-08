@@ -1,3 +1,47 @@
+
+
+// Open and close the modal form
+document.addEventListener("DOMContentLoaded", function () {
+
+    const productDetailButton = document.getElementById("product-detail-button");
+    const modalForm = document.querySelector("dialog[data-modal]");
+
+    productDetailButton.addEventListener("click", function () {
+        modalForm.showModal();
+    });
+
+});
+
+
+
+const openButton = document.querySelector("[data-open-modal]");
+const closeButton = document.querySelector("[data-close-modal]");
+const modal = document.querySelector("[data-modal]");
+
+openButton.addEventListener('click', () => {
+    console.log("run")
+    modal.showModal()
+});
+
+closeButton.addEventListener('click', () => {
+    modal.close()
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Change images by clicking the arrows
 document.addEventListener("DOMContentLoaded", function () {
     const currentImage = document.getElementById("current-image");
     const prevButton = document.getElementById("prev-button");
@@ -22,69 +66,96 @@ document.addEventListener("DOMContentLoaded", function () {
         updateImage();
     });
 
-    addToCartButton.addEventListener("click", function () {
-        cartCount++;
-        cartItemsCount.textContent = cartCount;
-
-        const productName = document.getElementById("product-name").textContent;
-        const productPrice = document.getElementById("product-price").textContent;
-
-        const productInfo = {
-            name: productName,
-            price: productPrice
-        };
-
-        console.log("Product added to cart:", productInfo);
-
-        showToast("Product added to cart!");
-    });
-
-
-
-    // Drop-down small menu when click on the cart
-    const cartToggle = document.querySelector(".cart-toggle");
-    const cartDropdown = document.querySelector(".cart-dropdown");
-    const cartItemsList = document.querySelector(".cart-items-list");
-
-    cartToggle.addEventListener("click", function () {
-        cartDropdown.classList.toggle("active");
-    });
-
-    addToCartButton.addEventListener("click", function () {
-        const cartItem = document.createElement("li");
-        cartItem.textContent = productName;
-        cartItemsList.appendChild(cartItem);
-    });
 
 
 
 
-    // Clear cart button
-    const deleteButton = document.querySelector(".delete-button");
-
-    deleteButton.addEventListener("click", function () {
-        cartCount = 0;
-        cartItemsCount.textContent = cartCount;
-
-        console.log("Cart cleared!");
-
-        showToast("Cart cleared!");
-
-    });
 
 
-    function showToast(message) {
-        Toastify({
-            text: message,
-            duration: 3000,
-            gravity: "bottom",
-            position: "right",
-            close: true,
-            stopOnFocus: true,
-            newWindow: true,
-        }).showToast();
-    }
 
+
+// Add to cart button
+addToCartButton.addEventListener("click", function () {
+    cartCount++;
+    cartItemsCount.textContent = cartCount;
+
+    const productName = document.getElementById("product-name").textContent;
+    const productPrice = document.getElementById("product-price").textContent;
+
+    const productInfo = {
+        name: productName,
+        price: productPrice
+    };
+
+    console.log("Product added to cart:", productInfo);
+
+    showToast("Product added to cart!");
+});
+
+
+
+
+
+
+// Drop-down small menu when click on the cart
+const cartToggle = document.querySelector(".cart-toggle");
+const cartDropdown = document.querySelector(".cart-dropdown");
+const cartItemsList = document.querySelector(".cart-items-list");
+
+cartToggle.addEventListener("click", function () {
+    cartDropdown.classList.toggle("active");
+});
+
+addToCartButton.addEventListener("click", function () {
+    const cartItem = document.createElement("li");
+    cartItem.textContent = productName;
+    cartItemsList.appendChild(cartItem);
+});
+
+
+
+
+// Clear cart button
+const deleteButton = document.querySelector(".delete-button");
+
+deleteButton.addEventListener("click", function () {
+    cartCount = 0;
+    cartItemsCount.textContent = cartCount;
+
+    console.log("Cart cleared!");
+
+    showToast("Cart cleared!");
+
+});
+
+
+
+
+
+//pop-up message design
+function showToast(message) {
+    Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        close: true,
+        stopOnFocus: true,
+        newWindow: true,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+    }).showToast();
+}
+
+
+
+
+
+
+
+
+    // image urls
     const imageUrls = [
         "https://bizweb.dktcdn.net/100/056/311/products/69325855-2853966461301514-8349733151492276224-n.jpg?v=1569232918883",
         "https://m.media-amazon.com/images/I/61I0+HchVNL._AC_UF1000,1000_QL80_.jpg",
