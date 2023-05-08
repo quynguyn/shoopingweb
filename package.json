@@ -9,6 +9,7 @@
   "author": "web group",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^5.4.0"
+    "mongodb": "^5.4.0",
+    "mongoose": "^7.1.0"
   }
 }
