@@ -1,3 +1,5 @@
+const { userAccount } = require('../../database');
+
 // Variable 
 
 const vendorRadio = document.querySelector('input[value="vendor"]');
