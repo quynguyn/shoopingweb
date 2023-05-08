@@ -50,7 +50,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartItemsCount = document.querySelector(".cart-items-count");
 
     let currentImageIndex = 0;
+
+
+
+
+    // CartCount start = 0
     let cartCount = 0;
+
+
+
 
     function updateImage() {
         currentImage.src = imageUrls[currentImageIndex];
