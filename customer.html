@@ -45,13 +45,44 @@
         </div>
         <div class="item-boxes" item-box-container></div>
         <template item-box-template>
-            <div class="box hover">
+            <div data-open-modal class="box hover">
                 <div class="name" item-name></div>
                 <div class="price"></div>
                 <div class="image"><img src="image.jpg" alt="Product Image"></div>
                 <div class="description"></div>
             </div>
-        </template>  
+        </template> 
+        <dialog data-modal class="form-modal">
+            <div class="form-header">
+              <div class="form-title">Product Detail</div>
+              <button data-close-modal class="close-button">×</button>
+            </div>
+            <!-- product detail -->
+            <div class="form-body inputData">
+              <!-- image/ name/ price -->
+              <div class="detail">
+                <div class="product-images">
+                  <img
+                    src="https://bizweb.dktcdn.net/100/056/311/products/69325855-2853966461301514-8349733151492276224-n.jpg?v=1569232918883"
+                    alt="Product Image">
+                </div>
+                <!-- product name and price -->
+                <div class="content">
+                  <p class="product-name">Product name</p>
+                  <span class="price">$100</span>
+                  <!-- add to cart button -->
+                  <button class="btn hover cart">Add to Cart</button>
+                </div>
+              </div>
+              <!-- description -->
+              <div>
+                <p class="description">Description</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque autem, laborum asperiores eligendi illum similique corporis. Nemo, dolorem? Voluptatem, dolor veritatis.</p>
+              </div>
+      
+            </div>
+          </dialog>
+       
     </div> 
     
     <footer>

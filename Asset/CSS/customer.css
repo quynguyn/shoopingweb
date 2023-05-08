@@ -83,3 +83,58 @@
 .hide{
     display: none;
 }
+
+/* CSS - modal */
+dialog[data-modal] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 20px;
+    border-radius: 10px;
+    border: var(--primary-color) 2px solid;
+    background-color: #faf7f4;
+  }
+  
+  
+  .detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .form-body .detail img{
+    width: 300px;
+    height: 300px;
+  }
+  
+  .form-body .detail .content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .detail .content .product-name{
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .price {
+    color: #147919;
+    font-size: 24px;
+    text-align: end;
+  }
+  
+  .cart{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .form-body .description{
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 0px;
+  }
+  

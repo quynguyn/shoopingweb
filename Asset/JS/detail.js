@@ -13,34 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-const openButton = document.querySelector("[data-open-modal]");
-const closeButton = document.querySelector("[data-close-modal]");
-const modal = document.querySelector("[data-modal]");
-
-openButton.addEventListener('click', () => {
-    console.log("run")
-    modal.showModal()
-});
-
-closeButton.addEventListener('click', () => {
-    modal.close()
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Change images by clicking the arrows
 document.addEventListener("DOMContentLoaded", function () {
     const currentImage = document.getElementById("current-image");

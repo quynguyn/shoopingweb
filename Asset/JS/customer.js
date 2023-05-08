@@ -14,6 +14,22 @@ searchInput.addEventListener("input", e => {
     })
 })
 
+// function for open/close modal
+
+// const openButton = document.querySelector("[data-open-modal]");
+// const closeButton = document.querySelector("[data-close-modal]");
+// const modal = document.querySelector("[data-modal]");
+
+// openButton.addEventListener('click', () => {
+//     console.log("run")
+//     modal.showModal()
+// });
+
+// closeButton.addEventListener('click', () => {
+//     modal.close()
+// });
+
+
 
 
 /**fake data and clone box**/
@@ -28,3 +44,4 @@ fetch('https://jsonplaceholder.typicode.com/users')
             return {name: item.name, element: box}
         })
     })
+
