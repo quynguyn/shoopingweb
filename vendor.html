@@ -30,14 +30,15 @@
             <h1 class="sub-title">all products</h1>
             <button data-open-modal class="btn">add New Product</button>
         </div>
-        <div id="container">
+        <div id="container" item-box-container></div>
+          <template item-box-template>
             <div class="box hover">
-              <div class="name">Product Name</div>
-              <div class="price">$9.99</div>
-              <div class="image"><img src="image.jpg" alt="Product Image"></div>
-              <div class="description">Product description goes here.</div>
+              <div class="name" item-name></div>
+              <div class="price" item-price></div>
+              <div class="image" item-image><img src="image.jpg" alt="Product Image"></div>
+              <div class="description"item-description></div>
             </div>
-          </div>
+          </template>
     </div> 
       <!-- SECTION - add new product -->
     <dialog data-modal class="form-modal">
