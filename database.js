@@ -1,5 +1,7 @@
-const { error } = require('console');
 const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+
 
 const uri = 'mongodb+srv://quynguyen:xfqM6RcvtWw22Ozf@lazadaclone.cqg5ikw.mongodb.net/lazadaWebsite?retryWrites=true&w=majority';
 
@@ -36,12 +38,18 @@ const productSchema = new mongoose.Schema({
   distributionHub: String,
 })
 
-const productsDatabase = mongoose.model('products',productSchema)
+const distributionHubSchema = new mongoose.Schema({
+  name: String,
+  address: String,
+})
+
+const productsDatabase = mongoose.model('products',productSchema);
 const userAccount = mongoose.model('accounts',userSchema);
+const distributionHubs = mongoose.model('distributionHubs',distributionHubSchema);
 
 module.exports = { userAccount};
-
 module.exports = {productsDatabase};
+module.exports = {distributionHubs}
 
 productsDatabase.find()
 .then((product) => {
@@ -51,33 +59,3 @@ productsDatabase.find()
   console.log(error.message)
 })
 }
-
-// console.log(mongoose.Collection)
-
-// const userSchema = new mongoose.Schema({
-//   userName:String,
-//   password:String
-// })
-
-// mongoose.model("account", userSchema).find()
-
-// const dbName = '';
-
-// mongoose.connect(uri);
-
-// const client = new MongoClient(uri);
-
-// async function main() {
-//   // Use connect method to connect to the server
-//   await client.connect();
-//   console.log('Connected successfully to server');
-//   const db = client.db(dbName);
-//   const collection = db.collection('products');
-  
-//   console.log(db.client)
-//   // the following code examples can be pasted here...
-
-//   return 'done.';
-// }
-
-// run().catch(console.dir);
