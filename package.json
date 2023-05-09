@@ -9,6 +9,7 @@
   "author": "web group",
   "license": "ISC",
   "dependencies": {
+    "cort": "^0.0.2",
     "express": "^4.18.2",
     "mongodb": "^5.4.0",
     "mongoose": "^7.1.0"

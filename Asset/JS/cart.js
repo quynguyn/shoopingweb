@@ -1,7 +1,6 @@
 function openModal() {
     const modal = document.querySelector('[data-modal]');
-
-
+    console.log("open run nef")
     populateCart();
 
     modal.showModal();
@@ -11,12 +10,12 @@ function openModal() {
 function closeModal() {
     const modal = document.querySelector('[data-modal]');
 
+    console.log("close run nef")
 
     const cartContainer = document.querySelector('.form-body');
     cartContainer.innerHTML = '';
 
     modal.close();
-
 }
 
 
