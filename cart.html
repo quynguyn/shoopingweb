@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Asset/CSS/style.css">
+  <link rel="stylesheet" href="Asset/CSS/customer.css">
+  <link rel="stylesheet" href="Asset/CSS/cart.css">
+
+  <script src="Asset/JS/cart.js" defer></script>
+  <title>Cart</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+      <h1>Web Group</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">My Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <button onclick="openModal()">Cart</button>
+
+  <dialog data-modal class="form-modal">
+    <div class="form-header">
+      <div class="form-title">Cart</div>
+      <button data-close-modal class="close-button" onclick="closeModal()">×</button>
+    </div>
+      <div class="form-body inputData">
+        <template id="cart-template">
+          <div class="cart-item">
+            <div class="product-image-container">
+              <img src="" alt="Image" class="product-image">
+            </div>
+            <div class="product-details">
+              <h3 class="product-name"></h3>
+              <p class="product-price"></p>
+            </div>
+            <hr class="item-separator">
+          </div>
+        </template>
+      </div>
+      <div class="cart-footer">
+        <div class="total-price">Total: $<span id="total-price">0</span></div>
+        <button class="checkout-button">Checkout</button>
+      </div>
+
+  </dialog>
+
+</body>
+
+</html>
