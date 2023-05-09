@@ -1,3 +1,31 @@
+//working on database // in index.js
+
+// index.js
+// use dataEndpoint in your code
+
+/**
+fetch('http://localhost:3000/products')
+  .then(
+    response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+
+fetch('http://localhost:3000/accounts')
+.then(
+  response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error(error));
+
+
+fetch('http://localhost:3000/distributionHubs')
+  .then(
+    response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+ */
+
 // Variable 
 
 const vendorRadio = document.querySelector('input[value="vendor"]');

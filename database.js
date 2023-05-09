@@ -3,6 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+// in database.js
+module.exports = {
+  dataEndpoint: '/',
+  // other variables and functions
+}
+
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -31,6 +37,11 @@ const distributionHubSchema = new mongoose.Schema({
   address: String,
 })
 
+var dataAccount = []
+var dataProduct = []
+var dataHubs = []
+
+
 const uri = 'mongodb+srv://quynguyen:xfqM6RcvtWw22Ozf@lazadaclone.cqg5ikw.mongodb.net/lazadaWebsite?retryWrites=true&w=majority';
 
 mongoose.connect(uri).then(()=>{
@@ -56,24 +67,54 @@ module.exports = { userAccount};
 module.exports = {productsDatabase};
 module.exports = {distributionHubs}
 
-productsDatabase.find()
-.then((product) => {
-    console.log(product)
+userAccount.find()
+.then((account) => {
+    dataAccount = account
 })
 .catch((error)=>{
   console.log(error.message)
 })
 
-// Define a route that retrieves data from the database
-app.get('/Asset/', async (req, res) => {
-  try {
-    const myData = await MyModel.find();
-    res.send(myData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send('Internal Server Error');
-  }
-});
+productsDatabase.find()
+.then((product) => {
+    dataProduct = product
+})
+.catch((error)=>{
+  console.log(error.message)
+})
+
+distributionHubs.find()
+.then((hub) => {
+    dataHubs = hub
+})
+.catch((error)=>{
+  console.log(error.message)
+})
+
 
 
 }
+
+app.get('/products',(req,res)=>
+{
+  // console.log(data)
+  res.send(dataAccount)
+})
+
+app.get('/accounts',(req,res)=>
+{
+  // console.log(data)
+  res.send(dataProduct)
+})
+
+app.get('/distributionHubs',(req,res)=>
+{
+  // console.log(dataHubs)
+  res.send(dataHubs)
+})
+
+// start server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+
