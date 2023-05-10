@@ -141,7 +141,7 @@ function removeItem(index) {
 }
 
 /**fake data and clone box**/
-fetch('https://jsonplaceholder.typicode.com/users')
+fetch('https://localhost:3000')
 	.then(res => res.json())
 	.then(data => {
 		var i = 0;

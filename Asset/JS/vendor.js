@@ -1,7 +1,7 @@
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 
-
+fetch('https://localhost:3000/products')
     .then(res => res.json())
     .then(data => {
         items = data.map(item => {
