@@ -1,21 +1,21 @@
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 
-fetch('https://localhost:3000/products')
+fetch('http://localhost:3000/accounts')
     .then(res => res.json())
     .then(data => {
-        items = data.map(item => {
+        products = data.map(product => {
             const box = itemBoxTemplate.content.cloneNode(true).children[0]
             const name = box.querySelector("[item-name]")
             const price = box.querySelector("[item-price]")
             const image = box.querySelector("[item-image]")
             const description = box.querySelector("[item-description]")
-            name.textContent = item.name
-            price.textContent = item.price
-            image.Content = item.image
-            description.textContent = item.description
-            itemBoxContainer.append(box)
-            return {name: item.name,price: item.price, element: box}
+            name.textContent = product.name
+            price.textContent = product.price
+            image.Content = product.image
+            description.textContent = product.description
+            itemBoxContainer.append(box)           
+            return {name: product.name,price: product.price,description: product.description, element: box}
         })
     })
 
@@ -62,6 +62,7 @@ form.addEventListener('submit', function(e) {
   localStorage.setItem('newProduct', JSON.stringify(newProduct));
   
   newProductBox(nameValue, priceValue, imageFile, descriptionValue)
+  console.log(newProductBox)
   // reset the form
   form.reset();
 });
