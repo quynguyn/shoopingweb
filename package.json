@@ -1,13 +1,10 @@
 {
-  "name": "webshopping",
-  "version": "1.0.0",
-  "description": "this package for the making the web like lazada",
-  "main": "index.js",
+  "name": "shoppingweb",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "web group",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "cort": "^0.0.2",
