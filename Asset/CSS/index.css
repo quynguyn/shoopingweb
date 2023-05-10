@@ -13,8 +13,8 @@
 
 .form h2 {
 	margin-top: 0;
-    color: var(--main-color);
-    font-size: 32px;
+	color: var(--main-color);
+	font-size: 32px;
 }
 
 .form form {
@@ -29,13 +29,13 @@
 .form input {
 	padding: 10px;
 	margin-bottom: 20px;
-    margin-top: 5px;
+	margin-top: 5px;
 }
 
 input::placeholder {
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
-  
+
 
 .form button {
 	background-color: var(--secondary-color);
@@ -66,7 +66,7 @@ input::placeholder {
 }
 
 /* CSS for the register */
-#overlay{
+#overlay {
 	position: fixed;
 	transition: 200ms ease-in-out;
 	opacity: 0;
@@ -76,20 +76,20 @@ input::placeholder {
 	bottom: 0;
 	background-color: rgba(0, 0, 0, .5);
 	pointer-events: none;
-  }
-  
+}
 
-#overlay.active{
+
+#overlay.active {
 	opacity: 1;
 	pointer-events: all;
-  }
+}
 
 /* Form modol */
-.form-modal{
+.form-modal {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%) scale(0);
+	transform: translate(-50%, -50%) scale(0);
 	transition: 200ms ease-in-out;
 	border: var(--primary-color) 2px solid;
 	border-radius: 10px;
@@ -98,79 +98,80 @@ input::placeholder {
 	width: 900px;
 	max-width: 80%;
 	padding: 20px;
-  }
-  
-  .form-modal.active{
-	transform: translate(-50%,-50%) scale(1);
-  }
-  
-  .form-modal .form-header{
+}
+
+.form-modal.active {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.form-modal .form-header {
 	padding: 10px 15px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: var(--primary-color) 1px groove;
-  }
-  
-  .form-header .form-title{
+}
+
+.form-header .form-title {
 	font-size: 2rem;
 	font-weight: bold;
 	color: var(--main-color);
-  }
-  
-  .form-header .close-button:hover{
+}
+
+.form-header .close-button:hover {
 	background-color: var(--main-color);
 	color: #faf7f4;
-  }
-  
-  .form-body{
-	padding: 10px 15px;
-  }
+}
 
-  .accountType{
+.form-body {
+	padding: 10px 15px;
+}
+
+.accountType {
 	font-size: 20px;
 	font-weight: bold;
-  }
-  .radio-group {
+}
+
+.radio-group {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	padding-bottom: 10px;
 	border-bottom: var(--primary-color) 1px groove;
-  }
-  
-  .radio-group label {
+}
+
+.radio-group label {
 	margin-top: 5px;
 	margin-right: 10px;
-  }
-  
+}
+
 /* Vendor account */
 .form-body .inputData {
 	margin-top: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: right;
-  }
-  
-  label {
+}
+
+label {
 	font-weight: bold;
 	margin-bottom: 5px;
-  }
-  
- .inputData input[type="text"],
- .inputData input[type="password"],
- .inputData input[type="file"],
- .inputData input[type="number"],
- .inputData textarea{
+}
+
+.inputData input[type="text"],
+.inputData input[type="password"],
+.inputData input[type="file"],
+.inputData input[type="number"],
+.inputData textarea {
 	border: none;
 	border-radius: 5px;
 	padding: 10px;
 	margin-bottom: 10px;
 	width: 100%;
 	box-sizing: border-box;
-  }
-  
-  button[type="submit"] {
+}
+
+button[type="submit"] {
 	background-color: var(--secondary-color);
 	color: white;
 	border: none;
@@ -178,25 +179,25 @@ input::placeholder {
 	padding: 10px 20px;
 	margin-top: 10px;
 	cursor: pointer;
-  }
-.form-body .submit-button{
-	text-align: end;
-  }
+}
 
-  select {
+.form-body .submit-button {
+	text-align: end;
+}
+
+select {
 	padding: 8px;
 	font-size: 1rem;
 	border-radius: 4px;
 	border: 1px solid #ccc;
 	width: 100%;
 	margin-top: 8px;
-  }
-  
-  option {
-	font-size: 1rem;
-  }
+}
 
-  .hover:hover{
+option {
+	font-size: 1rem;
+}
+
+.hover:hover {
 	background-color: var(--primary-color);
-  }
-  
+}

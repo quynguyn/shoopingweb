@@ -1,16 +1,17 @@
 {
-  "name": "webshopping",
-  "version": "1.0.0",
-  "description": "this package for the making the web like lazada",
-  "main": "index.js",
+  "name": "shoppingweb",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "web group",
-  "license": "ISC",
   "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
     "express": "^4.18.2",
-    "mongodb": "^5.4.0",
-    "mongoose": "^7.1.0"
+    "http-errors": "~1.6.3",
+    "jade": "^0.29.0",
+    "mongoose": "^7.1.0",
+    "morgan": "~1.9.1"
   }
 }
