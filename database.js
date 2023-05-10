@@ -3,12 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// in database.js
-module.exports = {
-  dataEndpoint: '/',
-  // other variables and functions
-}
-
 
 const userSchema = new mongoose.Schema({
   username: String,
