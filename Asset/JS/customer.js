@@ -1,3 +1,10 @@
+fetch('http://localhost:3000/products')
+  .then(
+    response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 const searchInput = document.querySelector("[item-search]")
@@ -141,21 +148,6 @@ function removeItem(index) {
 }
 
 /**fake data and clone box**/
-fetch('https://localhost:3000')
-	.then(res => res.json())
-	.then(data => {
-		var i = 0;
-		items = data.map(item => {
-			const box = itemBoxTemplate.content.cloneNode(true).children[0]
-			box.classList = i + " " + box.classList;
-			const name = box.querySelector("[item-name]")
-			name.textContent = item.name
-			itemBoxContainer.append(box)
-			i++;
-			return { name: item.name, element: box }
-		})
-	})
-
 const products = [
 	{
 		image: 'Asset/IMG/Products/bag.png',

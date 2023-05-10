@@ -72,6 +72,7 @@ userAccount.find()
 productsDatabase.find()
 .then((product) => {
     dataProduct = product
+    console.log(dataProduct)
 })
 .catch((error)=>{
   console.log(error.message)
@@ -84,8 +85,6 @@ distributionHubs.find()
 .catch((error)=>{
   console.log(error.message)
 })
-
-
 
 }
 

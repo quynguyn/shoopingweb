@@ -45,6 +45,7 @@ button {
 	gap: 10px;
 	margin: 10px;
 	width: inherit;
+	justify-content: space-evenly;
 }
 
 .box {
@@ -53,7 +54,7 @@ button {
 	border: 1px solid #ddd;
 	box-sizing: border-box;
 	width: 22vw;
-	max-width: 250px;
+	min-width: 250px;
 	flex-direction: column;
 	justify-content: space-between;
 }
