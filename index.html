@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="Asset/CSS/style.css" />
     <link rel="stylesheet" href="Asset/CSS/index.css" />
     <script defer src="Asset/JS/index.js" ></script>
-    <script defer src="database.js"></script>
   </head>
 <body>
     <!-- Header of the page -->
@@ -53,92 +52,114 @@
 						<button data-close-button="" class="close-button">×</button>
 					</div>
 
-					<!-- body modal -->
-					<div class="form-body scrollable">
-						<!-- modal to be pop up -->
-						<div class="question-radio">
-							<!-- selection -->
-							<div>
-								<labe class="accountType" for="questionType">Type of question:</labe>
-								<div class="radio-group">
-									<label for="vendor"><input required type="radio" name="role" id="vendor"
-											value="vendor" />
-										Vendor</label>
-									<label for="customer"><input required type="radio" name="role" id="customer"
-											value="customer" />
-										Customer</label>
-									<label for="shipper"><input required type="radio" name="role" id="shipper"
-											value="shipper" />
-										Shipper</label>
-								</div>
-							</div>
-							<form class="inputData">
-								<!-- Common input -->
-								<div class="commonInformation">
-									<div>
-										<label for="username">Username:</label>
-										<input required type="text" id="username" name="username" />
-									</div>
-									<div>
-										<label for="password">Password:</label>
-										<input required type="password" id="passwordNew" name="password" />
-									</div>
-									<div>
-										<label for="profile-picture">Profile Picture:</label>
-										<input required type="file" id="profile-picture" name="profile-picture" />
-									</div>
-								</div>
-								<!-- Vendor account -->
-								<div id="vendor-div" style="display: none;" class="vendor">
-									<div>
-										<label for="business-name">Business Name:</label>
-										<input required type="text" id="business-name" name="business-name" />
-									</div>
-									<div>
-										<label for="business-address">Business Address:</label>
-										<input required type="text" id="business-address" name="business-address" />
-									</div>
-								</div>
-								<!-- Customer account -->
-								<div id="customer-div" style="display: none;" class="customer">
-									<div>
-										<label for="address">Address:</label>
-										<input required type="text" id="address" name="address" />
-									</div>
-									<div>
-										<label for="name">Name:</label>
-										<input required type="text" id="name" name="name" />
-									</div>
-								</div>
-								<!-- Shipper account -->
-								<div id="shipper-div" style="display: none;" class="shipper">
-									<label for="distribution-hub">Distribution Hub:</label>
-									<select id="distribution-hub" name="distribution-hub">
-										<option value="none"></option>
-										<option value="option1">Option 1</option>
-										<option value="option2">Option 2</option>
-										<option value="option3">Option 3</option>
-									</select>
-								</div>
-								<!-- Submit account -->
-								<div class="submit-button">
-									<button class="hover" type="submit" onclick="addNewAccount()">Submit</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div id="overlay" class="overlay"></div>
-			</div>
-			<!-- Footer of the page -->
-			<footer>
-				<div class="footer-links">
-					<a href="#">About</a>
-					<a href="#">Copyright</a>
-					<a href="#">Privacy</a>
-					<a href="#">Help</a>
-				</div>
-			</footer>
-</body>
-
+        <!-- body modal -->
+        <div class="form-body scrollable">
+        <!-- modal to be pop up -->
+          <div class="question-radio">
+              <!-- selection -->
+            <div>
+              <labe class="accountType" for="questionType"
+                >Type of question:</labe
+              >
+              <div class="radio-group">
+                <label for="vendor"
+                  ><input required type="radio" name="role" id="vendor" value="vendor" />
+                  Vendor</label
+                >
+                <label for="customer"
+                  ><input required
+                    type="radio"
+                    name="role"
+                    id="customer"
+                    value="customer"
+                  />
+                  Customer</label
+                >
+                <label for="shipper"
+                  ><input required
+                    type="radio"
+                    name="role"
+                    id="shipper"
+                    value="shipper"
+                  />
+                  Shipper</label
+                >
+              </div>
+            </div>
+            <form class="inputData">
+              <!-- Common input -->
+              <div class="commonInformation">
+                <div>
+                  <label for="username">Username:</label>
+                  <input required type="text" id="username" name="username" />
+                </div>
+                <div>
+                  <label for="password">Password:</label>
+                  <input required type="password" id="passwordNew" name="password" />
+                </div>
+                <div>
+                  <label for="profile-picture">Profile Picture:</label>
+                  <input required
+                    type="file"
+                    id="profile-picture"
+                    name="profile-picture"
+                  />
+                </div>
+              </div>
+              <!-- Vendor account -->
+              <div id="vendor-div" style="display: none;" class="vendor">
+                <div>
+                  <label for="business-name">Business Name:</label>
+                  <input type="text" id="business-name" name="business-name" />
+                </div>
+                <div>
+                  <label for="business-address">Business Address:</label>
+                  <input
+                    type="text"
+                    id="business-address"
+                    name="business-address"
+                  />
+                </div>
+              </div>
+              <!-- Customer account -->
+              <div id="customer-div" style="display: none;" class="customer">
+                <div>
+                  <label for="address">Address:</label>
+                  <input  type="text" id="address" name="address" />
+                </div>
+                <div>
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" />
+                </div>
+              </div>
+              <!-- Shipper account -->
+              <div id="shipper-div" style="display: none;" class="shipper">
+                <label for="distribution-hub">Distribution Hub:</label>
+                <select id="distribution-hub" name="distribution-hub">
+                  <option value="none"></option>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </div>
+              <!-- Submit account -->
+              <div class="submit-button">
+                <button class="hover" type="submit" onclick="addNewAccount()">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="overlay" class="overlay"></div>
+    </div>
+    <!-- Footer of the page -->
+    <footer>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Copyright</a>
+        <a href="#">Privacy</a>
+        <a href="#">Help</a>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,18 +1,14 @@
-const { error } = require('console');
 const mongoose = require('mongoose');
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-const uri = 'mongodb+srv://quynguyen:xfqM6RcvtWw22Ozf@lazadaclone.cqg5ikw.mongodb.net/lazadaWebsite?retryWrites=true&w=majority';
+// in database.js
+module.exports = {
+  dataEndpoint: '/',
+  // other variables and functions
+}
 
-mongoose.connect(uri).then(()=>{
-  console.log("ket noi database thanh cong")
-})
-.catch((error)=>{
-  console.log(error.message);
-})
-
-run()
-
-async function run(){
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -36,48 +32,89 @@ const productSchema = new mongoose.Schema({
   distributionHub: String,
 })
 
-const productsDatabase = mongoose.model('products',productSchema)
+const distributionHubSchema = new mongoose.Schema({
+  name: String,
+  address: String,
+})
+
+var dataAccount = []
+var dataProduct = []
+var dataHubs = []
+
+
+const uri = 'mongodb+srv://quynguyen:xfqM6RcvtWw22Ozf@lazadaclone.cqg5ikw.mongodb.net/lazadaWebsite?retryWrites=true&w=majority';
+
+mongoose.connect(uri).then(()=>{
+  console.log("ket noi database thanh cong")
+})
+.catch((error)=>{
+  console.log(error.message);
+})
+
+run()
+
+async function run(){
+
+app.use(cors());
+
+
+const productsDatabase = mongoose.model('products',productSchema);
 const userAccount = mongoose.model('accounts',userSchema);
+const distributionHubs = mongoose.model('distributionHubs',distributionHubSchema);
+
 
 module.exports = { userAccount};
-
 module.exports = {productsDatabase};
+module.exports = {distributionHubs}
 
-productsDatabase.find()
-.then((product) => {
-    console.log(product)
+userAccount.find()
+.then((account) => {
+    dataAccount = account
 })
 .catch((error)=>{
   console.log(error.message)
 })
+
+productsDatabase.find()
+.then((product) => {
+    dataProduct = product
+})
+.catch((error)=>{
+  console.log(error.message)
+})
+
+distributionHubs.find()
+.then((hub) => {
+    dataHubs = hub
+})
+.catch((error)=>{
+  console.log(error.message)
+})
+
+
+
 }
 
-// console.log(mongoose.Collection)
+app.get('/products',(req,res)=>
+{
+  // console.log(data)
+  res.send(dataAccount)
+})
 
-// const userSchema = new mongoose.Schema({
-//   userName:String,
-//   password:String
-// })
+app.get('/accounts',(req,res)=>
+{
+  // console.log(data)
+  res.send(dataProduct)
+})
 
-// mongoose.model("account", userSchema).find()
+app.get('/distributionHubs',(req,res)=>
+{
+  // console.log(dataHubs)
+  res.send(dataHubs)
+})
 
-// const dbName = '';
+// start server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
 
-// mongoose.connect(uri);
-
-// const client = new MongoClient(uri);
-
-// async function main() {
-//   // Use connect method to connect to the server
-//   await client.connect();
-//   console.log('Connected successfully to server');
-//   const db = client.db(dbName);
-//   const collection = db.collection('products');
-  
-//   console.log(db.client)
-//   // the following code examples can be pasted here...
-
-//   return 'done.';
-// }
-
-// run().catch(console.dir);
