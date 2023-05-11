@@ -111,7 +111,8 @@ dialog[data-modal] {
 	background-color: #faf7f4;
 }
 
-.form-modal .form-header, .cart-modal .cart-header {
+.form-modal .form-header,
+.cart-modal .cart-header {
 	padding: 10px 15px;
 	display: flex;
 	justify-content: space-between;
@@ -119,7 +120,8 @@ dialog[data-modal] {
 	border-bottom: var(--primary-color) 1px groove;
 }
 
-.form-header .form-title, .cart-header .cart-title {
+.form-header .form-title,
+.cart-header .cart-title {
 	font-size: 2rem;
 	font-weight: bold;
 	color: var(--main-color);
@@ -164,7 +166,51 @@ dialog[data-modal] {
 	margin: 10px 0px;
 }
 
-.cart-button {
+.cart-modal {
+	position: fixed;
+	min-width: 400px;
+	max-height: 582px;
+	bottom: 13vh;
+	right: 10px;
+	margin-left: auto;
+	padding: 5px;
+
+	height: 50vh;
+	
+	border: 3px solid #f1f1f1;
+	z-index: 9;
+}
+
+.cart-modal .cart-body {
+	max-height: 35vh;
+	width: 400px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.cart-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+	position: absolute;
+	bottom: 0;
+}
+
+.total-price {
+	font-size: 16px;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: 10px;
+}
+
+.checkout-button {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 20px;
+}
+
+.cart-button { 
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -174,7 +220,7 @@ dialog[data-modal] {
 	width: 10vh;
 	height: 10vh;
 	margin: 20px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5), 0 6px 20px 0 rgba(0,0,0,0.19);
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	cursor: pointer;
 }
 
@@ -186,7 +232,7 @@ dialog[data-modal] {
 .cart-item {
 	display: flex;
 	align-items: flex-start;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .product-image-container {
@@ -196,7 +242,8 @@ dialog[data-modal] {
 
 .product-image {
 	width: 100px;
-	height: 100px;
+	height: auto;
+	max-height: 118px;
 }
 
 .product-details {
@@ -210,8 +257,6 @@ dialog[data-modal] {
 .product-name {
 	font-size: 18px;
 	font-weight: bold;
-	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
 	margin-left: 10px;
 }
@@ -234,32 +279,12 @@ dialog[data-modal] {
 	padding-top: 20px;
 }
 
-.cart-footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 20px;
-}
-
-.total-price {
-	font-size: 16px;
-	font-weight: bold;
-	margin-left: auto;
-	margin-right: 10px;
-}
-
-.checkout-button {
-	font-size: 16px;
-	font-weight: bold;
-	padding: 10px 20px;
-}
-
 .close-button img {
 	background: transparent;
 }
 
 @media screen and (max-width: 600px) {
-    .box {
-        width: 29vw;
-    }
+	.box {
+		width: 29vw;
+	}
 }

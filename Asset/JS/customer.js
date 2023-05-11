@@ -1,4 +1,10 @@
-
+fetch('http://localhost:3000/products')
+  .then(
+    response => response.json())
+  .then(data => 
+	console.log(data)
+	)
+  .catch(error => console.error(error));
 
 
 const itemBoxTemplate = document.querySelector("[item-box-template]");
@@ -6,15 +12,45 @@ const itemBoxContainer = document.querySelector("[item-box-container]");
 const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
 const cart = document.querySelector('.cart-modal');
+var products;
 
-let items = []
+fetch('http://localhost:3000/products')
+	.then(res => res.json())
+	.then(data => {
+		var i = 0;
+		products = data;
+		var temp = data.map(product => {
+			const box = itemBoxTemplate.content.cloneNode(true).children[0]
+			box.classList = i + ' ' + box.classList
+			i++
+			const name = box.querySelector("[item-name]")
+			const price = box.querySelector("[item-price]")
+			const image = box.querySelector("[item-image]")
+			// const description = box.querySelector("[item-description]")
+			name.textContent = product.name
+			price.textContent = '$' + product.price
+			image.querySelector("img").src = product.image
+			// description.textContent = product.description
+
+			itemBoxContainer.append(box)
+			return {
+				name: product.name, price: product.price,
+				description: product.description, element: box
+			}
+		})
+	})
+
 /**item search**/
 searchInput.addEventListener("input", e => {
 	const value = e.target.value.toLowerCase()
-	items.forEach(item => {
-		const isVisible = item.name.toLowerCase().includes(value)
-		item.element.classList.toggle("hide", !isVisible)
-	})
+	const itemBoxes = document.querySelector(".item-boxes")
+	const boxes = itemBoxes.querySelectorAll(".box")
+	const test = itemBoxes.querySelectorAll("[item-name]")
+
+	for (var i = 0; i < test.length; i++) {
+		const isVisible = test[i].textContent.toLowerCase().includes(value)
+		boxes[i].classList.toggle("hide", !isVisible)
+	}
 })
 fetch('http://localhost:3000/products')
     .then(res => res.json())
@@ -100,6 +136,8 @@ function addToCart() {
 		// Sorry! No Web Storage support..
 	}
 
+	populateCart();
+
 	closeModal();
 }
 
@@ -113,17 +151,17 @@ function addToCart() {
 // 	const productPrice = templateClone.querySelector('.price');
 // 	const productDescription = templateClone.querySelector('.description');
 
-// 	productImage.src = products[position].image;
-// 	productName.textContent = products[position].name;
-// 	productPrice.textContent = products[position].price;
-// 	productDescription.textContent = products[position].description;
+	productImage.src = products[position].image;
+	productName.textContent = products[position].name;
+	productPrice.textContent = products[position].price;
+	productDescription.textContent = products[position].description;
 
-// 	cartContainer.appendChild(templateClone);
-// }
+	cartContainer.appendChild(templateClone);
+}
 
 function openCart() {
 	populateCart();
-	cart.showModal();
+	cart.show();
 }
 
 function closeCart() {
@@ -148,6 +186,7 @@ function checkOutCart() {
 function populateCart() {
 	const cartTemplate = document.getElementById('cart-template');
 	const cartContainer = document.querySelector('.cart-body');
+	cartContainer.innerHTML = '';
 
 	var items = JSON.parse(localStorage.getItem("item"));
 
@@ -178,7 +217,7 @@ function removeItem(index) {
 	var items = JSON.parse(localStorage.getItem("item"));
 
 	if (index > -1) { // only splice array when item is found
-	  items.splice(index, 1); // 2nd parameter means remove one item only
+		items.splice(index, 1); // 2nd parameter means remove one item only
 	}
 
 	localStorage.setItem("item", JSON.stringify(items));
@@ -186,97 +225,3 @@ function removeItem(index) {
 	document.querySelector('.cart-body').innerHTML = '';
 	populateCart();
 }
-
-/**fake data and clone box**/
-const products = [
-	{
-		image: 'Asset/IMG/Products/bag.png',
-		name: 'bag',
-		price: '$100',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shirt.png',
-		name: 'shirt',
-		price: '$56',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shoes.png',
-		name: 'shoes',
-		price: '$76',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shorts.png',
-		name: 'shorts',
-		price: '$14',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/socks.png',
-		name: 'socks',
-		price: '$23',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/trainers.png',
-		name: 'Trainers',
-		price: '$432',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/bag.png',
-		name: 'bag',
-		price: '$231',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shirt.png',
-		name: 'shirt',
-		price: '$111',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shoes.png',
-		name: 'shoes',
-		price: '$321',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-	{
-		image: 'Asset/IMG/Products/shorts.png',
-		name: 'shorts',
-		price: '$123',
-		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. " +
-			"Culpa reiciendis possimus libero nesciunt impedit, optio esse neque cumque " +
-			"autem, laborum asperiores eligendi illum similique corporis.Nemo, dolorem? " +
-			"Voluptatem, dolor veritatis."
-	},
-];
