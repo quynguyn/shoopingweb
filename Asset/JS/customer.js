@@ -69,9 +69,8 @@ fetch('http://localhost:3000/products')
             description.textContent = item.description
             itemBoxContainer.append(box)           
             return {id: item.id,name: item.name,price: item.price,description: item.description, element: box}
-        })
     })
-
+})
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]")
@@ -141,15 +140,15 @@ function addToCart() {
 	closeModal();
 }
 
-// function fillData(position) {
-// 	const itemTemplate = document.getElementById('item-template');
-// 	const cartContainer = document.querySelector('.form-body');
+function fillData(position) {
+	const itemTemplate = document.getElementById('item-template');
+	const cartContainer = document.querySelector('.form-body');
 
-// 	const templateClone = itemTemplate.content.cloneNode(true);
-// 	const productImage = templateClone.querySelector('.product-image');
-// 	const productName = templateClone.querySelector('.product-name');
-// 	const productPrice = templateClone.querySelector('.price');
-// 	const productDescription = templateClone.querySelector('.description');
+	const templateClone = itemTemplate.content.cloneNode(true);
+	const productImage = templateClone.querySelector('.product-image');
+	const productName = templateClone.querySelector('.product-name');
+	const productPrice = templateClone.querySelector('.price');
+	const productDescription = templateClone.querySelector('.description');
 
 	productImage.src = products[position].image;
 	productName.textContent = products[position].name;

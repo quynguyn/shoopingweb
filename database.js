@@ -59,11 +59,6 @@ async function run() {
 	const userAccount = mongoose.model('accounts', userSchema);
 	const distributionHubs = mongoose.model('distributionHubs', distributionHubSchema);
 
-module.exports = mongoose.model('products',productSchema);
-const userAccount = mongoose.model('accounts',userSchema);
-const distributionHubs = mongoose.model('distributionHubs',distributionHubSchema);
-
-
 module.exports = { userAccount};
 module.exports = {distributionHubs}
 
