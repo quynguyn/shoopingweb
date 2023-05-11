@@ -52,11 +52,11 @@ async function run(){
 app.use(cors());
 
 
-module.exports = mongoose.model('products',productSchema);
+const productsDatabase = mongoose.model('products',productSchema);
 const userAccount = mongoose.model('accounts',userSchema);
 const distributionHubs = mongoose.model('distributionHubs',distributionHubSchema);
 
-
+module.exports = {productsDatabase};
 module.exports = { userAccount};
 module.exports = {distributionHubs}
 
