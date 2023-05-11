@@ -1,10 +1,10 @@
 fetch('http://localhost:3000/products')
-  .then(
-    response => response.json())
-  .then(data => 
-	console.log(data)
+	.then(
+		response => response.json())
+	.then(data =>
+		console.log(data)
 	)
-  .catch(error => console.error(error));
+	.catch(error => console.error(error));
 
 
 const itemBoxTemplate = document.querySelector("[item-box-template]");
@@ -22,10 +22,11 @@ fetch('http://localhost:3000/products')
 		var temp = data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
 			box.classList = i + ' ' + box.classList
+			box.onclick = () => openModal(box.classList[0])
 			i++
 			const name = box.querySelector("[item-name]")
-			const price = box.querySelector("[item-price]")
-			const image = box.querySelector("[item-image]")
+			const price = box.querySelector(".price")
+			const image = box.querySelector(".image")
 			// const description = box.querySelector("[item-description]")
 			name.textContent = product.name
 			price.textContent = '$' + product.price
@@ -52,64 +53,21 @@ searchInput.addEventListener("input", e => {
 		boxes[i].classList.toggle("hide", !isVisible)
 	}
 })
-fetch('http://localhost:3000/products')
-    .then(res => res.json())
-    .then(data => {
-        items = data.map(item => {
-            const box = itemBoxTemplate.content.cloneNode(true).children[0]
-            const name = box.querySelector("[item-name]")
-            const price = box.querySelector("[item-price]")
-            const image = box.querySelector("[item-image]")
-            const description = box.querySelector("[item-description]")
-			const id = box.querySelector("[item-id]")
-			id.hidden = item.id
-            name.textContent = item.name
-            price.textContent = item.price
-            image.Content = item.image
-            description.textContent = item.description
-            itemBoxContainer.append(box)           
-            return {id: item.id,name: item.name,price: item.price,description: item.description, element: box}
-        })
-    })
 
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]")
 
-// function openModal(position) {
-// 	fillData(position);
-// 	modal.showModal()
-// }
+function openModal(position) {
+	fillData(position);
+	modal.showModal()
+}
 
-// function closeModal() {
-// 	modal.querySelector(".form-body").innerHTML = '';
-// 	modal.close()
-// }
+function closeModal() {
+	modal.querySelector(".form-body").innerHTML = '';
+	modal.close()
+}
 
-// //Retrieving data from MongoDB
-// const getData = async () => {
-// 	try {
-// 	  const response = await fetch('http://localhost:3000/accounts');
-// 	  const data = await response.json();
-// 	  return data;
-// 	} catch (err) {
-// 	  console.error(err);
-// 	}
-//   }
-  
-//   //Using the retrieved data to populate the dialog modal
-//   const showDataInModal = async () => {
-// 	const data = await getData();
-  
-// 	let modalContent = '';
-// 	data.forEach(item => {
-// 	  modalContent += `<div>${item.name}, ${item.age}, ${item.location}</div>`;
-// 	});
-  
-// 	const modal = document.getElementById('modal');
-// 	modal.querySelector("[data-modal]") = modalContent;
-// 	modal.style.display = 'block';
-//   }
 
 function addToCart() {
 	const cartContainer = document.querySelector('.form-body');
@@ -141,15 +99,15 @@ function addToCart() {
 	closeModal();
 }
 
-// function fillData(position) {
-// 	const itemTemplate = document.getElementById('item-template');
-// 	const cartContainer = document.querySelector('.form-body');
+function fillData(position) {
+	const itemTemplate = document.getElementById('item-template');
+	const cartContainer = document.querySelector('.form-body');
 
-// 	const templateClone = itemTemplate.content.cloneNode(true);
-// 	const productImage = templateClone.querySelector('.product-image');
-// 	const productName = templateClone.querySelector('.product-name');
-// 	const productPrice = templateClone.querySelector('.price');
-// 	const productDescription = templateClone.querySelector('.description');
+	const templateClone = itemTemplate.content.cloneNode(true);
+	const productImage = templateClone.querySelector('.product-image');
+	const productName = templateClone.querySelector('.product-name');
+	const productPrice = templateClone.querySelector('.price');
+	const productDescription = templateClone.querySelector('.description');
 
 	productImage.src = products[position].image;
 	productName.textContent = products[position].name;
