@@ -59,8 +59,8 @@ async function run() {
 	const userAccount = mongoose.model('accounts', userSchema);
 	const distributionHubs = mongoose.model('distributionHubs', distributionHubSchema);
 
-module.exports = { userAccount};
-module.exports = {distributionHubs}
+	module.exports = { userAccount };
+	module.exports = { distributionHubs }
 
 	userAccount.find()
 		.then((account) => {
