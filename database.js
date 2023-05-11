@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
+const { copyFileSync } = require('fs');
 const app = express();
 
 
@@ -52,7 +53,7 @@ async function run(){
 app.use(cors());
 
 
-module.exports = mongoose.model('products',productSchema);
+const productsDatabase = mongoose.model('products',productSchema);
 const userAccount = mongoose.model('accounts',userSchema);
 const distributionHubs = mongoose.model('distributionHubs',distributionHubSchema);
 
