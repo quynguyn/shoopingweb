@@ -1,14 +1,16 @@
 fetch('http://localhost:3000/products')
   .then(
     response => response.json())
-  .then(data => console.log(data))
+  .then(data => 
+	console.log(data)
+	)
   .catch(error => console.error(error));
 
 
-const itemBoxTemplate = document.querySelector("[item-box-template]")
-const itemBoxContainer = document.querySelector("[item-box-container]")
-const searchInput = document.querySelector("[item-search]")
-const aFilter = document.querySelector("[a-filter]")
+const itemBoxTemplate = document.querySelector("[item-box-template]");
+const itemBoxContainer = document.querySelector("[item-box-container]");
+const searchInput = document.querySelector("[item-search]");
+const aFilter = document.querySelector("[a-filter]");
 const cart = document.querySelector('.cart-modal');
 
 let items = []
