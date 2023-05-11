@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="Asset\JS\customer.js" defer></script>
 	<script src="Asset\JS\cart.js" defer></script>
-	<title>Document</title>
+	<title>Customer</title>
 </head>
 
 <body>
@@ -59,8 +59,8 @@
 		<template item-box-template>
 			<div class="box hover" onclick="openModal(this.classList[0])">
 				<div class="name" item-name></div>
-				<div class="price">$100</div>
-				<div class="image">
+				<div class="price" item-price></div>
+				<div class="image" item-image>
 					<img src="Asset/IMG/Products/bag.png" alt="Product Image">
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 			<img src="Asset/IMG/cart.svg" alt="Web Group Logo" />
 		</button>
 
-		<dialog data-modal class="cart-modal">
+		<dialog class="cart-modal">
 			<div class="cart-header">
 				<div class="cart-title">Cart</div>
 				<button data-close-modal class="close-button" onclick="closeCart()">×</button>
