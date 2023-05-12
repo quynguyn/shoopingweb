@@ -1,12 +1,3 @@
-fetch('http://localhost:3000/products')
-	.then(
-		response => response.json())
-	.then(data =>
-		console.log(data)
-	)
-	.catch(error => console.error(error));
-
-
 const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
 const searchInput = document.querySelector("[item-search]");
@@ -64,13 +55,13 @@ function openModal(position) {
 }
 
 function closeModal() {
-	modal.querySelector(".form-body").innerHTML = '';
+	modal.querySelector(".detail-body").innerHTML = '';
 	modal.close()
 }
 
 
 function addToCart() {
-	const cartContainer = document.querySelector('.form-body');
+	const cartContainer = document.querySelector('.detail-body');
 
 	const img = cartContainer.querySelector('.product-image').src;
 	const name = cartContainer.querySelector('.product-name').textContent;
@@ -101,7 +92,7 @@ function addToCart() {
 
 function fillData(position) {
 	const itemTemplate = document.getElementById('item-template');
-	const cartContainer = document.querySelector('.form-body');
+	const cartContainer = document.querySelector('.detail-body');
 
 	const templateClone = itemTemplate.content.cloneNode(true);
 	const productImage = templateClone.querySelector('.product-image');
@@ -162,12 +153,12 @@ function populateCart() {
 			productImage.src = item.img;
 			productName.textContent = item.name;
 			productPrice.textContent = item.price;
-			total += parseInt(item.price.replace('$', ""));
+			total += parseFloat(item.price.replace('$', ""));
 
 			cartContainer.appendChild(templateClone);
 		});
 
-		document.querySelector('#total-price').textContent = total;
+		document.querySelector('#total-price').textContent = total.toFixed(2);
 	}
 }
 
