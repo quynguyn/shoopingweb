@@ -8,6 +8,7 @@
 	<title>Shipper</title>
 	<link rel="stylesheet" href="Asset/CSS/style.css">
 	<link rel="stylesheet" href="Asset/CSS/shipper.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	<script defer src="Asset/JS/shipper.js"></script>
 </head>
 
@@ -30,7 +31,7 @@
 
 	<div class="main-container">
 		<div class="orders-container">
-			<div class="order hover" onclick="popupFunction(event)">
+			<div class="order hover" onclick="openModal(this.classList[0])">
 				<div class="activity">
 					<svg height="20" width="20">
 						<circle cx="15" cy="15" r="5" fill="red" />
@@ -55,7 +56,7 @@
 				</div>
 			</div>
 
-			<div class="order hover" onclick="popupFunction(event)">
+			<div class="order hover">
 				<div class="activity">
 					<svg height="20" width="20">
 						<circle cx="15" cy="15" r="5" fill="red" />
@@ -79,70 +80,135 @@
 					</div>
 				</div>
 			</div>
+
 
 			<dialog data-modal class="info-modal">
 				<div class="info-header">
 					<div class="info-title">Order's full details</div>
 					<button data-close-modal class="close-button" onclick="closeModal()">×</button>
 				</div>
-				<form class="info-body">
 
+				<form class="info-body">
+				</form>
+			</dialog>
+		</div>
+
+
+		<template class="order-box">
+			<div class="order hover" onclick="popupFunction(event)">
+				<div class="activity">
+					<svg height="20" width="20">
+						<circle cx="15" cy="15" r="5" fill="" />
+					</svg>
+				</div>
+
+				<div class="information-container">
 					<div class="information">
 						<pre>Name: </pre>
-						<p class="name">Nguyen Van A</p>
+						<p class="name"></p>
 					</div>
 
 					<div class="information">
 						<pre>Address: </pre>
-						<p class="name">702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+						<p class="address"></p>
 					</div>
 
 					<div class="information">
 						<pre>Phone: </pre>
-						<p class="name">0123456789</p>
+						<p class="phone"></p>
 					</div>
+				</div>
+			</div>
+		</template>
 
-					<div class="information-column">
-						<pre>Order list: </pre>
-						<ul class="order-list">
-							<li>Coffee</li>
-							<li>Tea</li>
-							<li>Milk</li>
-						</ul>
-					</div>
+		<template class="order-details">
+			<form class="info-body">
+				<div class="information">
+					<pre>Name: </pre>
+					<p class="name"></p>
+				</div>
 
-					<div class="information">
-						<pre>Total prices: </pre>
-						<p class="price">$100</p>
-					</div>
+				<div class="information">
+					<pre>Address: </pre>
+					<p class="address"></p>
+				</div>
 
-					<div class="information">
-						<label for="cars"><pre>Activity: </pre></label>
-						<select id="cars" name="carlist" form="carform">
-							<option value="volvo">Volvo</option>
-							<option value="saab">Saab</option>
-							<option value="opel">Opel</option>
-							<option value="audi">Audi</option>
-						</select>
-					</div>
+				<div class="information">
+					<pre>Phone: </pre>
+					<p class="phone"></p>
+				</div>
 
+				<div class="information-column">
+					<pre>Order list: </pre>
+					<ul class="order-list">
+					</ul>
+				</div>
 
-					<div class="submit-button">
-						<button class="hover" type="submit">Submit</button>
-					</div>
-				</form>
+				<div class="information">
+					<pre>Total prices: $</pre>
+					<p class="total-price"></p>
+				</div>
 
-			</dialog>
-		</div>
+				<div class="information">
+					<label for="activities">
+						<pre>Activity: </pre>
+					</label>
+					<select id="activities" name="activity-list" form="info-body">
+						<option value="active">Active</option>
+						<option value="delivered">Delivered</option>
+						<option value="canceled">Canceled</option>
+					</select>
+				</div>
+
+				<div class="submit-button">
+					<button class="hover" type="submit">Submit</button>
+				</div>
+			</form>
+		</template>
 	</div>
 
 	<!-- Footer of the page -->
-	<footer>
-		<div class="footer-links">
-			<a href="#">About</a>
-			<a href="#">Copyright</a>
-			<a href="#">Privacy</a>
-			<a href="#">Help</a>
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="row">
+				<div class="footer-col">
+					<h4>About</h4>
+					<ul>
+						<li>Our name is 'Web Group'. We are a group in the RMIT web programming course.
+						</li>
+
+					</ul>
+					<h4>Copyright</h4>
+					<ul>
+						<li>All rights reserved. © Web Group 2023.</li>
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<h4>Privacy</h4>
+					<ul>
+						<li>We prioritize the privacy of our users. Please refer to our Privacy Policy for detailed
+							information on how we handle and protect your data.</li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Help</h4>
+					<div class="help">
+						<img src="https://marcas-logos.net/wp-content/uploads/2020/03/RMIT-LOGO-600x338.png"
+							alt="RMIT Logo" class="rmit-logo">
+						<ul>
+							<li>Phone: +61 3 9925 2000
+							</li>
+							<li>Address: 702 Nguyen Van Linh District 7, Ho Chi Minh City
+							</li>
+						</ul>
+						<a href="https://www.facebook.com/RMITUniversityVietnam/"><i class="fab fa-facebook-f"></i></a>
+						<a href="https://twitter.com/RMIT"><i class="fab fa-twitter"></i></a>
+						<a href="https://www.instagram.com/rmituniversity/"><i class="fab fa-instagram"></i></a>
+						<a href="https://au.linkedin.com/school/rmit-university/"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 
@@ -156,4 +222,4 @@
 	the products in that order, the total price, the address of the receiver 
 	(i.e., the customer who ordered), etc. The shipper can update the status of 
 	the order from "active" to either "delivered" or "canceled". If an order is 
-	not "active", it is not shown on the shipper page anymore. -->
+	not "active", it is not shown on the shipper page anymore.-->
