@@ -6,13 +6,6 @@
 
 /**
 
-fetch('http://localhost:3000/accounts')
-.then(
-  response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error(error));
-
-
 fetch('http://localhost:3000/distributionHubs')
   .then(
     response => response.json())
@@ -20,6 +13,7 @@ fetch('http://localhost:3000/distributionHubs')
   .catch(error => console.error(error));
 
  */
+
 
 // Variable 
 
@@ -36,7 +30,7 @@ const shipperDiv = document.querySelector('#shipper-div');
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
-console.log("modla function run")
+
 
 openModalButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -127,24 +121,33 @@ function togglePasswordVisibility() {
   }
 }
 
+accountUserType = ""
+var loginCheck;
 // Checking if the account is exits
-function logIn (usernameData, passwordData, userType){
+function logIn (usernameData, passwordData){
   //to decide what what type of user log in to
   
-  userType = check
   // here to compare and check for the account password 
-  console.log(localStorage.getItem('newVendor').username)
+  fetch('http://localhost:3000/accounts')
+  .then(response => response.json())
+  .then(data => {
+    const accountCheck = data.find(account => account.username === usernameData && account.password === passwordData);
+    if(accountCheck === undefined){
+      loginCheck = false
+      console.log(loginCheck)
+      console.log("code check loginCheck bang false")
+    }
+    else{
+      accountUserType = accountCheck.type
+loginCheck = true
 
-  // if(myValue === null)
-  // {
-  //   return false;
-  // }
-  // else{
-  //   return true;
-  // }
+      // return true
+    }
+  })
+  .catch(error => console.error(error));
 }
 
-accountUserType = ""
+//phải bấm log in 2 lần mới log in dc 
 
 // Log in button 
 const form = document.querySelector('form');
@@ -152,30 +155,31 @@ form.addEventListener('submit', (event) => {
   event.preventDefault(); // prevent form submission from refreshing the page
   var username = form.email.value; 
   var password = form.password.value;
+  logIn(username,password);
   //fix the 
-  if(logIn(username,password)==false){
+  console.log("in the submit click: "+loginCheck)
+  if(loginCheck===false){
+    console.log("false account")
     displayErrorMessage();
+}
+else if (loginCheck ===true){
+
+  // Open a new HTML file called "new-page.html"
+  form.email.value = null;
+  form.password.value = null;
+  if(accountUserType == 'vendor'){ 
+    window.location.href = "vendor.html";
   }
-  /**
-   * need to make a function to take account database and got the type
-   */
-  // else{
-  //   // Open a new HTML file called "new-page.html"
-  //   form.email.value = null;
-  //   form.password.value = null;
-  //   if(accountUserType = 'vendor'){ 
-  //     window.location.href = "vendor.html";
-  //   }
-  //   else if (accountUserType = 'customer'){
-  //     window.location.href = "customer.html";
-  //   }
-  //   else if(accountUserType = 'shipper'){
-  //     window.location.href = "shipper.html";
-  //   }
-  //   else{
-  //     alert("Do not have the user type")
-  //   }
-  // }
+  else if (accountUserType == 'customer'){
+    window.location.href = "customer.html";
+  }
+  else if(accountUserType == 'shipper'){
+    window.location.href = "shipper.html";
+  }
+  else{
+    alert("Do not have the user type")
+  }
+}
 });
 
 // wrong username and password
