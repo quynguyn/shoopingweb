@@ -123,99 +123,60 @@ function togglePasswordVisibility() {
 
 accountUserType = ""
 var loginCheck;
+let accountCheck = null;
 // Checking if the account is exits
 
 // Log in button 
-const form = document.querySelector('form');
+function logIn(event) {
+  event.preventDefault();
+  var username = form.email.value; 
+  var password = form.password.value; 
 
-//const form = document.querySelector('form');
-//const button = document.querySelector('button');
+  fetch('http://localhost:3000/accounts')
+    .then(response => response.json())
+    .then(data => {
+      accountCheck = data.find(account => account.username === username && account.password === password);
+      if(accountCheck === undefined) {
+        loginCheck = false;
+        clickSubmit();
+      }
+      else {
+        accountUserType = accountCheck.type;
+        loginCheck = true;
+        clickSubmit(); // call clickSubmit() function here
+      }
+    })
+    .catch(error => console.error(error));
+}
+export { accountCheck };
 
-function clickSubmit () {
-  //fix the 
-  if(loginCheck===false){
-    console.log("false account")
+function clickSubmit() {
+  if(loginCheck === false) {
     displayErrorMessage();
   }
-  else if (loginCheck ===true){
-    // Open a new HTML file called "new-page.html"
+  else if(loginCheck === true) {
     form.email.value = null;
     form.password.value = null;
-    if(accountUserType == 'vendor'){ 
+   
+    if(accountUserType === 'vendor') {
+      
       window.location.href = "vendor.html";
     }
-    else if (accountUserType == 'customer'){
+    else if(accountUserType === 'customer') {
       window.location.href = "customer.html";
     }
-    else if(accountUserType == 'shipper'){
+    else if(accountUserType === 'shipper') {
+
       window.location.href = "shipper.html";
     }
-    else{
+    else {
       alert("Do not have the user type")
     }
   }
-  console.log("End of the onclick function: "+loginCheck)
-};
-
-function logIn (){
-  //to decide what what type of user log in to
-  event.preventDefault()
-  var username = form.email.value; 
-  var password = form.password.value; 
-  // here to compare and check for the account password 
-  fetch('http://localhost:3000/accounts')
-  .then(response => response.json())
-  .then(data => {
-    const accountCheck = data.find(account => account.username === username && account.password === password);
-    console.log("Here is the account: \n"+accountCheck)
-    if(accountCheck === undefined){
-      loginCheck = false
-      console.log("code check loginCheck bang false")
-      console.log(loginCheck)
-    }
-    else{
-      accountUserType = accountCheck.type
-loginCheck = true
-
-    }
-  })
-  .catch(error => console.error(error));
-
-  clickSubmit();
-  console.log("end of the function in log in: " + loginCheck)
 }
 
-
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault(); // prevent form submission from refreshing the page
-//   var username = form.email.value; 
-//   var password = form.password.value;
-//   logIn(username,password);
-//   //fix the 
-//   if(loginCheck===false){
-//     console.log("false account")
-//     displayErrorMessage();
-// }
-// else if (loginCheck ===true){
-
-//   // Open a new HTML file called "new-page.html"
-//   form.email.value = null;
-//   form.password.value = null;
-//   if(accountUserType == 'vendor'){ 
-//     window.location.href = "vendor.html";
-//   }
-//   else if (accountUserType == 'customer'){
-//     window.location.href = "customer.html";
-//   }
-//   else if(accountUserType == 'shipper'){
-//     window.location.href = "shipper.html";
-//   }
-//   else{
-//     alert("Do not have the user type")
-//   }
-// }
-// console.log("End of the onclick function: "+loginCheck)
-// });
+const form = document.querySelector('form');
+form.addEventListener('submit', logIn);
 
 // wrong username and password
 const messageClass = 'wrongInput';

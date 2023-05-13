@@ -1,6 +1,9 @@
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 
+import { accountCheck } from './index.js';
+console.log(accountCheck)
+
 
 const detailModal = document.querySelector(".detail-dialog")
 

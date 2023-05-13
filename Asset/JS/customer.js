@@ -4,6 +4,11 @@ const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
 const cart = document.querySelector('.cart-modal');
 var products;
+// anotherFile.js
+
+// now you can use the accountCheck object here
+console.log(accountCheck);
+
 
 fetch('http://localhost:3000/products')
 	.then(res => res.json())
