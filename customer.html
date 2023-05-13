@@ -39,12 +39,18 @@
 		<!--filter-->
 		<div class="filter-range">
 			<h3>Filter by price range:</h3>
-			<input type="range" min="0" max="1000" value="500" class="slider">
+
 			<div class="range-values">
-			  <span class="min-value">$0</span>
-			  <span class="max-value">$1000</span>
+				<span class="min-value">$0</span>
+				<div class="current-value-container">
+					<input type="range" min="0" max="1000" value="1000" class="slider" id="range-slider">
+					<span class="current-value">$0</span>
+				</div>
+				<span class="max-value">$1000</span>
 			</div>
-		  </div>		  
+
+
+		</div>
 		<!--search items-->
 		<div class="search-bar">
 			<input type="search" placeholder="Search.." id="search" item-search>
@@ -86,14 +92,17 @@
 					<div class="content">
 						<p class="product-name"></p>
 						<span class="price"></span>
-						<!-- add to cart button -->
-						<button cart-button class="btn hover cart" onclick="addToCart()">Add to Cart</button>
 					</div>
 				</div>
 				<!-- description -->
 				<div>
 					<b>Description</b>
 					<p class="description"></p>
+				</div>
+
+				<div class="cart-button-container">
+					<!-- add to cart button -->
+					<button cart-button class="btn hover cart" onclick="addToCart()">Add to Cart</button>
 				</div>
 			</template>
 		</dialog>

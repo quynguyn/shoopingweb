@@ -50,6 +50,26 @@ searchInput.addEventListener("input", e => {
 	}
 })
 
+const slider = document.querySelector('#range-slider');
+const currentValue = document.querySelector('.current-value');
+currentValue.innerHTML = '$' + slider.value
+
+slider.oninput = function () {
+	console.log(this.value)
+	currentValue.innerHTML = '$' + this.value
+	const itemBoxes = document.querySelector(".item-boxes")
+	const boxes = itemBoxes.querySelectorAll(".box")
+	const price = itemBoxes.querySelectorAll(".price")
+	const sliderValue = parseFloat(this.value)
+
+	for (var i = 0; i < price.length; i++) {
+		const productPrice = parseFloat(price[i].textContent.replace('$', '')) 
+		const isVisible = productPrice <= sliderValue
+		console.log(isVisible)
+		boxes[i].classList.toggle("hide", !isVisible)
+	}
+}
+
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]")
@@ -107,7 +127,7 @@ function fillData(position) {
 
 	productImage.src = products[position].image;
 	productName.textContent = products[position].name;
-	productPrice.textContent = products[position].price;
+	productPrice.textContent = '$' + products[position].price;
 	productDescription.textContent = products[position].description;
 
 	cartContainer.appendChild(templateClone);
