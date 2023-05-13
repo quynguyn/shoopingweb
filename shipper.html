@@ -31,7 +31,7 @@
 
 	<div class="main-container">
 		<div class="orders-container">
-			<div class="order hover" onclick="popupFunction(event)">
+			<div class="order hover" onclick="openModal(this.classList[0])">
 				<div class="activity">
 					<svg height="20" width="20">
 						<circle cx="15" cy="15" r="5" fill="red" />
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 
-			<div class="order hover" onclick="popupFunction(event)">
+			<div class="order hover">
 				<div class="activity">
 					<svg height="20" width="20">
 						<circle cx="15" cy="15" r="5" fill="red" />
@@ -80,63 +80,91 @@
 					</div>
 				</div>
 			</div>
+
 
 			<dialog data-modal class="info-modal">
 				<div class="info-header">
 					<div class="info-title">Order's full details</div>
 					<button data-close-modal class="close-button" onclick="closeModal()">×</button>
 				</div>
-				<form class="info-body">
 
+				<form class="info-body">
+				</form>
+			</dialog>
+		</div>
+
+
+		<template class="order-box">
+			<div class="order hover" onclick="popupFunction(event)">
+				<div class="activity">
+					<svg height="20" width="20">
+						<circle cx="15" cy="15" r="5" fill="" />
+					</svg>
+				</div>
+
+				<div class="information-container">
 					<div class="information">
 						<pre>Name: </pre>
-						<p class="name">Nguyen Van A</p>
+						<p class="name"></p>
 					</div>
 
 					<div class="information">
 						<pre>Address: </pre>
-						<p class="name">702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+						<p class="address"></p>
 					</div>
 
 					<div class="information">
 						<pre>Phone: </pre>
-						<p class="name">0123456789</p>
+						<p class="phone"></p>
 					</div>
+				</div>
+			</div>
+		</template>
 
-					<div class="information-column">
-						<pre>Order list: </pre>
-						<ul class="order-list">
-							<li>Coffee</li>
-							<li>Tea</li>
-							<li>Milk</li>
-						</ul>
-					</div>
+		<template class="order-details">
+			<form class="info-body">
+				<div class="information">
+					<pre>Name: </pre>
+					<p class="name"></p>
+				</div>
 
-					<div class="information">
-						<pre>Total prices: </pre>
-						<p class="price">$100</p>
-					</div>
+				<div class="information">
+					<pre>Address: </pre>
+					<p class="address"></p>
+				</div>
 
-					<div class="information">
-						<label for="cars">
-							<pre>Activity: </pre>
-						</label>
-						<select id="cars" name="carlist" form="carform">
-							<option value="volvo">Volvo</option>
-							<option value="saab">Saab</option>
-							<option value="opel">Opel</option>
-							<option value="audi">Audi</option>
-						</select>
-					</div>
+				<div class="information">
+					<pre>Phone: </pre>
+					<p class="phone"></p>
+				</div>
 
+				<div class="information-column">
+					<pre>Order list: </pre>
+					<ul class="order-list">
+					</ul>
+				</div>
 
-					<div class="submit-button">
-						<button class="hover" type="submit">Submit</button>
-					</div>
-				</form>
+				<div class="information">
+					<pre>Total prices: $</pre>
+					<p class="total-price"></p>
+				</div>
 
-			</dialog>
-		</div>
+				<div class="information">
+					<label for="activities">
+						<pre>Activity: </pre>
+					</label>
+					<select id="activities" name="activity-list" form="info-body">
+						<option value="active">Active</option>
+						<option value="delivered">Delivered</option>
+						<option value="canceled">Canceled</option>
+					</select>
+				</div>
+
+				<div class="submit-button">
+					<button class="hover" type="submit">Submit</button>
+				</div>
+			</form>
+		</template>
 	</div>
 
 	<!-- Footer of the page -->
@@ -194,4 +222,4 @@
 	the products in that order, the total price, the address of the receiver 
 	(i.e., the customer who ordered), etc. The shipper can update the status of 
 	the order from "active" to either "delivered" or "canceled". If an order is 
-	not "active", it is not shown on the shipper page anymore. -->
+	not "active", it is not shown on the shipper page anymore.-->

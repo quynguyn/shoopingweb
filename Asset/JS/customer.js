@@ -1,18 +1,14 @@
-fetch('http://localhost:3000/products')
-	.then(
-		response => response.json())
-	.then(data =>
-		console.log(data)
-	)
-	.catch(error => console.error(error));
-
-
 const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
 const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
 const cart = document.querySelector('.cart-modal');
 var products;
+// anotherFile.js
+
+// now you can use the accountCheck object here
+console.log(accountCheck);
+
 
 fetch('http://localhost:3000/products')
 	.then(res => res.json())
@@ -54,6 +50,26 @@ searchInput.addEventListener("input", e => {
 	}
 })
 
+const slider = document.querySelector('#range-slider');
+const currentValue = document.querySelector('.current-value');
+currentValue.innerHTML = '$' + slider.value
+
+slider.oninput = function () {
+	console.log(this.value)
+	currentValue.innerHTML = '$' + this.value
+	const itemBoxes = document.querySelector(".item-boxes")
+	const boxes = itemBoxes.querySelectorAll(".box")
+	const price = itemBoxes.querySelectorAll(".price")
+	const sliderValue = parseFloat(this.value)
+
+	for (var i = 0; i < price.length; i++) {
+		const productPrice = parseFloat(price[i].textContent.replace('$', '')) 
+		const isVisible = productPrice <= sliderValue
+		console.log(isVisible)
+		boxes[i].classList.toggle("hide", !isVisible)
+	}
+}
+
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]")
@@ -64,13 +80,13 @@ function openModal(position) {
 }
 
 function closeModal() {
-	modal.querySelector(".form-body").innerHTML = '';
+	modal.querySelector(".detail-body").innerHTML = '';
 	modal.close()
 }
 
 
 function addToCart() {
-	const cartContainer = document.querySelector('.form-body');
+	const cartContainer = document.querySelector('.detail-body');
 
 	const img = cartContainer.querySelector('.product-image').src;
 	const name = cartContainer.querySelector('.product-name').textContent;
@@ -101,7 +117,7 @@ function addToCart() {
 
 function fillData(position) {
 	const itemTemplate = document.getElementById('item-template');
-	const cartContainer = document.querySelector('.form-body');
+	const cartContainer = document.querySelector('.detail-body');
 
 	const templateClone = itemTemplate.content.cloneNode(true);
 	const productImage = templateClone.querySelector('.product-image');
@@ -111,7 +127,7 @@ function fillData(position) {
 
 	productImage.src = products[position].image;
 	productName.textContent = products[position].name;
-	productPrice.textContent = products[position].price;
+	productPrice.textContent = '$' + products[position].price;
 	productDescription.textContent = products[position].description;
 
 	cartContainer.appendChild(templateClone);
@@ -162,12 +178,12 @@ function populateCart() {
 			productImage.src = item.img;
 			productName.textContent = item.name;
 			productPrice.textContent = item.price;
-			total += parseInt(item.price.replace('$', ""));
+			total += parseFloat(item.price.replace('$', ""));
 
 			cartContainer.appendChild(templateClone);
 		});
 
-		document.querySelector('#total-price').textContent = total;
+		document.querySelector('#total-price').textContent = total.toFixed(2);
 	}
 }
 

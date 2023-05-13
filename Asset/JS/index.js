@@ -6,13 +6,6 @@
 
 /**
 
-fetch('http://localhost:3000/accounts')
-.then(
-  response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error(error));
-
-
 fetch('http://localhost:3000/distributionHubs')
   .then(
     response => response.json())
@@ -20,6 +13,7 @@ fetch('http://localhost:3000/distributionHubs')
   .catch(error => console.error(error));
 
  */
+
 
 // Variable 
 
@@ -36,7 +30,7 @@ const shipperDiv = document.querySelector('#shipper-div');
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
-console.log("modla function run")
+
 
 openModalButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -127,56 +121,62 @@ function togglePasswordVisibility() {
   }
 }
 
-// Checking if the account is exits
-function logIn (usernameData, passwordData, userType){
-  //to decide what what type of user log in to
-  
-  userType = check
-  // here to compare and check for the account password 
-  console.log(localStorage.getItem('newVendor').username)
-
-  // if(myValue === null)
-  // {
-  //   return false;
-  // }
-  // else{
-  //   return true;
-  // }
-}
-
 accountUserType = ""
+var loginCheck;
+let accountCheck = null;
+// Checking if the account is exits
 
 // Log in button 
-const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); // prevent form submission from refreshing the page
+function logIn(event) {
+  event.preventDefault();
   var username = form.email.value; 
-  var password = form.password.value;
-  //fix the 
-  if(logIn(username,password)==false){
+  var password = form.password.value; 
+
+  fetch('http://localhost:3000/accounts')
+    .then(response => response.json())
+    .then(data => {
+      accountCheck = data.find(account => account.username === username && account.password === password);
+      if(accountCheck === undefined) {
+        loginCheck = false;
+        clickSubmit();
+      }
+      else {
+        accountUserType = accountCheck.type;
+        loginCheck = true;
+        clickSubmit(); // call clickSubmit() function here
+      }
+    })
+    .catch(error => console.error(error));
+}
+export { accountCheck };
+
+function clickSubmit() {
+  if(loginCheck === false) {
     displayErrorMessage();
   }
-  /**
-   * need to make a function to take account database and got the type
-   */
-  // else{
-  //   // Open a new HTML file called "new-page.html"
-  //   form.email.value = null;
-  //   form.password.value = null;
-  //   if(accountUserType = 'vendor'){ 
-  //     window.location.href = "vendor.html";
-  //   }
-  //   else if (accountUserType = 'customer'){
-  //     window.location.href = "customer.html";
-  //   }
-  //   else if(accountUserType = 'shipper'){
-  //     window.location.href = "shipper.html";
-  //   }
-  //   else{
-  //     alert("Do not have the user type")
-  //   }
-  // }
-});
+  else if(loginCheck === true) {
+    form.email.value = null;
+    form.password.value = null;
+   
+    if(accountUserType === 'vendor') {
+      
+      window.location.href = "vendor.html";
+    }
+    else if(accountUserType === 'customer') {
+      window.location.href = "customer.html";
+    }
+    else if(accountUserType === 'shipper') {
+
+      window.location.href = "shipper.html";
+    }
+    else {
+      alert("Do not have the user type")
+    }
+  }
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', logIn);
 
 // wrong username and password
 const messageClass = 'wrongInput';

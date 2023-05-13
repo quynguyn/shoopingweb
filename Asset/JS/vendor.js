@@ -1,5 +1,11 @@
+// const { FindCursor } = require("mongodb");
+
+
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
+
+import { accountCheck } from './index.js';
+console.log(accountCheck)
 
 
 const detailModal = document.querySelector(".detail-dialog")
@@ -42,6 +48,8 @@ fetch('http://localhost:3000/products')
 	.then(res => res.json())
 	.then(data => {
 		var i = 0;
+		// const dataMatch = data.find(product => product.vendor === vendorData)
+		// console.log(dataMatch)
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
 			box.classList = i + ' ' + box.classList
@@ -62,7 +70,23 @@ fetch('http://localhost:3000/products')
 
 		productData = data;
 	})
+	.catch(error => console.error(error));
 
+	// mongo.connect(url, { useNewUrlParser: true }, (err, db) => {
+  
+	// 	// Check for connection error
+	// 	if (err) throw err;
+		
+	// 	// Specify the collection
+	// 	const collection = db.collection("products");
+		
+	// 	// Query the collection for a specific object
+	// 	collection.find({vendor: "Target"}).toArray(function(err, result) {
+	// 	  if (err) throw err;
+	// 	  console.log(result);
+	// 	  db.close();
+	// 	});
+	//   });
 // Open html dialog 
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
