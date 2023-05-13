@@ -118,11 +118,11 @@ body {
 	font-size: 16px;
 	text-decoration: none;
 	font-weight: 300;
-	color: black;
+	color: #303030;
 	display: block;
 }
 
-.footer-col .help a {
+.footer-col .social a {
 	display: inline-block;
 	height: 40px;
 	width: 40px;
@@ -133,10 +133,24 @@ body {
 	border-radius: 50%;
 	color: var(--white-color);
 	transition: all 0.5s ease;
-	margin-top: 10px;
 }
 
-.footer-col .help a:hover {
+.footer-col .help ul li a {
+	text-decoration: none;
+	color: #303030;
+	transition: all 0.3s ease;
+}
+
+.map {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.footer-col .help ul li a:hover {
+	color: var(--secondary-color)
+}
+
+.footer-col .social a:hover {
 	color: var(--white-color);
 	background-color: var(--secondary-color);
 }
