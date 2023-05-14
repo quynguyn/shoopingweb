@@ -55,35 +55,108 @@ nav ul li a {
 }
 
 /* Footer css */
-footer {
-	height: 100px;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+	line-height: 1.5;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.footer-container {
+	max-width: 1170px;
+	margin: auto;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.footer {
 	background-color: var(--white-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: var(--white-color);
+	padding: 30px 0;
 }
 
-footer div {
-	display: flex;
-	justify-content: space-evenly;
-	width: 80%;
-	max-width: 800px;
+.footer-col {
+	width: 33%;
+	padding: 0 15px;
 }
 
-footer div a {
-	color: var(--secondary-color);
-	text-decoration: none;
-	margin: 0 10px;
+.footer-col h4 {
+	font-size: 24px;
 	text-transform: uppercase;
+	color: var(--secondary-color);
+	margin-bottom: 25px;
 	font-weight: bold;
-	font-size: large;
+	position: relative;
+	margin-top: 10px;
 }
 
-.hover:hover {
-	box-shadow: 0 0.4rem 1.4rem 0 rgba(245, 130, 23, 0.5);
-	transform: translateY(-0.1rem);
-	transition: transform 150ms;
+.footer-col h4::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: var(--secondary-color);
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+
+.rmit-logo {
+	width: 150px;
+}
+
+.footer-col ul li {
+	font-size: 16px;
+	text-decoration: none;
+	font-weight: 300;
+	color: #303030;
+	display: block;
+}
+
+.footer-col .social a {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: var(--main-color);
+	margin: 0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: var(--white-color);
+	transition: all 0.5s ease;
+}
+
+.footer-col .help ul li a {
+	text-decoration: none;
+	color: #303030;
+	transition: all 0.3s ease;
+}
+
+.map {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.footer-col .help ul li a:hover {
+	color: var(--secondary-color)
+}
+
+.footer-col .social a:hover {
+	color: var(--white-color);
+	background-color: var(--secondary-color);
+}
+
+.hide {
+	display: none;
 }
 
 /* close button */
@@ -131,4 +204,49 @@ footer div a {
 	padding: 10px 20px;
 	margin-top: 10px;
 	cursor: pointer;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+	padding: 20px;
+	border-radius: 10px;
+	border: var(--primary-color) 2px solid;
+	background-color: #faf7f4;
+}
+
+.form-dialog .form-header {
+	padding: 10px 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: var(--primary-color) 1px groove;
+	min-width: 400px;
+}
+
+.form-dialog .form-title {
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--main-color);
+}
+
+/*responsive footer*/
+@media(max-width: 767px) {
+	.footer-col {
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width: 574px) {
+	.footer-col {
+		width: 100%;
+	}
 }

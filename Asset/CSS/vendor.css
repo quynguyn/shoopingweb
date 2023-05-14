@@ -46,6 +46,8 @@
 
 .image img {
 	width: 100%;
+	max-width: 400px;
+	max-height: 400px;
 }
 
 .description {
@@ -121,32 +123,6 @@ textarea {
 
 #container .hover:hover {
 	background-color: #fff;
-}
-
-.detail-dialog {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 9999;
-	padding: 20px;
-	border-radius: 10px;
-	border: var(--primary-color) 2px solid;
-	background-color: #faf7f4;
-}
-
-.detail-dialog .detail-header {
-	padding: 10px 15px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: var(--primary-color) 1px groove;
-}
-
-.detail-dialog .detail-title {
-	font-size: 2rem;
-	font-weight: bold;
-	color: var(--main-color);
 }
 
 .detail {

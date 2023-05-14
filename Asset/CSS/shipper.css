@@ -17,8 +17,8 @@
 }
 
 .activity {
-	width: 20px;
-	height: 20px;
+	width: fit-content;
+	height: fit-content;
 	margin-right: 10px;
 }
 
@@ -28,85 +28,19 @@
 	align-items: center;
 }
 
-
-dialog {
-	position: fixed;
-	width: inherit;
-	height: inherit;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 9999;
-	padding: 20px;
-	border-radius: 10px;
-	border: var(--primary-color) 2px solid;
-	background-color: #faf7f4;
-}
-
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-#info-dialog {
-	width: inherit;
-	height: inherit;
-}
-
-#info-dialog div {
-	width: 100%;
-	height: 100%;
-}
-
-#info-dialog div .body {
-	width: inherit;
-	height: inherit;
-	padding: 15px 25px;
-}
-
-#info-dialog div button {
-	float: right;
-	position: fixed;
-	top: 0;
-	right: 0;
-	font-size: 50px;
-	height: 50px;
-	width: 50px;
-	border: none;
-	background: transparent;
-	color: black;
-}
-
-.info-modal.active {
-	transform: translate(-50%, -50%) scale(1);
-}
-
-.info-modal .info-header {
-	padding: 10px 15px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	border-bottom: var(--primary-color) 1px groove;
-}
-
-.info-header .info-title {
-	font-size: 2rem;
-	font-weight: bold;
-	color: var(--main-color);
-}
-
-.info-modal .info-body .information {
+.info-body .information {
 	margin-bottom: 5px;
 }
 
-.info-modal .info-body .information-column {
+.info-body .information-column {
 	margin-bottom: 5px;
 }
 
-.info-modal .info-body .information-column  ul {
+.info-body .information-column  ul {
 	margin-left: 27px;
 }
 
-.info-modal .info-body .information select {
+.info-body .information select {
 	margin-left: 5px;
 }
 

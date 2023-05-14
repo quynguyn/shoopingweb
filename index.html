@@ -1,165 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web</title>
-    <link rel="stylesheet" href="Asset/CSS/style.css" />
-    <link rel="stylesheet" href="Asset/CSS/index.css" />
-    <script defer src="Asset/JS/index.js" ></script>
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web</title>
+  <link rel="stylesheet" href="Asset/CSS/style.css" />
+  <link rel="stylesheet" href="Asset/CSS/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script defer src="Asset/JS/index.js"></script>
+  <script defer src="Asset/JS/style.js"></script>
+</head>
+
 <body>
-    <!-- Header of the page -->
-    <header>
-      <div class="logo">
-        <img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
-        <h1>Web Group</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#">Log in</a></li>
-          <li><a href="#">My Account</a></li>
-        </ul>
-      </nav>
-    </header>
-    <!-- Form to make an account -->
-    <div class="container">
-      <!-- log in section -->
-      <div class="form">
-        <h2>Login</h2>
-        <form>
-          <label for="email">Email</label>
-          <input type="text" name="email" placeholder="Enter Email" required />
-          <label for="password">Password:</label>
-          <div class="password-container">
-            <input required style="width: 90%;" type="password" id="password" name="password" placeholder="Enter Password" />
-            <button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">
+  <!-- Header of the page -->
+  <header>
+	  <div class="logo">
+		  <a href="index.html">
+			  <img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+		  </a>
+		  <h1>Web Group</h1>
+	  </div>
+	  <nav>
+		  <ul>
+			  <li><a href="/index.html" id="log-in-li">Log in</a></li>
+			  <li><a href="/myAccount.html">My Account</a></li>
+		  </ul>
+	  </nav>
+  </header>
+  <!-- Form to make an account -->
+  <div class="container">
+    <!-- log in section -->
+    <div class="form">
+      <h2>Login</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="Enter Email" required />
+        <label for="password">Password:</label>
+        <div class="password-container">
+          <input required style="width: 90%;" type="password" id="password" name="password"
+            placeholder="Enter Password" />
+          <button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">
             &#8892
-            </button>
-          </div>
-
+          </button>
+        </div>
 						<button class="hover" type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
+    </div>
+    <!-- Form to register for an anccount -->
+    <div class="form-modal" id="modal">
+      <div class="form-header">
+        <div class="form-title">Register for an Account</div>
+        <button data-close-button="" class="close-button">×</button>
+      </div>
 
-					</form>
-					<p>Don't have an account? <button data-modal-target="#modal" class="hover"
-							href="#">Register</button></p>
-				</div>
-				<!-- Form to register for an anccount -->
-				<div class="form-modal" id="modal">
-					<div class="form-header">
-						<div class="form-title">Register for an Account</div>
-						<button data-close-button="" class="close-button">×</button>
-					</div>
-
-        <!-- body modal -->
-        <div class="form-body scrollable">
+      <!-- body modal -->
+      <div class="form-body scrollable">
         <!-- modal to be pop up -->
-          <div class="question-radio">
-              <!-- selection -->
-            <div>
-              <labe class="accountType" for="questionType"
-                >Type of question:</labe
-              >
-              <div class="radio-group">
-                <label for="vendor"
-                  ><input required type="radio" name="role" id="vendor" value="vendor" />
-                  Vendor</label
-                >
-                <label for="customer"
-                  ><input required
-                    type="radio"
-                    name="role"
-                    id="customer"
-                    value="customer"
-                  />
-                  Customer</label
-                >
-                <label for="shipper"
-                  ><input required
-                    type="radio"
-                    name="role"
-                    id="shipper"
-                    value="shipper"
-                  />
-                  Shipper</label
-                >
+        <div class="question-radio">
+          <!-- selection -->
+          <div>
+            <labe class="accountType" for="questionType">Type of question:</labe>
+            <div class="radio-group">
+              <label for="vendor"><input required type="radio" name="role" id="vendor" value="vendor" />
+                Vendor</label>
+              <label for="customer"><input required type="radio" name="role" id="customer" value="customer" />
+                Customer</label>
+              <label for="shipper"><input required type="radio" name="role" id="shipper" value="shipper" />
+                Shipper</label>
+            </div>
+          </div>
+          <form class="inputData">
+            <!-- Common input -->
+            <div class="commonInformation">
+              <div>
+                <label for="username">Username:</label>
+                <input required type="text" id="username" name="username" />
+              </div>
+              <div>
+                <label for="password">Password:</label>
+                <input required type="password" id="passwordNew" name="password" />
+              </div>
+              <div>
+                <label for="profile-picture">Profile Picture:</label>
+                <input required type="file" id="profile-picture" name="profile-picture" />
               </div>
             </div>
-            <form class="inputData">
-              <!-- Common input -->
-              <div class="commonInformation">
-                <div>
-                  <label for="username">Username:</label>
-                  <input required type="text" id="username" name="username" />
-                </div>
-                <div>
-                  <label for="password">Password:</label>
-                  <input required type="password" id="passwordNew" name="password" />
-                </div>
-                <div>
-                  <label for="profile-picture">Profile Picture:</label>
-                  <input required
-                    type="file"
-                    id="profile-picture"
-                    name="profile-picture"
-                  />
-                </div>
+            <!-- Vendor account -->
+            <div id="vendor-div" style="display: none;" class="vendor">
+              <div>
+                <label for="business-name">Business Name:</label>
+                <input type="text" id="business-name" name="business-name" />
               </div>
-              <!-- Vendor account -->
-              <div id="vendor-div" style="display: none;" class="vendor">
-                <div>
-                  <label for="business-name">Business Name:</label>
-                  <input type="text" id="business-name" name="business-name" />
-                </div>
-                <div>
-                  <label for="business-address">Business Address:</label>
-                  <input
-                    type="text"
-                    id="business-address"
-                    name="business-address"
-                  />
-                </div>
+              <div>
+                <label for="business-address">Business Address:</label>
+                <input type="text" id="business-address" name="business-address" />
               </div>
-              <!-- Customer account -->
-              <div id="customer-div" style="display: none;" class="customer">
-                <div>
-                  <label for="address">Address:</label>
-                  <input  type="text" id="address" name="address" />
-                </div>
-                <div>
-                  <label for="name">Name:</label>
-                  <input type="text" id="name" name="name" />
-                </div>
+            </div>
+            <!-- Customer account -->
+            <div id="customer-div" style="display: none;" class="customer">
+              <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" />
               </div>
-              <!-- Shipper account -->
-              <div id="shipper-div" style="display: none;" class="shipper">
-                <label for="distribution-hub">Distribution Hub:</label>
-                <select id="distribution-hub" name="distribution-hub">
-                  <option value="none"></option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
+              <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" />
               </div>
-              <!-- Submit account -->
-              <div class="submit-button">
-                <button class="hover" type="submit" onclick="addNewAccount()">Submit</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <!-- Shipper account -->
+            <div id="shipper-div" style="display: none;" class="shipper">
+              <label for="distribution-hub">Distribution Hub:</label>
+              <select id="distribution-hub" name="distribution-hub">
+                <option value="none"></option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+            <!-- Submit account -->
+            <div class="submit-button">
+              <button class="hover" type="submit" onclick="addNewAccount()">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
-      <div id="overlay" class="overlay"></div>
     </div>
-    <!-- Footer of the page -->
-    <footer>
-      <div class="footer-links">
-        <a href="#">About</a>
-        <a href="#">Copyright</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help</a>
-      </div>
-    </footer>
-  </body>
+    <div id="overlay" class="overlay"></div>
+  </div>
+
+
+
+
+
+  <!-- Footer of the page -->
+
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="row">
+				<div class="footer-col">
+					<h4>About</h4>
+					<ul>
+						<li>Our name is 'Web Group'. We are a group in the RMIT web programming course. Our goal is to
+							provide you with an exceptional e-commerce experience. We have five members and we've
+							curated a wide selection of high-quality products, a secure platform, and customer service.
+						</li>
+					</ul>
+					<h4>Copyright</h4>
+					<ul>
+						<li>All rights reserved. © Web Group 2023.</li>
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<h4>Privacy</h4>
+					<ul>
+						<li>We prioritize the privacy of our users. Please refer to our Privacy Policy for detailed
+							information on how we handle and protect your data.</li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Help</h4>
+					<div class="help">
+						<img src="https://marcas-logos.net/wp-content/uploads/2020/03/RMIT-LOGO-600x338.png"
+							alt="RMIT Logo" class="rmit-logo">
+						<ul>
+							<li><a href="tel:+61399252000">Phone: +61 3 9925 2000</a>
+							</li>
+						</ul>
+						<div class="address">
+							<ul>
+								<li>Address: 702 Nguyen Van Linh District 7, Ho Chi Minh City
+								</li>
+							</ul>
+						</div>
+						<div class="map">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0784075554648!2d106.69194667620562!3d10.728435889417451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fbeb6e2e0d7%3A0xdf39050d96a105b4!2zNzAyIMSQLiBOZ3V54buFbiBWxINuIExpbmgsIFTDom4gSMawbmcsIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmggNzAwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1683917286290!5m2!1svi!2s"
+								width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div class="social">
+							<a href="https://www.facebook.com/RMITUniversityVietnam/" target="_blank"><i
+									class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/RMIT" target="_blank"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.instagram.com/rmituniversity/" target="_blank"><i
+									class="fab fa-instagram"></i></a>
+							<a href="https://au.linkedin.com/school/rmit-university/" target="_blank"><i
+									class="fab fa-linkedin-in"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+</body>
+
 </html>
