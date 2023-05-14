@@ -5,35 +5,44 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Vendor</title>
+
 	<link rel="stylesheet" href="Asset/CSS/style.css">
 	<link rel="stylesheet" href="Asset/CSS/index.css">
 	<link rel="stylesheet" href="Asset/CSS/vendor.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 	<script defer type="module" src="Asset/JS/vendor.js"></script>
+	<script defer src="Asset/JS/style.js"></script>
 </head>
 
 <body>
 	<!-- Header of the page -->
 	<header>
 		<div class="logo">
-			<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			<a href="index.html">
+				<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			</a>
 			<h1>Web Group</h1>
 		</div>
 		<nav>
 			<ul>
-				<li><a href="#">Log in</a></li>
-				<li><a href="#">My Account</a></li>
+				<li><a href="/index.html" id="log-in-li">Log in</a></li>
+				<li><a href="/myAccount.html">My Account</a></li>
 			</ul>
 		</nav>
 	</header>
+
 	<!-- SECTION - main -->
 	<div class="main">
 		<div class="title">
 			<h1 class="sub-title">all products</h1>
 			<button data-open-modal class="btn hover">add New Product</button>
 		</div>
+
 		<div id="container" item-box-container></div>
+
 		<template item-box-template>
 			<div class="box hover">
 				<div class="name" item-name></div>
@@ -43,9 +52,9 @@
 			</div>
 		</template>
 
-		<dialog class="detail-dialog">
-			<div class="detail-header">
-				<div class="detail-title">Product Detail</div>
+		<dialog class="form-dialog" detail-dialog>
+			<div class="form-header">
+				<div class="form-title">Product Detail</div>
 				<button closeData class="close-button">×</button>
 			</div>
 			<!-- product detail -->
@@ -73,6 +82,7 @@
 			</template>
 		</dialog>
 	</div>
+
 	<!-- SECTION - add new product -->
 	<dialog data-modal class="form-modal">
 		<div class="form-header">
@@ -102,6 +112,18 @@
 		</form>
 
 	</dialog>
+
+	<dialog class="form-dialog" id="hide-dialog">
+		<div class="form-header">
+			<div class="form-title">Account Notification</div>
+			<button closeData class="close-button" onclick="changeToCurrentPage()">×</button>
+		</div>
+		<!-- product detail -->
+		<div class="hide-div">
+			<p>You are not in the right page</p>
+		</div>
+	</dialog>
+
 	<!-- Footer of the page -->
 	<footer class="footer">
 		<div class="footer-container">

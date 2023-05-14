@@ -4,33 +4,33 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Customer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="Asset/CSS/style.css">
 	<!-- <link rel="stylesheet" href="Asset\CSS\vendor.css"> -->
 	<link rel="stylesheet" href="Asset/CSS/customer.css">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 	<script src="Asset\JS\customer.js" defer></script>
 	<script src="Asset\JS\cart.js" defer></script>
-	<title>Customer</title>
+	<script defer src="Asset/JS/style.js"></script>
 </head>
 
 <body>
+	<!-- Header of the page -->
 	<header>
 		<div class="logo">
-			<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			<a href="index.html">
+				<img src="Asset/IMG/Logo/logo.png" alt="Web Group Logo" />
+			</a>
 			<h1>Web Group</h1>
 		</div>
 
 		<nav>
 			<ul>
-				<li>
-					<a href="#">Log in</a>
-				</li>
-
-				<li>
-					<a href="#">My Account</a>
-				</li>
+				<li><a href="/index.html" id="log-in-li">Log in</a></li>
+				<li><a href="/myAccount.html">My Account</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -56,6 +56,18 @@
 			<input type="search" placeholder="Search.." id="search" item-search>
 		</div>
 	</div>
+
+	<dialog class="hide-dialog">
+		<div class="detail-header">
+			<div class="detail-title">Product Detail</div>
+			<button closeData class="close-button">×</button>
+		</div>
+		<!-- product detail -->
+		<div class="hide-div">
+			<p>You are not in the right page</p>
+		</div>
+	</dialog>
+
 	<!--box for items-->
 	<div class="main">
 		<div class="title">
@@ -74,7 +86,7 @@
 			</div>
 		</template>
 
-		<dialog data-modal class="form-modal">
+		<dialog data-modal class="form-dialog">
 			<div class="form-header">
 				<div class="form-title">Product Detail</div>
 				<button data-close-modal class="close-button" onclick="closeModal()">×</button>
@@ -111,9 +123,9 @@
 			<img src="Asset/IMG/cart.svg" alt="Web Group Logo" />
 		</button>
 
-		<dialog class="cart-modal">
-			<div class="cart-header">
-				<div class="cart-title">Cart</div>
+		<dialog class="form-dialog" id="cart-modal">
+			<div class="form-header">
+				<div class="form-title">Cart</div>
 				<button data-close-modal class="close-button" onclick="closeCart()">×</button>
 			</div>
 
@@ -144,13 +156,18 @@
 				<hr class="item-separator">
 			</div>
 		</template>
+
+		<dialog class="form-dialog" id="hide-dialog">
+			<div class="form-header">
+				<div class="form-title">Account Notification</div>
+				<button closeData class="close-button" onclick="changeToCurrentPage()">×</button>
+			</div>
+			<!-- product detail -->
+			<div class="hide-div">
+				<p>You are not in the right page</p>
+			</div>
+		</dialog>
 	</div>
-
-
-
-
-
-
 
 	<footer class="footer">
 		<div class="footer-container">
@@ -163,6 +180,7 @@
 							curated a wide selection of high-quality products, a secure platform, and customer service.
 						</li>
 					</ul>
+
 					<h4>Copyright</h4>
 					<ul>
 						<li>All rights reserved. © Web Group 2023.</li>
@@ -176,11 +194,13 @@
 							information on how we handle and protect your data.</li>
 					</ul>
 				</div>
+
 				<div class="footer-col">
 					<h4>Help</h4>
 					<div class="help">
 						<img src="https://marcas-logos.net/wp-content/uploads/2020/03/RMIT-LOGO-600x338.png"
 							alt="RMIT Logo" class="rmit-logo">
+
 						<ul>
 							<li><a href="tel:+61399252000">Phone: +61 3 9925 2000</a>
 							</li>

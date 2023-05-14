@@ -1,14 +1,9 @@
 // const { FindCursor } = require("mongodb");
 
-
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 
-import { accountCheck } from './index.js';
-console.log(accountCheck)
-
-
-const detailModal = document.querySelector(".detail-dialog")
+const detailModal = document.querySelector("[detail-dialog]")
 
 function showData(position) {
 	detailModal.showModal()
@@ -29,7 +24,6 @@ function showData(position) {
 	productDescription.textContent = productData[position].description;
 
 	// console.log(products[position]);
-
 
 	detailContainer.appendChild(templateClone);
 }

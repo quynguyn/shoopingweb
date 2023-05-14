@@ -64,8 +64,6 @@ module.exports = { Product };
 module.exports = { Order };
 
 // -----------------------Product-----------------------
-
-
 app.get('/products', (req, res) => {
 	// console.log(data)
 	Product.find()
@@ -75,6 +73,7 @@ app.get('/products', (req, res) => {
 		.catch((error) => {
 			console.log(error.message)
 		})
+})
 
 app.get('/products/:id', (req, res) => {
 	Product.findById(req.params.id)
@@ -124,7 +123,7 @@ app.get('/distributionHubs', (req, res) => {
 			console.log(error.message)
 		})
 
-}
+})
 
 app.get('/products', (req, res) => {
 	// console.log(data)
@@ -216,4 +215,4 @@ app.post('/orders', (req, res) => {
 // start server
 app.listen(3000, () => {
 	console.log('Server started on port 3000');
-});
+})
