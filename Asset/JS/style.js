@@ -10,10 +10,13 @@ const hideDialog = document.querySelector("#hide-dialog")
 if (cU != undefined) {
 	const logIn = document.querySelector("#log-in-li")
 	logIn.classList.toggle("hide", true)
-	if (user.type != currentPage){
+	if (user.type != currentPage) {
 		hideDialog.showModal()
 	}
 } else {
+	if (currentPage != 'index') {
+		window.location.href = "index.html";
+	}
 }
 
 function changeToCurrentPage() {

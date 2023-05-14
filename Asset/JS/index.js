@@ -1,21 +1,4 @@
-//working on database // in index.js
-
-// index.js
-// use dataEndpoint in your code
-
-
-/**
-
-fetch('http://localhost:3000/distributionHubs')
-  .then(
-	response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
-
- */
-
 // Variable 
-
 const vendorRadio = document.querySelector('input[value="vendor"]');
 const customerRadio = document.querySelector('input[value="customer"]');
 const shipperRadio = document.querySelector('input[value="shipper"]');
@@ -91,7 +74,6 @@ customerRadio.addEventListener("change", showDiv);
 shipperRadio.addEventListener("change", showDiv);
 
 // clear all the check
-
 function uncheck() {
 	vendorRadio.checked = false;
 	customerRadio.checked = false;
