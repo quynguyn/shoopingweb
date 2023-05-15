@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const { copyFileSync } = require('fs');
+const { Console } = require('console');
 const app = express();
 
 const userSchema = new mongoose.Schema({
@@ -177,8 +178,25 @@ app.post('/orders', (req, res) => {
 // 		.catch((error) => res.send(error));
 // });
 
+// UPDATE - Show update product form
+app.get('/orders/:id/update', (req, res) => {
+	Order.findById(req.params.id)
+	  .then(order => {
+		console.log(order)
+		if (!order) {
+		  return res.send('Not found any product matching the ID!');
+		}
+		res.send(order);
+	  })
+	  .catch(error => res.send(error));
+  });
+
 app.post('/orders/:id/update', (req, res) => {
+	console.log("here is database update")
+	
+	console.log(req.body)
 	const updates = Object.keys(req.body);
+	console.log(updates)
 	const allowedUpdates = ['activity'];
 	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 

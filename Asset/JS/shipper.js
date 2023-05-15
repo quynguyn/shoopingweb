@@ -36,9 +36,10 @@ function openModal(id) {
 	fetch('http://localhost:3000/orders/' + id)
 		.then(res => res.json())
 		.then(data => {
+			uri = "http://localhost:3000/orders/" + id + "/update"
 			// action="/product//update"
 			const form = detailContainer.querySelector(".activity-form")
-			form.action = "http://localhost:3000/orders/" + id + "/update"
+			form.action = uri
 			const name = detailContainer.querySelector(".information .name")
 			const address = detailContainer.querySelector(".information .address")
 			const phone = detailContainer.querySelector(".information .phone")
@@ -47,11 +48,12 @@ function openModal(id) {
 			const activity = detailContainer.querySelector(".information #activities option[value=delivered]")
 			const submitButton = detailContainer.querySelector(".information .submit-button button")
 
+			
 			var totalPrice = 0
 			name.textContent = data.ordererName
 			address.textContent = data.ordererAddress
 			phone.textContent = data.ordererPhone
-
+			
 			data.productList.forEach(product => {
 				fetch('http://localhost:3000/products/' + product)
 					.then(res => res.json())
