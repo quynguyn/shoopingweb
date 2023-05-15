@@ -111,6 +111,15 @@ app.get('/accounts/:id', (req, res) => {
 		.catch((error) => res.send(error));
 });
 
+// CREATE - Create a new product
+app.post('/accounts', (req, res) => {
+	console.log(req.body);
+	const product = new Product(req.body);
+	product.save()
+	  .then(() => res.redirect('/products'))
+	  .catch(error => res.send(error));
+  });
+
 
 // -----------------------Distribution Hub-----------------------
 app.get('/distributionHubs', (req, res) => {
@@ -170,6 +179,8 @@ app.get('/accounts/:id', (req, res) => {
 		.catch((error) => res.send(error));
 });
 
+
+  
 // -----------------------Distribution Hub-----------------------
 app.get('/distributionHubs', (req, res) => {
 	// console.log(dataHubs)
