@@ -31,15 +31,16 @@
 	</header>
 	<!-- Main body in the page -->
 	<div class="main" id="main">
-		<div class="avatar">
-			<img src="Asset/IMG/Logo/logo.png" alt="avatar">
-			<div>
-				<label for="profile-picture">Profile Picture:</label>
-				<input type="file" id="profile-picture" name="profile-picture" />
-			</div>
-		</div>
-		<form class="inputData">
+		
+		<form id="account-information" method="post" class="inputData">
 			<!-- Common input -->
+			<div class="avatar">
+				<img src="Asset/IMG/Logo/logo.png" alt="avatar">
+				<div>
+					<label for="profile-picture">Profile Picture:</label>
+					<input type="file" id="profile-picture" name="profile-picture" />
+				</div>
+			</div>
 			<div class="commonInformation">
 				<div>
 					<label for="username">Username:</label>
@@ -95,6 +96,9 @@
 				<button class="hover" type="submit">Submit</button>
 			</div>
 		</form>
+
+	<button class="hover" onclick="logOut()">Log Out</button>
+
 	</div>
 
 	<dialog class="hide-dialog">
@@ -108,8 +112,6 @@
 		</div>
 	</dialog>
 
-
-	<button class="hover" onclick="logOut()">Log Out</button>
 
 	<!-- Footer of the page -->
 	<footer class="footer">

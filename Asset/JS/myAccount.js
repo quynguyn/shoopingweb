@@ -1,5 +1,4 @@
 var currentUser = JSON.parse(localStorage.getItem('currentUser'))
-console.log(currentUser)
 
 const userType = currentUser.type
 
@@ -19,6 +18,8 @@ const address = document.querySelector('#address')
 const uName = document.querySelector('#name')
 const distributionHub = document.querySelector('#distribution-hub')
 
+const form = document.getElementById("account-information")
+form.action = "http://localhost:3000/accounts/" + currentUser._id + "/update"
 avatar.src = currentUser.profilePicture
 username.value = currentUser.username
 password.value = currentUser.password
