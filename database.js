@@ -182,7 +182,9 @@ app.post('/orders', (req, res) => {
 app.get('/orders/:id/update', (req, res) => {
 	Order.findById(req.params.id)
 	  .then(order => {
+		console.log("1")
 		console.log(order)
+		console.log("2")
 		if (!order) {
 		  return res.send('Not found any product matching the ID!');
 		}
