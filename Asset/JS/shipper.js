@@ -40,31 +40,40 @@ function openModal(id) {
 			// action="/product//update"
 			const form = detailContainer.querySelector(".activity-form")
 			form.action = uri
-			const name = form.querySelector("#name")
-			const address = form.querySelector("#address")
-			const phone = form.querySelector("#phone")
-			const productList = form.querySelector("#order-list")
-			const price = form.querySelector("#total-price")
-			const activity = form.querySelector("#activities option[value=delivered]")
+			const hubName = form.querySelector("#hubName")
+			const name = form.querySelector("#ordererName")
+			const address = form.querySelector("#ordererAddress")
+			const phone = form.querySelector("#ordererPhone")
+			const productList = form.querySelector(".information-column .order-list")
+			const orderList = form.querySelector("#productList")
+			const price = form.querySelector(".total-price")
+			const activity = form.querySelector("#activity option[value=delivered]")
 			const submitButton = form.querySelector("#submit-button button")
 
-			console.log(name)
+			hubName.value = userHub
 			var totalPrice = 0
 			name.value = data.ordererName
 			address.value = data.ordererAddress
 			phone.value = data.ordererPhone
-			
-			data.productList.forEach(product => {
+			orderList.value = ''
+			const listProduct = JSON.stringify(data.productList).split('["')[1].split('"]')[0].split('/')
+			listProduct.pop()
+
+			listProduct.forEach(product => {
 				fetch('http://localhost:3000/products/' + product)
 					.then(res => res.json())
 					.then(data => {
 						const product = document.createElement("li")
 						product.textContent = data.name
+						orderList.value += data._id + '/'
 
 						productList.appendChild(product)
 
 						totalPrice += parseFloat(data.price)
-						price.value = totalPrice.toFixed(2)
+						price.textContent = totalPrice.toFixed(2)
+					})
+					.catch((error) => {
+						console.log(error.message)
 					})
 			});
 			activity.selected = "selected"
@@ -77,20 +86,20 @@ function openModal(id) {
 
 	fetch('http://localhost:3000/orders/' + id + '/update')
 		.then(res => res.json())
-		.then(data => {console.log(data)})
-	.catch((error) => {
-		console.log(error.message)
-	})
+		.then(data => { console.log(data) })
+		.catch((error) => {
+			console.log(error.message)
+		})
 
 	infoDialog.showModal();
 }
 
 function closeModal() {
-	detailContainer.querySelector("#name").textContent = ''
-	detailContainer.querySelector("#address").textContent = ''
-	detailContainer.querySelector("#phone").textContent = ''
-	detailContainer.querySelector("#order-list").innerHTML = ''
-	detailContainer.querySelector("#total-price").textContent = '0'
+	detailContainer.querySelector("#ordererName").value = ''
+	detailContainer.querySelector("#ordererAddress").value = ''
+	detailContainer.querySelector("#ordererPhone").value = ''
+	detailContainer.querySelector(".order-list").innerHTML = ''
+	detailContainer.querySelector(".total-price").textContent = '0'
 
 	infoDialog.close();
 }
@@ -104,9 +113,9 @@ function closeModal() {
 
 function confirmCancel(activity) {
 	const box = document.querySelector(".orders-container")
-	box.querySelector("#activities option[value='" + activity + "']").selected = "selected"
+	box.querySelector("#activity option[value='" + activity + "']").selected = "selected"
 
-	console.log(box.querySelector("#activities"))
+	console.log(box.querySelector("#activity"))
 	if (activity == 'canceled') {
 		confirmDialog.showModal()
 	}

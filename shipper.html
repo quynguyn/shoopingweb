@@ -42,24 +42,24 @@
 				</div>
 
 				<div class="info-body">
-					<!-- <form class="activity-form" method="POST">
-						<div class="information">
-							<pre>Name: </pre>
-							<p class="name"></p>
-						</div>
+					<form class="activity-form" method="POST">
+						<input class="hide" id="hubName" name="hubName"></input>
 
-						<div class="information">
-							<pre>Address: </pre>
-							<p class="address"></p>
-						</div>
+						<label for="ordererName">Name:</label>
+						<input type="text" id="ordererName" name="ordererName"></input>
+						<br>
 
-						<div class="information">
-							<pre>Phone: </pre>
-							<p class="phone"></p>
-						</div>
+						<label for="ordererAddress">Address:</label>
+						<input type="text" id="ordererAddress" name="ordererAddress"></input>
+						<br>
 
+						<label for="ordererPhone">Phone:</label>
+						<input type="text" id="ordererPhone" name="ordererPhone"></input>
+						<br>
+
+						<input id="productList" class="productList hide" name="productList"></input>
 						<div class="information-column">
-							<pre>Order list: </pre>
+							<label for="order-list">Order list:</label>
 							<ul class="order-list">
 							</ul>
 						</div>
@@ -69,39 +69,8 @@
 							<p class="total-price"></p>
 						</div>
 
-
-						<label for="activities">Activity:
-						</label>
-						<select id="activities" name="activities" onchange="confirmCancel(this.value)">
-							<option value="active">Active</option>
-							<option value="delivered">Delivered</option>
-							<option value="canceled">Canceled</option>
-						</select>
-
-						<div class="submit-button">
-							<button class="hover" type="submit">Submit</button>
-						</div>
-
-					</form> -->
-
-					<form class="activity-form" method="POST">
-						<label for="name">Name:</label>
-						<input type="text" id="name" name="name"></input>
-						<br>
-						<label for="address">Address:</label>
-						<input type="text" id="address" name="address"></input>
-						<br>
-						<label for="phone">Phone:</label>
-						<input type="text" id="phone" name="phone"></input>
-						<br>
-						<label for="order-list">Order list:</label>
-						<input id="order-list" name="order-list"></input>
-						<br>
-						<label for="total-price">Total price:</label>
-						<input type="text" id="total-price" name="total-price"></input>
-						<br>
-						<label for="activities">Activity:</label>
-						<select id="activities" name="activities" onchange="confirmCancel(this.value)">
+						<label for="activity">Activity:</label>
+						<select id="activity" name="activity" onchange="confirmCancel(this.value)">
 							<option value="active">Active</option>
 							<option value="delivered">Delivered</option>
 							<option value="canceled">Canceled</option>
@@ -243,10 +212,37 @@
 
 </html>
 
-<!-- For shippers, after logging in, they can see all active orders sent to 
-	the distribution hub they are assigned to at registration time. When clicking 
-	on a particular order, the shipper can see all details of the order, including 
-	the products in that order, the total price, the address of the receiver 
-	(i.e., the customer who ordered), etc. The shipper can update the status of 
-	the order from "active" to either "delivered" or "canceled". If an order is 
-	not "active", it is not shown on the shipper page anymore.-->
+<!-- 
+<form class="activity-form" method="POST">
+<div class="information">
+<pre>Name: </pre>
+<p class="name"></p>
+</div>
+<div class="information">
+<pre>Address: </pre>
+<p class="address"></p>
+</div>
+<div class="information">
+<pre>Phone: </pre>
+<p class="phone"></p>
+</div>
+<div class="information-column">
+<pre>Order list: </pre>
+<ul class="order-list">
+</ul>
+</div>
+<div class="information">
+<pre>Total prices: $</pre>
+<p class="total-price"></p>
+</div>
+<label for="activities">Activity:
+</label>
+<select id="activities" name="activities" onchange="confirmCancel(this.value)">
+<option value="active">Active</option>
+<option value="delivered">Delivered</option>
+<option value="canceled">Canceled</option>
+</select>
+<div class="submit-button">
+<button class="hover" type="submit">Submit</button>
+</div>
+</form> -->

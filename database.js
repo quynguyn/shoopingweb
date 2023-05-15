@@ -4,8 +4,6 @@ const cors = require('cors');
 const { copyFileSync } = require('fs');
 const { Console } = require('console');
 const app = express();
-const { body, validationResult } = require("express-validator");
-
 
 const userSchema = new mongoose.Schema({
 	username: String,
