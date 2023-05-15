@@ -156,7 +156,7 @@ body {
 }
 
 .hide {
-	display: none;
+	display: none!important;
 }
 
 /* close button */

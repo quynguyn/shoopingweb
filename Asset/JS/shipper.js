@@ -3,6 +3,7 @@ const orderTemplate = document.querySelector(".order-box");
 const orderContainer = document.querySelector(".orders-container");
 const detailTemplate = document.querySelector(".order-details");
 const detailContainer = document.querySelector(".info-body");
+const confirmDialog = document.querySelector("#confirm-dialog")
 
 const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 const userHub = currentUser.distributionHub
@@ -80,4 +81,16 @@ function changeActivity() {
 	const chosenActivity = box.querySelector("#activities option").textContent
 	const activity = box.querySelector("#activities option[value=" + chosenActivity + "]")
 	activity.selected = "selected"
+}
+
+function confirmCancel(activity) {
+	console.log(activity)
+	if (activity == 'canceled') {
+		console.log('cancel')
+		confirmDialog.showModal()
+	}
+}
+
+function closeConfirm() {
+	confirmDialog.close()
 }
