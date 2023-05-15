@@ -4,6 +4,8 @@ const cors = require('cors');
 const { copyFileSync } = require('fs');
 const { Console } = require('console');
 const app = express();
+const { body, validationResult } = require("express-validator");
+
 
 const userSchema = new mongoose.Schema({
 	username: String,
@@ -181,39 +183,28 @@ app.post('/orders', (req, res) => {
 // UPDATE - Show update product form
 app.get('/orders/:id/update', (req, res) => {
 	Order.findById(req.params.id)
-	  .then(order => {
-		console.log("1")
-		console.log(order)
-		console.log("2")
-		if (!order) {
-		  return res.send('Not found any product matching the ID!');
-		}
-		res.send(order);
-	  })
-	  .catch(error => res.send(error));
-  });
+		.then(order => {
+			res.send(order);
+		})
+		.catch(error => res.send(error));
+});
 
 app.post('/orders/:id/update', (req, res) => {
-	console.log("here is database update")
-	
+
 	console.log(req.body)
 	const updates = Object.keys(req.body);
 	console.log(updates)
-	const allowedUpdates = ['activity'];
-	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
-	if (!isValidOperation) {
-		return res.send({ error: 'Invalid updates!' });
-	}
-
-	Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true,})
+	Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, })
 		.then(order => {
 			if (!order) {
 				return res.send('Not found any product matching the ID!');
 			}
 			// res.redirect('/orders');
-			res.send(req);
-			res.send(order);
+			// res.send(req);
+			console.log(req.body)
+			console.log('Document updated')
+			// res.send(order);
 		})
 		.catch(error => res.send(error));
 });

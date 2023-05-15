@@ -42,44 +42,72 @@
 				</div>
 
 				<div class="info-body">
-					<div class="information">
-						<pre>Name: </pre>
-						<p class="name"></p>
-					</div>
-		
-					<div class="information">
-						<pre>Address: </pre>
-						<p class="address"></p>
-					</div>
-		
-					<div class="information">
-						<pre>Phone: </pre>
-						<p class="phone"></p>
-					</div>
-		
-					<div class="information-column">
-						<pre>Order list: </pre>
-						<ul class="order-list">
-						</ul>
-					</div>
-		
-					<div class="information">
-						<pre>Total prices: $</pre>
-						<p class="total-price"></p>
-					</div>
-		
-					<form class="activity-form" method="POST">
+					<!-- <form class="activity-form" method="POST">
 						<div class="information">
-							<label for="activities">
-								<pre>Activity: </pre>
-							</label>
-							<select id="activities" name="activity-list" form="info-form" onchange="confirmCancel(this.value)">
-								<option value="active">Active</option>
-								<option value="delivered">Delivered</option>
-								<option value="canceled">Canceled</option>
-							</select>
+							<pre>Name: </pre>
+							<p class="name"></p>
 						</div>
-		
+
+						<div class="information">
+							<pre>Address: </pre>
+							<p class="address"></p>
+						</div>
+
+						<div class="information">
+							<pre>Phone: </pre>
+							<p class="phone"></p>
+						</div>
+
+						<div class="information-column">
+							<pre>Order list: </pre>
+							<ul class="order-list">
+							</ul>
+						</div>
+
+						<div class="information">
+							<pre>Total prices: $</pre>
+							<p class="total-price"></p>
+						</div>
+
+
+						<label for="activities">Activity:
+						</label>
+						<select id="activities" name="activities" onchange="confirmCancel(this.value)">
+							<option value="active">Active</option>
+							<option value="delivered">Delivered</option>
+							<option value="canceled">Canceled</option>
+						</select>
+
+						<div class="submit-button">
+							<button class="hover" type="submit">Submit</button>
+						</div>
+
+					</form> -->
+
+					<form class="activity-form" method="POST">
+						<label for="name">Name:</label>
+						<input type="text" id="name" name="name"></input>
+						<br>
+						<label for="address">Address:</label>
+						<input type="text" id="address" name="address"></input>
+						<br>
+						<label for="phone">Phone:</label>
+						<input type="text" id="phone" name="phone"></input>
+						<br>
+						<label for="order-list">Order list:</label>
+						<input id="order-list" name="order-list"></input>
+						<br>
+						<label for="total-price">Total price:</label>
+						<input type="text" id="total-price" name="total-price"></input>
+						<br>
+						<label for="activities">Activity:</label>
+						<select id="activities" name="activities" onchange="confirmCancel(this.value)">
+							<option value="active">Active</option>
+							<option value="delivered">Delivered</option>
+							<option value="canceled">Canceled</option>
+						</select>
+						<br>
+
 						<div class="submit-button">
 							<button class="hover" type="submit">Submit</button>
 						</div>
@@ -116,7 +144,7 @@
 		</template>
 
 		<template class="order-details">
-			
+
 		</template>
 	</div>
 

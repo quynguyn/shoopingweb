@@ -33,26 +33,26 @@ fetch('http://localhost:3000/orders')
 	})
 
 function openModal(id) {
-	fetch('http://localhost:3000/orders/' + id)
+	fetch('http://localhost:3000/orders/' + id + "/update")
 		.then(res => res.json())
 		.then(data => {
 			uri = "http://localhost:3000/orders/" + id + "/update"
 			// action="/product//update"
 			const form = detailContainer.querySelector(".activity-form")
 			form.action = uri
-			const name = detailContainer.querySelector(".information .name")
-			const address = detailContainer.querySelector(".information .address")
-			const phone = detailContainer.querySelector(".information .phone")
-			const productList = detailContainer.querySelector(".information-column .order-list")
-			const price = detailContainer.querySelector(".information .total-price")
-			const activity = detailContainer.querySelector(".information #activities option[value=delivered]")
-			const submitButton = detailContainer.querySelector(".information .submit-button button")
+			const name = form.querySelector("#name")
+			const address = form.querySelector("#address")
+			const phone = form.querySelector("#phone")
+			const productList = form.querySelector("#order-list")
+			const price = form.querySelector("#total-price")
+			const activity = form.querySelector("#activities option[value=delivered]")
+			const submitButton = form.querySelector("#submit-button button")
 
-			
+			console.log(name)
 			var totalPrice = 0
-			name.textContent = data.ordererName
-			address.textContent = data.ordererAddress
-			phone.textContent = data.ordererPhone
+			name.value = data.ordererName
+			address.value = data.ordererAddress
+			phone.value = data.ordererPhone
 			
 			data.productList.forEach(product => {
 				fetch('http://localhost:3000/products/' + product)
@@ -64,7 +64,7 @@ function openModal(id) {
 						productList.appendChild(product)
 
 						totalPrice += parseFloat(data.price)
-						price.textContent = totalPrice.toFixed(2)
+						price.value = totalPrice.toFixed(2)
 					})
 			});
 			activity.selected = "selected"
@@ -86,11 +86,11 @@ function openModal(id) {
 }
 
 function closeModal() {
-	detailContainer.querySelector(".information .name").textContent = ''
-	detailContainer.querySelector(".information .address").textContent = ''
-	detailContainer.querySelector(".information .phone").textContent = ''
-	detailContainer.querySelector(".information-column .order-list").innerHTML = ''
-	detailContainer.querySelector(".information .total-price").textContent = '0'
+	detailContainer.querySelector("#name").textContent = ''
+	detailContainer.querySelector("#address").textContent = ''
+	detailContainer.querySelector("#phone").textContent = ''
+	detailContainer.querySelector("#order-list").innerHTML = ''
+	detailContainer.querySelector("#total-price").textContent = '0'
 
 	infoDialog.close();
 }
