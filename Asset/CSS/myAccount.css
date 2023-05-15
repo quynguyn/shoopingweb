@@ -1,66 +1,67 @@
 /* Information for the text */
 .inputData {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
- 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+
 }
 
 .commonInformation div,
 .vendor div,
 .customer div,
 .shipper {
-  margin-bottom: 10px;
-  
+	margin-bottom: 10px;
+
 }
 
 .submit-button {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 button {
-  background-color: var(--secondary-color);
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-margin-top: 10px;
-cursor: pointer;
+	background-color: var(--secondary-color);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	cursor: pointer;
 }
 
 .inputData label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  min-width: 250px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+	min-width: 250px;
 }
 
 .main input,
 .main select {
-  border: none;
-  border-bottom: solid 2px var(--primary-color);
-border-radius: 5px;
-padding: 10px;
-margin-bottom: 5px;
-width: 100%;
-display: block;
+	border: none;
+	border-bottom: solid 2px var(--primary-color);
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 5px;
+	width: 100%;
+	display: block;
 }
 
 /* Avatar */
-.main{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 
-.main img{
- min-width: 300px;
+.main img {
+	min-width: 300px;
 }
 
-.main .avatar{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.main .avatar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 300px;
 }

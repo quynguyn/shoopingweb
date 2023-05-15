@@ -55,6 +55,7 @@ slider.oninput = function () {
 	const itemBoxes = document.querySelector(".item-boxes")
 	const boxes = itemBoxes.querySelectorAll(".box")
 	const price = itemBoxes.querySelectorAll(".price")
+	console.log(itemBoxes)
 	const sliderValue = parseFloat(this.value)
 
 	for (var i = 0; i < price.length; i++) {

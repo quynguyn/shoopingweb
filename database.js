@@ -88,66 +88,6 @@ app.get('/products/:id', (req, res) => {
 });
 
 // -----------------------Account-----------------------
-
-app.get('/accounts', (req, res) => {
-	// console.log(data)
-	Account.find()
-		.then((accounts) => {
-			res.send(accounts)
-		})
-		.catch((error) => {
-			console.log(error.message)
-		})
-})
-
-app.get('/accounts/:id', (req, res) => {
-	Account.findById(req.params.id)
-		.then((account) => {
-			if (!account) {
-				return res.send("Cannot found that ID!");
-			}
-			res.send(account);
-		})
-		.catch((error) => res.send(error));
-});
-
-
-// -----------------------Distribution Hub-----------------------
-app.get('/distributionHubs', (req, res) => {
-	// console.log(dataHubs)
-	Hubs.find()
-		.then((hubs) => {
-			res.send(hubs)
-		})
-		.catch((error) => {
-			console.log(error.message)
-		})
-
-})
-
-app.get('/products', (req, res) => {
-	// console.log(data)
-	Product.find()
-		.then((product) => {
-			res.send(product)
-		})
-		.catch((error) => {
-			console.log(error.message)
-		})
-})
-
-app.get('/products/:id', (req, res) => {
-	Product.findById(req.params.id)
-		.then((product) => {
-			if (!product) {
-				return res.send("Cannot found that ID!");
-			}
-			res.send(product);
-		})
-		.catch((error) => res.send(error));
-});
-
-// -----------------------Account-----------------------
 app.get('/accounts', (req, res) => {
 	// console.log(data)
 	Account.find()
@@ -180,6 +120,7 @@ app.get('/distributionHubs', (req, res) => {
 		.catch((error) => {
 			console.log(error.message)
 		})
+
 })
 
 // -----------------------Order-----------------------

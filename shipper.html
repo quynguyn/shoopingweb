@@ -104,7 +104,7 @@
 				<label for="activities">
 					<pre>Activity: </pre>
 				</label>
-				<select id="activities" name="activity-list" form="info-body">
+				<select id="activities" name="activity-list" form="info-body" onchange="confirmCancel(this.value)">
 					<option value="active">Active</option>
 					<option value="delivered">Delivered</option>
 					<option value="canceled">Canceled</option>
@@ -125,6 +125,24 @@
 		<!-- product detail -->
 		<div class="hide-div">
 			<p>You are not in the right page</p>
+		</div>
+	</dialog>
+
+	<dialog class="form-dialog" id="confirm-dialog">
+		<div class="form-header">
+			<div class="form-title">Confirm cancel order</div>
+			<button closeData class="close-button" onclick="closeConfirm()">×</button>
+		</div>
+		<!-- product detail -->
+		<div class="confirm-div">
+			<p>Are you sure you want to cancel this order?</p>
+			<div class="submit-button">
+				<button class="hover" type="submit">Yes</button>
+			</div>
+			
+			<div class="submit-button">
+				<button class="hover">No</button>
+			</div>
 		</div>
 	</dialog>
 
