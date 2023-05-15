@@ -122,6 +122,35 @@ app.post('/accounts', (req, res) => {
 		.catch(error => res.send(error));
 });
 
+// UPDATE - Create a new product
+app.get('/accounts/:id/update', (req, res) => {
+	Account.findById(req.params.id)
+		.then(account => {
+			res.send(account);
+		})
+		.catch(error => res.send(error));
+});
+
+// UPDATE - Create a new product
+app.post('/accounts/:id/update', (req, res) => {
+
+	console.log(req.body)
+	const updates = Object.keys(req.body);
+	console.log(updates)
+
+	Account.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, })
+		.then(account => {
+			if (!account) {
+				return res.send('Not found any product matching the ID!');
+			}
+			// res.redirect('/orders');
+			// res.send(req);
+			console.log(req.body)
+			console.log('Document updated')
+			// res.send(order);
+		})
+		.catch(error => res.send(error));
+});
 
 // -----------------------Distribution Hub-----------------------
 app.get('/distributionHubs', (req, res) => {
