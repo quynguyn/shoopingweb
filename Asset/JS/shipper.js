@@ -36,18 +36,16 @@ function openModal(id) {
 	fetch('http://localhost:3000/orders/' + id)
 		.then(res => res.json())
 		.then(data => {
-			const box = detailTemplate.content.cloneNode(true)
-
 			// action="/product//update"
-			const form = box.querySelector(".info-form")
+			const form = detailContainer.querySelector(".activity-form")
 			form.action = "http://localhost:3000/orders/" + id + "/update"
-			const name = box.querySelector(".name")
-			const address = box.querySelector(".address")
-			const phone = box.querySelector(".phone")
-			const productList = box.querySelector(".order-list")
-			const price = box.querySelector(".total-price")
-			const activity = box.querySelector("#activities option[value=delivered]")
-			const submitButton = box.querySelector(".submit-button button")
+			const name = detailContainer.querySelector(".information .name")
+			const address = detailContainer.querySelector(".information .address")
+			const phone = detailContainer.querySelector(".information .phone")
+			const productList = detailContainer.querySelector(".information-column .order-list")
+			const price = detailContainer.querySelector(".information .total-price")
+			const activity = detailContainer.querySelector(".information #activities option[value=delivered]")
+			const submitButton = detailContainer.querySelector(".information .submit-button button")
 
 			var totalPrice = 0
 			name.textContent = data.ordererName
@@ -60,26 +58,31 @@ function openModal(id) {
 					.then(data => {
 						const product = document.createElement("li")
 						product.textContent = data.name
+
 						productList.appendChild(product)
+
 						totalPrice += parseFloat(data.price)
 						price.textContent = totalPrice.toFixed(2)
 					})
 			});
 			activity.selected = "selected"
-			console.log(box)
 
-			detailContainer.appendChild(box)
 			// detailContainer.addEventListener("submit", changeActivity, false)
 		})
-		.catch((error) => {
-			console.log(error.message)
-		})
+	// .catch((error) => {
+	// 	console.log(error.message)
+	// })
 
 	infoDialog.showModal();
 }
 
 function closeModal() {
-	document.querySelector('.info-body').innerHTML = '';
+	detailContainer.querySelector(".information .name").textContent = ''
+	detailContainer.querySelector(".information .address").textContent = ''
+	detailContainer.querySelector(".information .phone").textContent = ''
+	detailContainer.querySelector(".information-column .order-list").innerHTML = ''
+	detailContainer.querySelector(".information .total-price").textContent = '0'
+
 	infoDialog.close();
 }
 

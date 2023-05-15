@@ -41,7 +41,50 @@
 					<button data-close-modal class="close-button" onclick="closeModal()">×</button>
 				</div>
 
-				<div class="info-body"></div>
+				<div class="info-body">
+					<div class="information">
+						<pre>Name: </pre>
+						<p class="name"></p>
+					</div>
+		
+					<div class="information">
+						<pre>Address: </pre>
+						<p class="address"></p>
+					</div>
+		
+					<div class="information">
+						<pre>Phone: </pre>
+						<p class="phone"></p>
+					</div>
+		
+					<div class="information-column">
+						<pre>Order list: </pre>
+						<ul class="order-list">
+						</ul>
+					</div>
+		
+					<div class="information">
+						<pre>Total prices: $</pre>
+						<p class="total-price"></p>
+					</div>
+		
+					<form class="activity-form" method="POST">
+						<div class="information">
+							<label for="activities">
+								<pre>Activity: </pre>
+							</label>
+							<select id="activities" name="activity-list" form="info-form" onchange="confirmCancel(this.value)">
+								<option value="active">Active</option>
+								<option value="delivered">Delivered</option>
+								<option value="canceled">Canceled</option>
+							</select>
+						</div>
+		
+						<div class="submit-button">
+							<button class="hover" type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
 			</dialog>
 		</div>
 
@@ -73,48 +116,7 @@
 		</template>
 
 		<template class="order-details">
-			<div class="information">
-				<pre>Name: </pre>
-				<p class="name"></p>
-			</div>
-
-			<div class="information">
-				<pre>Address: </pre>
-				<p class="address"></p>
-			</div>
-
-			<div class="information">
-				<pre>Phone: </pre>
-				<p class="phone"></p>
-			</div>
-
-			<div class="information-column">
-				<pre>Order list: </pre>
-				<ul class="order-list">
-				</ul>
-			</div>
-
-			<div class="information">
-				<pre>Total prices: $</pre>
-				<p class="total-price"></p>
-			</div>
-
-			<form class="info-form" method="POST">
-				<div class="information">
-					<label for="activities">
-						<pre>Activity: </pre>
-					</label>
-					<select id="activities" name="activity-list" form="info-body" onchange="confirmCancel(this.value)">
-						<option value="active">Active</option>
-						<option value="delivered">Delivered</option>
-						<option value="canceled">Canceled</option>
-					</select>
-				</div>
-
-				<div class="submit-button">
-					<button class="hover" type="submit">Submit</button>
-				</div>
-			</form>
+			
 		</template>
 	</div>
 
