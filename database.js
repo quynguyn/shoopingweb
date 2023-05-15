@@ -50,6 +50,7 @@ mongoose.connect(uri).then(() => {
 
 // Use the `express.urlencoded` middleware to parse incoming form data
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(cors());
 
@@ -116,11 +117,11 @@ app.post('/accounts', (req, res) => {
 	console.log(req.body);
 	const account = new Account(req.body);
 	account.save()
-	  .then(() => res.redirect('/accounts'))
-	  .catch(error => res.send(error));
-  });
-  
-  
+		.then(() => res.redirect('/accounts'))
+		.catch(error => res.send(error));
+});
+
+
 // -----------------------Distribution Hub-----------------------
 app.get('/distributionHubs', (req, res) => {
 	// console.log(dataHubs)
@@ -162,6 +163,39 @@ app.post('/orders', (req, res) => {
 	order.save()
 		.then((order) => res.send(order))
 		.catch((error) => res.send(error));
+});
+
+// UPDATE - Update a student by ID
+// app.post('/orders/:id/update', (req, res) => {
+// 	Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
+// 		.then((order) => {
+// 			if (!order) {
+// 				return res.send("Cannot found that ID!");
+// 			}
+// 			res.send(order);
+// 		})
+// 		.catch((error) => res.send(error));
+// });
+
+app.post('/orders/:id/update', (req, res) => {
+	const updates = Object.keys(req.body);
+	const allowedUpdates = ['activity'];
+	const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+
+	if (!isValidOperation) {
+		return res.send({ error: 'Invalid updates!' });
+	}
+
+	Order.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true,})
+		.then(order => {
+			if (!order) {
+				return res.send('Not found any product matching the ID!');
+			}
+			// res.redirect('/orders');
+			res.send(req);
+			res.send(order);
+		})
+		.catch(error => res.send(error));
 });
 
 // start server

@@ -28,6 +28,9 @@ fetch('http://localhost:3000/orders')
 			}
 		})
 	})
+	.catch((error) => {
+		console.log(error.message)
+	})
 
 function openModal(id) {
 	fetch('http://localhost:3000/orders/' + id)
@@ -35,12 +38,15 @@ function openModal(id) {
 		.then(data => {
 			const box = detailTemplate.content.cloneNode(true)
 
+			// action="/product//update"
+			const form = box.querySelector(".info-form")
+			form.action = "http://localhost:3000/orders/" + id + "/update"
 			const name = box.querySelector(".name")
 			const address = box.querySelector(".address")
 			const phone = box.querySelector(".phone")
 			const productList = box.querySelector(".order-list")
 			const price = box.querySelector(".total-price")
-			const activity = box.querySelector("#activities option[value=" + data.activity + "]")
+			const activity = box.querySelector("#activities option[value=delivered]")
 			const submitButton = box.querySelector(".submit-button button")
 
 			var totalPrice = 0
@@ -60,9 +66,10 @@ function openModal(id) {
 					})
 			});
 			activity.selected = "selected"
+			console.log(box)
 
 			detailContainer.appendChild(box)
-			detailContainer.addEventListener("submit", changeActivity, false)
+			// detailContainer.addEventListener("submit", changeActivity, false)
 		})
 		.catch((error) => {
 			console.log(error.message)
@@ -76,21 +83,30 @@ function closeModal() {
 	infoDialog.close();
 }
 
-function changeActivity() {
-	const box = document.querySelector(".orders-container")
-	const chosenActivity = box.querySelector("#activities option").textContent
-	const activity = box.querySelector("#activities option[value=" + chosenActivity + "]")
-	activity.selected = "selected"
-}
+// function changeActivity() {
+// 	const box = document.querySelector(".orders-container")
+// 	const chosenActivity = box.querySelector("#activities option").textContent
+// 	const activity = box.querySelector("#activities option[value='" + chosenActivity + "']")
+// 	activity.selected = "selected"
+// }
 
 function confirmCancel(activity) {
-	console.log(activity)
+	const box = document.querySelector(".orders-container")
+	box.querySelector("#activities option[value='" + activity + "']").selected = "selected"
+
+	console.log(box.querySelector("#activities"))
 	if (activity == 'canceled') {
-		console.log('cancel')
 		confirmDialog.showModal()
 	}
 }
 
 function closeConfirm() {
+	const activity = document.querySelector("#activities option[value='active']")
+	console.log(activity)
+	activity.selected = "selected"
+	confirmDialog.close()
+}
+
+function cancelOrder() {
 	confirmDialog.close()
 }

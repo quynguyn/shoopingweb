@@ -53,7 +53,7 @@
 	padding: 10px 15px;
 }
 
-button[type="submit"] {
+.submit-button button {
 	background-color: var(--secondary-color);
 	color: white;
 	border: none;
@@ -61,4 +61,9 @@ button[type="submit"] {
 	padding: 10px 20px;
 	margin-top: 10px;
 	cursor: pointer;
+}
+
+.button-group {
+	display: flex;
+	justify-content: space-around;
 }

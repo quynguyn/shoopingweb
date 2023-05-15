@@ -214,7 +214,7 @@ function addNewVendor() {
 
 // add new account for customer
 function addNewCustomer() {
-	var newCustormer = {
+	var newCustomer = {
 		username: String,
 		password: Number,
 		profilePicture: String,
@@ -224,19 +224,19 @@ function addNewCustomer() {
 
 	const username = document.getElementById('username').value;
 	const password = document.getElementById('passwordNew').value;
-	const profilePicture = document.getElementById('profile-picture').value;
+	// const profilePicture = document.getElementById('profile-picture').value;
 	const address = document.getElementById('address').value;
 	const name = document.getElementById('name').value;
 
-	newCustormer.username = username;
-	newCustormer.password = password;
-	newCustormer.profilePicture = profilePicture;
-	newCustormer.address = address;
-	newCustormer.name = name;
+	newCustomer.username = username;
+	newCustomer.password = password;
+	// newCustomer.profilePicture = profilePicture;
+	newCustomer.address = address;
+	newCustomer.name = name;
 
-	addToDataBase(newCustormer);
+	addToDataBase(newCustomer);
 	// Convert object to string and save to local storage
-	localStorage.setItem('newCustomer', JSON.stringify(newCustormer));
+	localStorage.setItem('newCustomer', JSON.stringify(newCustomer));
 }
 
 function displayDistributionHubs() {
@@ -315,6 +315,7 @@ function addNewAccount() {
 			console.log("Unknown user type");
 			break;
 	}
+	
 	if (fullInformation) {
 		alert(message)
 	}
