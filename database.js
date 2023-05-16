@@ -143,6 +143,7 @@ app.get('/products/vendor/:id', (req, res) => {
 
 // CREATE - Create a new product
 app.post("/products", (req, res) => {
+	console.log(req.body)
 	const product = new Product(req.body);
 	product
 		.save()
