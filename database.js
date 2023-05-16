@@ -142,9 +142,10 @@ app.get('/products/vendor/:id', (req, res) => {
 });
 
 // CREATE - Create a new product
-app.post("/products", (req, res) => {
-	console.log(req.body)
+app.post("/products",upload.single('image') ,(req, res) => {
+
 	const product = new Product(req.body);
+  product.image =`http://localhost:3000/image/${req.file.filename}`
 	product
 		.save()
 		.then(() => res.redirect("http://127.0.0.1:5500/vendor.html"))
@@ -176,7 +177,6 @@ app.get("/accounts/:id", (req, res) => {
 
 // CREATE - Create a new account
 app.post("/accounts", upload.single('image') ,(req, res) => {
-  console.log("-----------------------------------------")
 	const account = new Account(req.body);
   account.profilePicture= `http://localhost:3000/image/${req.file.filename}`
 	account
