@@ -41,16 +41,13 @@ closeDataButton.addEventListener("click", () => {
   detailModal.close();
 });
 
-fetch('http://localhost:3000/products')
+fetch('http://localhost:3000/products/vendor/' + businessName)
 	.then(res => res.json())
 	.then(data => {
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
 			box.id = product._id
 			box.onclick = () => showData(box.id)
-
-			const isVisible = product.vendor === businessName
-			box.classList.toggle("hide", !isVisible)
 
 			const name = box.querySelector("[item-name]")
 			const price = box.querySelector("[item-price]")
@@ -59,7 +56,6 @@ fetch('http://localhost:3000/products')
 			name.textContent = product.name
 			price.textContent = '$' + product.price
 			image.querySelector("img").src = product.image
-			// description.textContent = product.description
 
 			itemBoxContainer.append(box)
 		})
