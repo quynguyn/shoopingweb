@@ -4,6 +4,7 @@ const cors = require("cors");
 const { copyFileSync } = require("fs");
 const { Console } = require("console");
 const app = express();
+const upload = multer({ dest: 'public/images' });
 
 const userSchema = new mongoose.Schema({
 	username: String,
@@ -62,6 +63,8 @@ const Product = mongoose.model("products", productSchema);
 const Account = mongoose.model("accounts", userSchema);
 const Hubs = mongoose.model("distributionHubs", distributionHubSchema);
 const Order = mongoose.model("orders", orderSchema);
+const Image = mongoose.model('Image', ImageSchema);
+
 
 module.exports = { Account };
 module.exports = { Hubs };
@@ -262,6 +265,9 @@ app.post("/orders/:id/update", (req, res) => {
 		})
 		.catch((error) => res.send(error));
 });
+
+// ------------- Loading image file to the mongodb -------------
+
 
 // start server
 app.listen(3000, () => {
