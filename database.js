@@ -80,16 +80,32 @@ app.get("/products", (req, res) => {
     });
 });
 
-app.get("/products/:id", (req, res) => {
-  Product.findById(req.params.id)
-    .then((product) => {
-      dataProduct = product;
-      if (!product) {
-        return res.send("Cannot found that ID!");
-      }
-      res.send(product);
-    })
-    .catch((error) => res.send(error));
+app.get('/products/descending', (req, res) => {
+	// console.log(data)
+	Product.find()
+		.sort({price: 'descending'})
+		// .exec((err, docs) => { 
+
+		// })
+		.then((product) => {
+			console.log(product)
+			res.send(product)
+		})
+	.catch((error) => {
+		console.log(error.message)
+	})
+})
+
+app.get('/products/:id', (req, res) => {
+	Product.findById(req.params.id)
+		.then((product) => {
+			dataProduct = product
+			if (!product) {
+				return res.send("Cannot found that ID!");
+			}
+			res.send(product);
+		})
+		.catch((error) => res.send(error));
 });
 
 // -----------------------Account-----------------------

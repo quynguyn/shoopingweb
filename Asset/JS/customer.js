@@ -4,9 +4,10 @@ const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
 const cart = document.querySelector('#cart-modal');
 
-fetch('http://localhost:3000/products')
+fetch('http://localhost:3000/products/descending')
 	.then(res => res.json())
 	.then(data => {
+		console.log(data);
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
 			box.id = product._id
@@ -23,6 +24,26 @@ fetch('http://localhost:3000/products')
 			itemBoxContainer.append(box)
 		})
 	})
+
+// fetch('http://localhost:3000/products')
+// 	.then(res => res.json())
+// 	.then(data => {
+// 		data.map(product => {
+// 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
+// 			box.id = product._id
+// 			box.onclick = () => openModal(box.id)
+
+// 			const name = box.querySelector("[item-name]")
+// 			const price = box.querySelector(".price")
+// 			const image = box.querySelector(".image")
+
+// 			name.textContent = product.name
+// 			price.textContent = '$' + product.price
+// 			image.querySelector("img").src = product.image
+
+// 			itemBoxContainer.append(box)
+// 		})
+// 	})
 
 /**item search**/
 searchInput.addEventListener("input", (e) => {
