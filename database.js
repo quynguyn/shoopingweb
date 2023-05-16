@@ -4,6 +4,7 @@ const cors = require("cors");
 const { copyFileSync } = require("fs");
 const { Console } = require("console");
 const app = express();
+const multer = require('multer');
 const upload = multer({ dest: 'public/images' });
 
 const userSchema = new mongoose.Schema({
@@ -63,7 +64,6 @@ const Product = mongoose.model("products", productSchema);
 const Account = mongoose.model("accounts", userSchema);
 const Hubs = mongoose.model("distributionHubs", distributionHubSchema);
 const Order = mongoose.model("orders", orderSchema);
-const Image = mongoose.model('Image', ImageSchema);
 
 
 module.exports = { Account };
@@ -163,7 +163,7 @@ app.get("/accounts/:id", (req, res) => {
 
 // CREATE - Create a new account
 app.post("/accounts", upload.single('image') ,(req, res) => {
-	console.log(req.body);
+  const filename = req.file.filename;
 	const account = new Account(req.body);
 	account
 		.save()
