@@ -162,7 +162,7 @@ app.get("/accounts/:id", (req, res) => {
 });
 
 // CREATE - Create a new account
-app.post("/accounts", (req, res) => {
+app.post("/accounts", upload.single('image') ,(req, res) => {
 	console.log(req.body);
 	const account = new Account(req.body);
 	account
