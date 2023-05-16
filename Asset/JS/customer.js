@@ -2,196 +2,204 @@ const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
 const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
-const cart = document.querySelector('#cart-modal');
+const cart = document.querySelector("#cart-modal");
 var products;
 
-fetch('http://localhost:3000/products')
-	.then(res => res.json())
-	.then(data => {
-		var i = 0;
-		products = data;
-		var temp = data.map(product => {
-			const box = itemBoxTemplate.content.cloneNode(true).children[0]
-			box.classList = i + ' ' + box.classList
-			box.onclick = () => openModal(box.classList[0])
-			i++
-			const name = box.querySelector("[item-name]")
-			const price = box.querySelector(".price")
-			const image = box.querySelector(".image")
-			// const description = box.querySelector("[item-description]")
-			name.textContent = product.name
-			price.textContent = '$' + product.price
-			image.querySelector("img").src = product.image
-			// description.textContent = product.description
+fetch("http://localhost:3000/products")
+  .then((res) => res.json())
+  .then((data) => {
+    var i = 0;
+    products = data;
+    var temp = data.map((product) => {
+      const box = itemBoxTemplate.content.cloneNode(true).children[0];
+      box.classList = i + " " + box.classList;
+      box.onclick = () => openModal(box.classList[0]);
+      i++;
+      const name = box.querySelector("[item-name]");
+      const price = box.querySelector(".price");
+      const image = box.querySelector(".image");
+      // const description = box.querySelector("[item-description]")
+      name.textContent = product.name;
+      price.textContent = "$" + product.price;
+      image.querySelector("img").src = product.image;
+      // description.textContent = product.description
 
-			itemBoxContainer.append(box)
-			return {
-				name: product.name, price: product.price,
-				description: product.description, element: box
-			}
-		})
-	})
+      itemBoxContainer.append(box);
+      return {
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        element: box,
+      };
+    });
+  });
 
 /**item search**/
-searchInput.addEventListener("input", e => {
-	const value = e.target.value.toLowerCase()
-	const itemBoxes = document.querySelector(".item-boxes")
-	const boxes = itemBoxes.querySelectorAll(".box")
-	const test = itemBoxes.querySelectorAll("[item-name]")
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const itemBoxes = document.querySelector(".item-boxes");
+  const boxes = itemBoxes.querySelectorAll(".box");
+  const test = itemBoxes.querySelectorAll("[item-name]");
 
-	for (var i = 0; i < test.length; i++) {
-		const isVisible = test[i].textContent.toLowerCase().includes(value)
-		boxes[i].classList.toggle("hide", !isVisible)
-	}
-})
+  for (var i = 0; i < test.length; i++) {
+    const isVisible = test[i].textContent.toLowerCase().includes(value);
+    boxes[i].classList.toggle("hide", !isVisible);
+  }
+});
 
-const slider = document.querySelector('#range-slider');
-const currentValue = document.querySelector('.current-value');
-currentValue.innerHTML = '$' + slider.value
+const slider = document.querySelector("#range-slider");
+const currentValue = document.querySelector(".current-value");
+currentValue.innerHTML = "$" + slider.value;
 
 slider.oninput = function () {
-	console.log(this.value)
-	currentValue.innerHTML = '$' + this.value
-	const itemBoxes = document.querySelector(".item-boxes")
-	const boxes = itemBoxes.querySelectorAll(".box")
-	const price = itemBoxes.querySelectorAll(".price")
-	console.log(itemBoxes)
-	const sliderValue = parseFloat(this.value)
+  currentValue.innerHTML = "$" + this.value;
+  const itemBoxes = document.querySelector(".item-boxes");
+  const boxes = itemBoxes.querySelectorAll(".box");
+  const price = itemBoxes.querySelectorAll(".price");
+  const sliderValue = parseFloat(this.value);
 
-	for (var i = 0; i < price.length; i++) {
-		const productPrice = parseFloat(price[i].textContent.replace('$', '')) 
-		const isVisible = productPrice <= sliderValue
-		console.log(isVisible)
-		boxes[i].classList.toggle("hide", !isVisible)
-	}
-}
+  for (var i = 0; i < price.length; i++) {
+    const productPrice = parseFloat(price[i].textContent.replace("$", ""));
+    const isVisible = productPrice <= sliderValue;
+    boxes[i].classList.toggle("hide", !isVisible);
+  }
+};
 
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
-const modal = document.querySelector("[data-modal]")
+const modal = document.querySelector("[data-modal]");
 
 function openModal(position) {
-	fillData(position);
-	modal.showModal()
+  fillData(position);
+  modal.showModal();
 }
 
 function closeModal() {
-	modal.querySelector(".detail-body").innerHTML = '';
-	modal.close()
+  modal.querySelector(".detail-body").innerHTML = "";
+  modal.close();
 }
 
-
 function addToCart() {
-	const cartContainer = document.querySelector('.detail-body');
+  const cartContainer = document.querySelector(".detail-body");
 
-	const img = cartContainer.querySelector('.product-image').src;
-	const name = cartContainer.querySelector('.product-name').textContent;
-	const price = cartContainer.querySelector('.price').textContent;
-	const description = cartContainer.querySelector('.description').textContent;
+  const img = cartContainer.querySelector(".product-image").src;
+  const name = cartContainer.querySelector(".product-name").textContent;
+  const price = cartContainer.querySelector(".price").textContent;
+  const description = cartContainer.querySelector(".description").textContent;
 
-	if (typeof (Storage) !== "undefined") {
-		var items = JSON.parse(localStorage.getItem("item"));
+  if (typeof Storage !== "undefined") {
+    var items = JSON.parse(localStorage.getItem("item"));
 
-		var item = '{"img":"' + img + '", "name":"' + name + '", "price": "' +
-			price + '", "description":"' + description + '"}';
+    var item =
+      '{"img":"' +
+      img +
+      '", "name":"' +
+      name +
+      '", "price": "' +
+      price +
+      '", "description":"' +
+      description +
+      '"}';
 
-		if (items !== null) {
-			items.push(JSON.parse(item));
-			localStorage.setItem("item", JSON.stringify(items));
-		} else {
-			var item = '[' + item + ']';
-			localStorage.setItem("item", item);
-		}
-	} else {
-		// Sorry! No Web Storage support..
-	}
+    if (items !== null) {
+      items.push(JSON.parse(item));
+      localStorage.setItem("item", JSON.stringify(items));
+    } else {
+      var item = "[" + item + "]";
+      localStorage.setItem("item", item);
+    }
+  } else {
+    // Sorry! No Web Storage support..
+  }
 
-	populateCart();
+  populateCart();
 
-	closeModal();
+  closeModal();
 }
 
 function fillData(position) {
-	const itemTemplate = document.getElementById('item-template');
-	const cartContainer = document.querySelector('.detail-body');
+  const itemTemplate = document.getElementById("item-template");
+  const cartContainer = document.querySelector(".detail-body");
 
-	const templateClone = itemTemplate.content.cloneNode(true);
-	const productImage = templateClone.querySelector('.product-image');
-	const productName = templateClone.querySelector('.product-name');
-	const productPrice = templateClone.querySelector('.price');
-	const productDescription = templateClone.querySelector('.description');
+  const templateClone = itemTemplate.content.cloneNode(true);
+  const productImage = templateClone.querySelector(".product-image");
+  const productName = templateClone.querySelector(".product-name");
+  const productPrice = templateClone.querySelector(".price");
+  const productDescription = templateClone.querySelector(".description");
 
-	productImage.src = products[position].image;
-	productName.textContent = products[position].name;
-	productPrice.textContent = '$' + products[position].price;
-	productDescription.textContent = products[position].description;
+  productImage.src = products[position].image;
+  productName.textContent = products[position].name;
+  productPrice.textContent = "$" + products[position].price;
+  productDescription.textContent = products[position].description;
 
-	cartContainer.appendChild(templateClone);
+  cartContainer.appendChild(templateClone);
 }
 
 function openCart() {
-	populateCart();
-	cart.show();
+  populateCart();
+  cart.show();
 }
 
 function closeCart() {
-	document.querySelector('.cart-body').innerHTML = '';
-	cart.close();
+  document.querySelector(".cart-body").innerHTML = "";
+  cart.close();
 }
 
 function checkOutCart() {
-	var items = JSON.parse(localStorage.getItem("item"));
+  var items = JSON.parse(localStorage.getItem("item"));
 
-	if (items == null) {
-		alert("Cart is empty.");
-	} else {
-		localStorage.removeItem("item");
-		alert("Check out successful.");
-	}
+  if (items == null) {
+    alert("Cart is empty.");
+  } else {
+    localStorage.removeItem("item");
+    alert("Check out successful.");
+  }
 
-	document.querySelector('#total-price').textContent = 0;
-	closeCart();
+  document.querySelector("#total-price").textContent = 0;
+  closeCart();
 }
 
 function populateCart() {
-	const cartTemplate = document.getElementById('cart-template');
-	const cartContainer = document.querySelector('.cart-body');
-	cartContainer.innerHTML = '';
+  const cartTemplate = document.getElementById("cart-template");
+  const cartContainer = document.querySelector(".cart-body");
+  cartContainer.innerHTML = "";
 
-	var items = JSON.parse(localStorage.getItem("item"));
+  var items = JSON.parse(localStorage.getItem("item"));
 
-	if (items != null) {
-		var i = 0;
-		var total = 0;
-		items.forEach(item => {
-			const templateClone = cartTemplate.content.cloneNode(true);
-			templateClone.querySelector('.cart-item').classList = i + ' ' + templateClone.querySelector('.cart-item').classList;
-			i++;
-			const productImage = templateClone.querySelector('.product-image');
-			const productName = templateClone.querySelector('.product-name');
-			const productPrice = templateClone.querySelector('.product-price');
+  if (items != null) {
+    var i = 0;
+    var total = 0;
+    items.forEach((item) => {
+      const templateClone = cartTemplate.content.cloneNode(true);
+      templateClone.querySelector(".cart-item").classList =
+        i + " " + templateClone.querySelector(".cart-item").classList;
+      i++;
+      const productImage = templateClone.querySelector(".product-image");
+      const productName = templateClone.querySelector(".product-name");
+      const productPrice = templateClone.querySelector(".product-price");
 
-			productImage.src = item.img;
-			productName.textContent = item.name;
-			productPrice.textContent = item.price;
-			total += parseFloat(item.price.replace('$', ""));
+      productImage.src = item.img;
+      productName.textContent = item.name;
+      productPrice.textContent = item.price;
+      total += parseFloat(item.price.replace("$", ""));
 
-			cartContainer.appendChild(templateClone);
-		});
+      cartContainer.appendChild(templateClone);
+    });
 
-		document.querySelector('#total-price').textContent = total.toFixed(2);
-	}
+    document.querySelector("#total-price").textContent = total.toFixed(2);
+  }
 }
 
 function removeItem(index) {
-	var items = JSON.parse(localStorage.getItem("item"));
+  var items = JSON.parse(localStorage.getItem("item"));
 
-	if (index > -1) { // only splice array when item is found
-		items.splice(index, 1); // 2nd parameter means remove one item only
-	}
+  if (index > -1) {
+    // only splice array when item is found
+    items.splice(index, 1); // 2nd parameter means remove one item only
+  }
 
-	localStorage.setItem("item", JSON.stringify(items));
+  localStorage.setItem("item", JSON.stringify(items));
 
-	document.querySelector('.cart-body').innerHTML = '';
-	populateCart();
+  document.querySelector(".cart-body").innerHTML = "";
+  populateCart();
 }
