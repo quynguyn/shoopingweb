@@ -126,6 +126,15 @@ app.get('/products/vendor/:id', (req, res) => {
 		.catch((error) => res.send(error));
 });
 
+// CREATE - Create a new product
+app.post("/products", (req, res) => {
+	const product = new Product(req.body);
+	product
+		.save()
+		.then(() => res.redirect("http://127.0.0.1:5500/vendor.html"))
+		.catch((error) => res.send(error));
+});
+
 // -----------------------Account-----------------------
 app.get("/accounts", (req, res) => {
 	// console.log(data)

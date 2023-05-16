@@ -41,6 +41,8 @@ closeDataButton.addEventListener("click", () => {
   detailModal.close();
 });
 
+
+
 fetch('http://localhost:3000/products/vendor/' + businessName)
 	.then(res => res.json())
 	.then(data => {
@@ -61,22 +63,6 @@ fetch('http://localhost:3000/products/vendor/' + businessName)
 		})
 	})
 	.catch(error => console.error(error));
-
-// mongo.connect(url, { useNewUrlParser: true }, (err, db) => {
-
-// 	// Check for connection error
-// 	if (err) throw err;
-
-// 	// Specify the collection
-// 	const collection = db.collection("products");
-
-// 	// Query the collection for a specific object
-// 	collection.find({vendor: "Target"}).toArray(function(err, result) {
-// 	  if (err) throw err;
-// 	  console.log(result);
-// 	  db.close();
-// 	});
-//   });
 
 // Open html dialog 
 const openButton = document.querySelector("[data-open-modal]");
@@ -102,6 +88,7 @@ form.addEventListener("submit", function (e) {
     priceValue: 0,
     imageFile: "",
     descriptionValue: "",
+    vendor: ""
   };
 
   const nameValue = document.getElementById("name").value;
@@ -113,12 +100,12 @@ form.addEventListener("submit", function (e) {
   newProduct.priceValue = priceValue;
   newProduct.imageFile = imageFile;
   newProduct.descriptionValue = descriptionValue;
-
+  neimage.png
   localStorage.setItem("newProduct", JSON.stringify(newProduct));
 
   newProductBox(nameValue, priceValue, imageFile, descriptionValue);
   // reset the form
-  form.reset();
+  // form.reset();
 });
 
 // display new product dynamic
