@@ -61,27 +61,57 @@
 			<!-- product detail -->
 			<div class="detail-body inputData"></div>
 
-			<template id="detail-template">
-				<div class="detail">
-					<div class="product-images">
-						<img src="" alt="Image" class="product-image" />
-					</div>
-					<!-- product name and price -->
-					<div class="content">
-						<p class="product-name"></p>
-						<span class="price"></span>
-						<!-- add to cart button -->
-						<!-- <button cart-button class="btn hover cart" onclick="addToCart()">Add to Cart</button> -->
-					</div>
-				</div>
-				<!-- description -->
-				<div>
-					<b>Description</b>
-					<p class="description"></p>
 				</div>
 			</template>
 		</dialog>
 	</div>
+    <!-- SECTION - add new product -->
+    <dialog data-modal class="form-modal">
+      <div class="form-header">
+        <div class="form-title">Add New Product</div>
+        <button data-close-modal class="close-button">×</button>
+      </div>
+      <form action="http://localhost:3000/products" method="post" class="form-body inputData">
+        <div>
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            minlength="10"
+            maxlength="20"
+            required
+          />
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            min="0"
+            step="0.01"
+            required
+          />
+        </div>
+        <div>
+          <label for="image">Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" />
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            maxlength="500"
+            required
+          ></textarea>
+        </div>
+        <div class="submit-button">
+          <button class="hover" type="submit">Submit</button>
+        </div>
+      </form>
+    </dialog>
 
 	<!-- SECTION - add new product -->
 	<dialog data-modal class="form-modal">
@@ -112,7 +142,7 @@
 
 			<div>
 				<label class="hide" for="vendor">Description:</label>
-				<input type="text" class="hide" id="vendor" name="vendor"required></input>
+				<textarea class="hide" id="vendor" name="vendor"required></textarea>
 			</div>
 
 			<div class="submit-button">
