@@ -183,6 +183,8 @@ function addNewVendor() {
     profilePicture: String,
     businessName: String,
     businessAddress: String,
+    type:"vendor",
+    binaryData: Buffer.from(profilePicture)
   };
 
   const username = document.getElementById("username").value;
@@ -211,6 +213,8 @@ function addNewCustomer() {
     profilePicture: String,
     address: String,
     name: String,
+    type:"customer",
+    binaryData: Buffer.from(profilePicture)
   };
 
   const username = document.getElementById("username").value;
@@ -237,6 +241,8 @@ function addNewShipper() {
     password: Number,
     profilePicture: String,
     distributionHub: String,
+    type:"shipper",
+    binaryData: Buffer.from(profilePicture)
   };
 
   const username = document.getElementById("username").value;

@@ -45,7 +45,6 @@ function fillData() {
 	avatar.src = currentUser.profilePicture
 	username.value = currentUser.username
 	password.value = currentUser.password
-	avatarLink.value = currentUser.profilePicture
 
 	if (userType == 'vendor') {
 		businessName.value = currentUser.businessName

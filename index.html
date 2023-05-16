@@ -68,7 +68,7 @@
 								Shipper</label>
 						</div>
 					</div>
-					<form action="http://localhost:3000/accounts" method="POST" class="inputData">
+					<form action="http://localhost:3000/accounts" method="POST" class="inputData" enctype="multipart/form-data">
 						<!-- Common input -->
 						<div class="commonInformation">
 							<div>
@@ -81,7 +81,7 @@
 							</div>
 							<div>
 								<label for="profile-picture">Profile Picture:</label>
-								<input required type="file" id="profile-picture" name="profile-picture" />
+								<input required type="file" id="profile-picture" name="image" accept="image/*"/>
 							</div>
 						</div>
 						<!-- Vendor account -->

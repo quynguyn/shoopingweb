@@ -1,11 +1,20 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const multer = require('multer');
 const cors = require("cors");
 const { copyFileSync } = require("fs");
 const { Console } = require("console");
+const path = require("path");
+
 const app = express();
-const multer = require('multer');
-const upload = multer({ dest: 'public/images' });
+
+const storage = multer.diskStorage({
+  destination: 'public/images',
+  filename: (req,file,cb)=>{
+    return cb(null,`${file.filename}_${Date.now()}${path.extname(file.originalname)}`)
+  }
+})
+const upload = multer({ storage:storage  });
 
 const userSchema = new mongoose.Schema({
 	username: String,
@@ -59,6 +68,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors());
+
+app.use('/image',express.static('public/images'))
+
 
 const Product = mongoose.model("products", productSchema);
 const Account = mongoose.model("accounts", userSchema);
@@ -163,8 +175,9 @@ app.get("/accounts/:id", (req, res) => {
 
 // CREATE - Create a new account
 app.post("/accounts", upload.single('image') ,(req, res) => {
-  const filename = req.file.filename;
+  console.log("-----------------------------------------")
 	const account = new Account(req.body);
+  account.profilePicture= `http://localhost:3000/image/${req.file.filename}`
 	account
 		.save()
 		.then(() => res.redirect("http://127.0.0.1:5500/accounts.html"))
