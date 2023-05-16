@@ -1,13 +1,11 @@
 // const { FindCursor } = require("mongodb");
-
+const businessName = JSON.parse(localStorage.getItem('currentUser')).businessName
 const itemBoxTemplate = document.querySelector("[item-box-template]")
 const itemBoxContainer = document.querySelector("[item-box-container]")
 
 const detailModal = document.querySelector("[detail-dialog]")
 
-function showData(position) {
-	detailModal.showModal()
-
+function showData(id) {
 	const detailTemplate = document.getElementById('detail-template');
 	const detailContainer = document.querySelector('.detail-body');
 
@@ -18,10 +16,17 @@ function showData(position) {
 	const productPrice = templateClone.querySelector('.price');
 	const productDescription = templateClone.querySelector('.description');
 
-	productImage.src = productData[position].image;
-	productName.textContent = productData[position].name;
-	productPrice.textContent = '$' + productData[position].price;
-	productDescription.textContent = productData[position].description;
+	fetch('http://localhost:3000/products/' + id)
+		.then(res => res.json())
+		.then(data => {
+			productImage.src = data.image;
+			productName.textContent = data.name;
+			productPrice.textContent = '$' + data.price;
+			productDescription.textContent = data.description;
+			
+			detailModal.showModal()
+		})
+		.catch(error => console.error(error));
 
 	// console.log(products[position]);
 
@@ -36,51 +41,47 @@ closeDataButton.addEventListener('click', () => {
 	detailModal.close()
 });
 
-var productData;
-
 fetch('http://localhost:3000/products')
 	.then(res => res.json())
 	.then(data => {
-		var i = 0;
-		// const dataMatch = data.find(product => product.vendor === vendorData)
-		// console.log(dataMatch)
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
-			box.classList = i + ' ' + box.classList
-			box.onclick = () => showData(box.classList[0])
-			i++
+			box.id = product._id
+			box.onclick = () => showData(box.id)
+
+			const isVisible = product.vendor === businessName
+			box.classList.toggle("hide", !isVisible)
+
 			const name = box.querySelector("[item-name]")
 			const price = box.querySelector("[item-price]")
 			const image = box.querySelector("[item-image]")
-			const description = box.querySelector("[item-description]")
+			
 			name.textContent = product.name
-			price.textContent = product.price
+			price.textContent = '$' + product.price
 			image.querySelector("img").src = product.image
 			// description.textContent = product.description
 
 			itemBoxContainer.append(box)
-			return { name: product.name, price: product.price, description: product.description, element: box }
 		})
-
-		productData = data;
 	})
 	.catch(error => console.error(error));
 
-	// mongo.connect(url, { useNewUrlParser: true }, (err, db) => {
-  
-	// 	// Check for connection error
-	// 	if (err) throw err;
-		
-	// 	// Specify the collection
-	// 	const collection = db.collection("products");
-		
-	// 	// Query the collection for a specific object
-	// 	collection.find({vendor: "Target"}).toArray(function(err, result) {
-	// 	  if (err) throw err;
-	// 	  console.log(result);
-	// 	  db.close();
-	// 	});
-	//   });
+// mongo.connect(url, { useNewUrlParser: true }, (err, db) => {
+
+// 	// Check for connection error
+// 	if (err) throw err;
+
+// 	// Specify the collection
+// 	const collection = db.collection("products");
+
+// 	// Query the collection for a specific object
+// 	collection.find({vendor: "Target"}).toArray(function(err, result) {
+// 	  if (err) throw err;
+// 	  console.log(result);
+// 	  db.close();
+// 	});
+//   });
+
 // Open html dialog 
 const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");

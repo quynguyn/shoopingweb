@@ -133,21 +133,12 @@ app.get('/accounts/:id/update', (req, res) => {
 
 // UPDATE - Create a new product
 app.post('/accounts/:id/update', (req, res) => {
-
-	console.log(req.body)
-	const updates = Object.keys(req.body);
-	console.log(updates)
-
 	Account.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, })
 		.then(account => {
 			if (!account) {
 				return res.send('Not found any product matching the ID!');
 			}
-			// res.redirect('/orders');
-			// res.send(req);
-			console.log(req.body)
-			console.log('Document updated')
-			// res.send(order);
+			res.redirect('http://127.0.0.1:5500/myAccount.html');
 		})
 		.catch(error => res.send(error));
 });
