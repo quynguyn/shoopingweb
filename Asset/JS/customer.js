@@ -2,37 +2,27 @@ const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
 const searchInput = document.querySelector("[item-search]");
 const aFilter = document.querySelector("[a-filter]");
-const cart = document.querySelector("#cart-modal");
-var products;
+const cart = document.querySelector('#cart-modal');
 
-fetch("http://localhost:3000/products")
-  .then((res) => res.json())
-  .then((data) => {
-    var i = 0;
-    products = data;
-    var temp = data.map((product) => {
-      const box = itemBoxTemplate.content.cloneNode(true).children[0];
-      box.classList = i + " " + box.classList;
-      box.onclick = () => openModal(box.classList[0]);
-      i++;
-      const name = box.querySelector("[item-name]");
-      const price = box.querySelector(".price");
-      const image = box.querySelector(".image");
-      // const description = box.querySelector("[item-description]")
-      name.textContent = product.name;
-      price.textContent = "$" + product.price;
-      image.querySelector("img").src = product.image;
-      // description.textContent = product.description
+fetch('http://localhost:3000/products')
+	.then(res => res.json())
+	.then(data => {
+		data.map(product => {
+			const box = itemBoxTemplate.content.cloneNode(true).children[0]
+			box.id = product._id
+			box.onclick = () => openModal(box.id)
 
-      itemBoxContainer.append(box);
-      return {
-        name: product.name,
-        price: product.price,
-        description: product.description,
-        element: box,
-      };
-    });
-  });
+			const name = box.querySelector("[item-name]")
+			const price = box.querySelector(".price")
+			const image = box.querySelector(".image")
+
+			name.textContent = product.name
+			price.textContent = '$' + product.price
+			image.querySelector("img").src = product.image
+
+			itemBoxContainer.append(box)
+		})
+	})
 
 /**item search**/
 searchInput.addEventListener("input", (e) => {
@@ -69,9 +59,8 @@ const openButton = document.querySelector("[data-open-modal]");
 const closeButton = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-modal]");
 
-function openModal(position) {
-  fillData(position);
-  modal.showModal();
+function openModal(id) {
+	fillData(id);
 }
 
 function closeModal() {
@@ -117,9 +106,9 @@ function addToCart() {
   closeModal();
 }
 
-function fillData(position) {
-  const itemTemplate = document.getElementById("item-template");
-  const cartContainer = document.querySelector(".detail-body");
+function fillData(id) {
+	const itemTemplate = document.getElementById('item-template');
+	const cartContainer = document.querySelector('.detail-body');
 
   const templateClone = itemTemplate.content.cloneNode(true);
   const productImage = templateClone.querySelector(".product-image");
@@ -127,10 +116,16 @@ function fillData(position) {
   const productPrice = templateClone.querySelector(".price");
   const productDescription = templateClone.querySelector(".description");
 
-  productImage.src = products[position].image;
-  productName.textContent = products[position].name;
-  productPrice.textContent = "$" + products[position].price;
-  productDescription.textContent = products[position].description;
+	fetch('http://localhost:3000/products/' + id)
+		.then(res => res.json())
+		.then(data => {
+			productImage.src = data.image;
+			productName.textContent = data.name;
+			productPrice.textContent = '$' + data.price;
+			productDescription.textContent = data.description;
+			modal.showModal()
+		})
+		.catch(error => console.error(error));
 
   cartContainer.appendChild(templateClone);
 }

@@ -1,9 +1,9 @@
 const cU = localStorage.getItem("currentUser");
 const user = JSON.parse(cU);
 
-const currentURL = window.location.href.split("/");
-const currentPage = currentURL[currentURL.length - 1].split(".")[0];
-console.log(currentPage);
+const currentURL = window.location.href.split("/")
+const currentPage = currentURL[currentURL.length - 1].split(".")[0]
+console.log(currentPage)
 
 const hideDialog = document.querySelector("#hide-dialog");
 
