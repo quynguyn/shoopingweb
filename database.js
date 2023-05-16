@@ -35,7 +35,7 @@ const orderSchema = new mongoose.Schema({
 	ordererName: String,
 	ordererAddress: String,
 	ordererPhone: String,
-	productList: [String],
+	productList: String,
 	activity: String,
 	hubName: String,
 });
@@ -246,11 +246,10 @@ app.post("/orders/:id/update", (req, res) => {
 			if (!order) {
 				return res.send("Not found any product matching the ID!");
 			}
-			// res.redirect('/orders');
-			// res.send(req);
 			console.log(req.body);
 			console.log("Document updated");
-			// res.send(order);
+
+			res.redirect('http://127.0.0.1:5500/shipper.html');
 		})
 		.catch((error) => res.send(error));
 });
