@@ -6,8 +6,8 @@ const aFilter = document.querySelector("[a-filter]");
 
 const cart = document.querySelector('#cart-modal');
 
-const descendButton = document.querySelector('input#descend')
-const ascendButton = document.querySelector('input#ascend')
+const descendButton = document.querySelector('#descend')
+const ascendButton = document.querySelector('#ascend')
 
 const searchBar = document.querySelector('.search-bar #search')
 
@@ -22,6 +22,7 @@ const cartDetails = cartBody.querySelector(".order-detail")
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 descendButton.onclick = function () {
+	console.log("descend")
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/descending')
@@ -49,6 +50,7 @@ descendButton.onclick = function () {
 }
 
 ascendButton.onclick = function () {
+	console.log("acends")
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/ascending')
@@ -327,3 +329,4 @@ function removeItem(index) {
 	cartBody.querySelector(".items-list").innerHTML = "";
 	populateCart();
 }
+

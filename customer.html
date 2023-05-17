@@ -7,9 +7,11 @@
 	<title>Customer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="Asset/CSS/style.css" />
-
 	<link rel="stylesheet" href="Asset/CSS/customer.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
+
 
 	<script src="Asset\JS\customer.js" defer></script>
 	<script defer src="Asset/JS/style.js"></script>
@@ -24,7 +26,10 @@
 			</a>
 			<h1>Web Group</h1>
 		</div>
-
+	<!--search items-->
+	<div class="search-bar">
+		<input type="search" placeholder="Search.." id="search" item-search>
+	</div>
 		<nav>
 			<ul>
 				<li><a href="/myAccount.html">My Account</a></li>
@@ -32,37 +37,7 @@
 		</nav>
 	</header>
 
-	<div class="container">
-		<!--filter-->
-		<div class="filter-range">
-			<h3>Filter by price range:</h3>
-
-			<div class="range-values">
-				<span class="min-value">$0</span>
-				<div class="current-value-container">
-					<input type="range" min="0" max="1000" value="1000" class="slider" id="range-slider">
-					<span class="current-value">$0</span>
-				</div>
-				<span class="max-value">$1000</span>
-			</div>
-		</div>
-
-		<div class="sort-by">
-			<form action="">
-				<input type="radio" id="descend" name="sort" value="descending">
-				<label for="html">Descend</label>
-				<br>
-				<input type="radio" id="ascend" name="sort" value="ascending">
-				<label for="ascend">Ascend</label>
-				<br>
-			</form>
-		</div>
-
-		<!--search items-->
-		<div class="search-bar">
-			<input type="search" placeholder="Search.." id="search" item-search>
-		</div>
-	</div>
+	
 
 	<dialog class="hide-dialog">
 		<div class="detail-header">
@@ -81,6 +56,28 @@
 			<h1 class="sub-title">all products</h1>
 		</div>
 
+		<div class="container">
+			<!--filter-->
+			<div class="filter-range">
+				<h3>Filter by price range:</h3>
+	
+				<div class="range-values">
+					<span class="min-value">$0</span>
+					<div class="current-value-container">
+							<input type="range" min="0" max="1000" value="1000" class="slider" id="range-slider">
+						<span class="current-value">$0</span>
+					</div>
+					<span class="max-value">$1000</span>
+				</div>
+			</div>
+	
+			<div class="sort-by">
+				<h3>Sort Item by:</h3> 
+				<button class="btn hover" id="descend">Descend</button>
+				<button class="btn hover" id="ascend">Ascend</button>
+			</div>
+		</div>
+
 		<div class="item-boxes" item-box-container></div>
 
 		<template item-box-template>
@@ -93,6 +90,7 @@
 			</div>
 		</template>
 
+		<!-- product detail in form -->
 		<dialog data-modal class="form-dialog">
 			<div class="form-header">
 				<div class="form-title">Product Detail</div>
@@ -109,22 +107,23 @@
 						<img src="" alt="Image" class="product-image" />
 					</div>
 					<!-- product name and price -->
-					<div class="content">
-						<p class="product-name"></p>
-						<span class="price"></span>
+					<div class="form-information-detail">
+						<div class="content">
+							<p class="product-name"></p>
+							<span class="price"></span>
+						</div>
+						<div class="cart-button-container">
+							<!-- add to cart button -->
+							<button cart-button class="btn hover cart" onclick="addToCart()">
+								Add to Cart
+							</button>
+						</div>
 					</div>
 				</div>
 				<!-- description -->
 				<div>
 					<b>Description</b>
 					<p class="description"></p>
-				</div>
-
-				<div class="cart-button-container">
-					<!-- add to cart button -->
-					<button cart-button class="btn hover cart" onclick="addToCart(this.parentNode.parentNode.id)">
-						Add to Cart
-					</button>
 				</div>
 			</template>
 		</dialog>
