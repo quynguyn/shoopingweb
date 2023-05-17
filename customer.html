@@ -122,7 +122,7 @@
 
 				<div class="cart-button-container">
 					<!-- add to cart button -->
-					<button cart-button class="btn hover cart" onclick="addToCart()">
+					<button cart-button class="btn hover cart" onclick="addToCart(this.parentNode.parentNode.id)">
 						Add to Cart
 					</button>
 				</div>
@@ -141,7 +141,31 @@
 				</button>
 			</div>
 
-			<div class="cart-body inputData"></div>
+			<form class="cart-body inputData" method="POST" action="http://localhost:3000/orders">
+				<div class="order-detail hide">
+					<div>
+						<label for="productList"></label>
+						<input type="text" id="productList" name="productList" />
+					</div>
+					<div>
+						<label for="ordererName"></label>
+						<input type="text" id="ordererName" name="ordererName" />
+					</div>
+					<div>
+						<label for="ordererAddress"></label>
+						<input type="text" id="ordererAddress" name="ordererAddress" />
+					</div>
+					<div>
+						<label for="activity"></label>
+						<input type="text" id="activity" name="activity" />
+					</div>
+					<div>
+						<label for="hubName"></label>
+						<input type="text" id="hubName" name="hubName" />
+					</div>
+				</div>
+				<div class="items-list"></div>
+			</form>
 
 			<div class="cart-footer">
 				<div class="total-price">Total: $<span id="total-price"></span></div>
@@ -159,7 +183,7 @@
 				<div class="product-details">
 					<h3 class="product-name"></h3>
 					<p class="product-price"></p>
-					<button class="close-button" onclick="removeItem(this.parentNode.parentNode.classList[0])">
+					<button class="close-button" onclick="removeItem(this.parentNode.id)">
 						<img src="Asset/IMG/trash-bin.png" alt="Web Group Logo" />
 					</button>
 				</div>

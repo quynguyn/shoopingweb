@@ -8,7 +8,7 @@ const currentPage = currentURL[currentURL.length - 1].split(".")[0]
 const hideDialog = document.querySelector("#hide-dialog");
 
 if (cU != undefined) {
-	if (user.type != currentPage && currentPage != "myAccount") {
+	if (user.type != currentPage && (currentPage != "myAccount" && currentPage != "index")) {
 		hideDialog.showModal();
 	}
 } else {

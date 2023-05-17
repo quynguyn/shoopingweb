@@ -45,7 +45,6 @@ const distributionHubSchema = new mongoose.Schema({
 const orderSchema = new mongoose.Schema({
 	ordererName: String,
 	ordererAddress: String,
-	ordererPhone: String,
 	productList: String,
 	activity: String,
 	hubName: String,
@@ -130,9 +129,8 @@ app.get('/products/:id', (req, res) => {
 });
 
 app.get('/products/vendor/:id', (req, res) => {
-	Product.find({'vendor': req.params.id})
+	Product.find({ 'vendor': req.params.id })
 		.then((product) => {
-			dataProduct = product
 			if (!product) {
 				return res.send("Cannot found that ID!");
 			}
@@ -157,6 +155,20 @@ app.get("/accounts", (req, res) => {
 	// console.log(data)
 	Account.find()
 		.then((accounts) => {
+			res.send(accounts);
+		})
+		.catch((error) => {
+			console.log(error.message);
+		});
+});
+
+app.get("/accounts/findUsername/:id", (req, res) => {
+	// console.log(data)
+	Account.find({ 'username': req.params.id })
+		.then((accounts) => {
+			if (!accounts) {
+				res.send("Cannot found that ID!");
+			}
 			res.send(accounts);
 		})
 		.catch((error) => {
@@ -245,7 +257,9 @@ app.post("/orders", (req, res) => {
 	console.log(req.body);
 	order
 		.save()
-		.then((order) => res.send(order))
+		.then((order) => {
+			res.redirect('http://127.0.0.1:5500/customer.html');
+		})
 		.catch((error) => res.send(error));
 });
 

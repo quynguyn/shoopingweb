@@ -1,69 +1,69 @@
 .main-container {
-  margin: 5px;
+	margin: 5px;
 }
 
 .orders-container {
-  margin: 5px;
-  border: 1px solid black;
+	margin: 5px;
+	border: 1px solid black;
 }
 
 .order {
-  margin: 5px;
-  border: 1px solid black;
-  padding: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	margin: 5px;
+	border: 1px solid black;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .activity {
-  width: fit-content;
-  height: fit-content;
-  margin-right: 10px;
+	width: fit-content;
+	height: fit-content;
+	margin-right: 10px;
 }
 
 .information {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .info-body .information {
-  margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .info-body .information-column {
-  margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .info-body .information-column ul {
-  margin-left: 27px;
+	margin-left: 27px;
 }
 
 .info-body .information select {
-  margin-left: 5px;
+	margin-left: 5px;
 }
 
 .info-header .close-button:hover {
-  background-color: var(--main-color);
-  color: #faf7f4;
+	background-color: var(--main-color);
+	color: #faf7f4;
 }
 
 .info-body {
-  padding: 10px 15px;
+	padding: 10px 15px;
 }
 
 .submit-button button {
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
+	background-color: var(--secondary-color);
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	cursor: pointer;
 }
 
 .button-group {
-  display: flex;
-  justify-content: space-around;
+	display: flex;
+	justify-content: space-around;
 }

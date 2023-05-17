@@ -2,88 +2,88 @@
 /* css for cart */
 
 .mini-cart-container {
-  position: relative;
-  cursor: pointer;
+	position: relative;
+	cursor: pointer;
 }
 
 .cart-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--white-color);
-  border: 1px solid var(--white-color);
-  padding: 10px;
-  min-width: 200px;
-  z-index: 1;
-  transform: translateX(-50%);
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: var(--white-color);
+	border: 1px solid var(--white-color);
+	padding: 10px;
+	min-width: 200px;
+	z-index: 1;
+	transform: translateX(-50%);
 }
 
 .cart-dropdown.active {
-  display: block;
+	display: block;
 }
 
 .cart-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25px;
 }
 
 .cart-button {
-  background-color: var(--main-color);
-  border-radius: 25px;
-  border: none;
-  color: var(--white-color);
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px 20px;
-  margin-top: 10px;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+	background-color: var(--main-color);
+	border-radius: 25px;
+	border: none;
+	color: var(--white-color);
+	cursor: pointer;
+	font-size: 16px;
+	padding: 8px 20px;
+	margin-top: 10px;
+	text-decoration: none;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 .delete-button {
-  margin-left: 10px;
-  transition: background-color 0.3s, color 0.3s;
-  background-color: var(--main-color);
-  border-radius: 25px;
-  border: none;
-  color: var(--white-color);
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px 20px;
-  margin-top: 10px;
-  text-decoration: none;
+	margin-left: 10px;
+	transition: background-color 0.3s, color 0.3s;
+	background-color: var(--main-color);
+	border-radius: 25px;
+	border: none;
+	color: var(--white-color);
+	cursor: pointer;
+	font-size: 16px;
+	padding: 8px 20px;
+	margin-top: 10px;
+	text-decoration: none;
 }
 
 .cart-button:hover {
-  background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
 }
 
 .delete-button:hover {
-  background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
 }
 
 .cart-button:first-child {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .cart-toggle {
-  position: relative;
-  display: flex;
-  align-items: center;
+	position: relative;
+	display: flex;
+	align-items: center;
 }
 
 .cart-toggle i {
-  font-size: 20px;
-  margin-right: 5px;
+	font-size: 20px;
+	margin-right: 5px;
 }
 
 .cart-items-count {
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-  border-radius: 50%;
-  padding: 2px 5px;
-  font-size: 12px;
+	background-color: var(--secondary-color);
+	color: var(--white-color);
+	border-radius: 50%;
+	padding: 2px 5px;
+	font-size: 12px;
 }
