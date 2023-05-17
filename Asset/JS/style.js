@@ -4,8 +4,11 @@ const user = JSON.parse(cU);
 const currentURL = window.location.href.split("/")
 const currentPage = currentURL[currentURL.length - 1].split(".")[0]
 
-
 const hideDialog = document.querySelector("#hide-dialog");
+
+const homepage = document.querySelector('header .logo a')
+
+homepage.href = user.type + ".html";
 
 if (cU != undefined) {
 	if (user.type != currentPage && (currentPage != "myAccount" && currentPage != "index")) {

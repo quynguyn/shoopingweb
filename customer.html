@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Customer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<link rel="stylesheet" href="Asset/CSS/style.css" />
 	<link rel="stylesheet" href="Asset/CSS/customer.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
 
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
 	<script src="Asset\JS\customer.js" defer></script>
 	<script defer src="Asset/JS/style.js"></script>
 </head>
@@ -26,18 +26,16 @@
 			</a>
 			<h1>Web Group</h1>
 		</div>
-	<!--search items-->
-	<div class="search-bar">
-		<input type="search" placeholder="Search.." id="search" item-search>
-	</div>
+		<!--search items-->
+		<div class="search-bar">
+			<input type="search" placeholder="Search.." id="search" item-search>
+		</div>
 		<nav>
 			<ul>
 				<li><a href="/myAccount.html">My Account</a></li>
 			</ul>
 		</nav>
 	</header>
-
-	
 
 	<dialog class="hide-dialog">
 		<div class="detail-header">
@@ -60,19 +58,19 @@
 			<!--filter-->
 			<div class="filter-range">
 				<h3>Filter by price range:</h3>
-	
+
 				<div class="range-values">
 					<span class="min-value">$0</span>
 					<div class="current-value-container">
-							<input type="range" min="0" max="1000" value="1000" class="slider" id="range-slider">
+						<input type="range" min="0" max="1000" value="1000" class="slider" id="range-slider">
 						<span class="current-value">$0</span>
 					</div>
 					<span class="max-value">$1000</span>
 				</div>
 			</div>
-	
+
 			<div class="sort-by">
-				<h3>Sort Item by:</h3> 
+				<h3>Sort Item by:</h3>
 				<button class="btn hover" id="descend">Descend</button>
 				<button class="btn hover" id="ascend">Ascend</button>
 			</div>

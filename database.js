@@ -9,12 +9,12 @@ const path = require("path");
 const app = express();
 
 const storage = multer.diskStorage({
-  destination: 'public/images',
-  filename: (req,file,cb)=>{
-    return cb(null,`${file.filename}_${Date.now()}${path.extname(file.originalname)}`)
-  }
+	destination: 'public/images',
+	filename: (req, file, cb) => {
+		return cb(null, `${file.filename}_${Date.now()}${path.extname(file.originalname)}`)
+	}
 })
-const upload = multer({ storage:storage  });
+const upload = multer({ storage: storage });
 
 const userSchema = new mongoose.Schema({
 	username: String,
@@ -68,7 +68,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/image',express.static('public/images'))
+app.use('/image', express.static('public/images'))
 
 
 const Product = mongoose.model("products", productSchema);
@@ -83,6 +83,7 @@ module.exports = { Product };
 module.exports = { Order };
 
 // -----------------------Product-----------------------
+// READ - Find all product
 app.get("/products", (req, res) => {
 	// console.log(data)
 	Product.find()
@@ -94,6 +95,7 @@ app.get("/products", (req, res) => {
 		});
 });
 
+// READ - Find product and sort by descending price
 app.get('/products/descending', (req, res) => {
 	Product.find()
 		.sort({ price: 'descending' })
@@ -105,6 +107,7 @@ app.get('/products/descending', (req, res) => {
 		})
 })
 
+// READ - Find product and sort by ascending price
 app.get('/products/ascending', (req, res) => {
 	Product.find()
 		.sort({ price: 'ascending' })
@@ -116,6 +119,7 @@ app.get('/products/ascending', (req, res) => {
 		})
 })
 
+// READ - Find product by id
 app.get('/products/:id', (req, res) => {
 	Product.findById(req.params.id)
 		.then((product) => {
@@ -128,6 +132,7 @@ app.get('/products/:id', (req, res) => {
 		.catch((error) => res.send(error));
 });
 
+// READ - Find product by vendor
 app.get('/products/vendor/:id', (req, res) => {
 	Product.find({ 'vendor': req.params.id })
 		.then((product) => {
@@ -140,10 +145,10 @@ app.get('/products/vendor/:id', (req, res) => {
 });
 
 // CREATE - Create a new product
-app.post("/products",upload.single('image') ,(req, res) => {
+app.post("/products", upload.single('image'), (req, res) => {
 
 	const product = new Product(req.body);
-  product.image =`http://localhost:3000/image/${req.file.filename}`
+	product.image = `http://localhost:3000/image/${req.file.filename}`
 	product
 		.save()
 		.then(() => res.redirect("http://127.0.0.1:5500/vendor.html"))
@@ -151,6 +156,7 @@ app.post("/products",upload.single('image') ,(req, res) => {
 });
 
 // -----------------------Account-----------------------
+// READ - Find all accounts
 app.get("/accounts", (req, res) => {
 	// console.log(data)
 	Account.find()
@@ -162,6 +168,7 @@ app.get("/accounts", (req, res) => {
 		});
 });
 
+// READ - Find accounts by username
 app.get("/accounts/findUsername/:id", (req, res) => {
 	// console.log(data)
 	Account.find({ 'username': req.params.id })
@@ -176,6 +183,7 @@ app.get("/accounts/findUsername/:id", (req, res) => {
 		});
 });
 
+// READ - Find accounts by id
 app.get("/accounts/:id", (req, res) => {
 	Account.findById(req.params.id)
 		.then((account) => {
@@ -188,16 +196,16 @@ app.get("/accounts/:id", (req, res) => {
 });
 
 // CREATE - Create a new account
-app.post("/accounts", upload.single('image') ,(req, res) => {
+app.post("/accounts", upload.single('image'), (req, res) => {
 	const account = new Account(req.body);
-  account.profilePicture= `http://localhost:3000/image/${req.file.filename}`
+	account.profilePicture = `http://localhost:3000/image/${req.file.filename}`
 	account
 		.save()
 		.then(() => res.redirect("http://127.0.0.1:5500/accounts.html"))
 		.catch((error) => res.send(error));
 });
 
-// UPDATE - Create a new account
+// UPDATE - Update an account by id
 app.get("/accounts/:id/update", (req, res) => {
 	Account.findById(req.params.id)
 		.then((account) => {
@@ -206,7 +214,7 @@ app.get("/accounts/:id/update", (req, res) => {
 		.catch((error) => res.send(error));
 });
 
-// UPDATE - Create a new product
+// UPDATE - Update an account by id
 app.post('/accounts/:id/update', (req, res) => {
 	Account.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, })
 		.then(account => {
@@ -219,6 +227,7 @@ app.post('/accounts/:id/update', (req, res) => {
 });
 
 // -----------------------Distribution Hub-----------------------
+// READ - Find all distribution hubs
 app.get("/distributionHubs", (req, res) => {
 	// console.log(dataHubs)
 	Hubs.find()
@@ -231,6 +240,7 @@ app.get("/distributionHubs", (req, res) => {
 });
 
 // -----------------------Order-----------------------
+// READ - Find all orders
 app.get("/orders", (req, res) => {
 	Order.find()
 		.then((orders) => {
@@ -241,6 +251,7 @@ app.get("/orders", (req, res) => {
 		});
 });
 
+// READ - Find order by id
 app.get("/orders/:id", (req, res) => {
 	Order.findById(req.params.id)
 		.then((order) => {
@@ -252,9 +263,10 @@ app.get("/orders/:id", (req, res) => {
 		.catch((error) => res.send(error));
 });
 
+// CREATE -Create a new order
 app.post("/orders", (req, res) => {
 	const order = new Order(req.body);
-	console.log(req.body);
+	// console.log(req.body);
 	order
 		.save()
 		.then((order) => {
@@ -262,7 +274,6 @@ app.post("/orders", (req, res) => {
 		})
 		.catch((error) => res.send(error));
 });
-
 
 // UPDATE - Show update product form
 app.get("/orders/:id/update", (req, res) => {
@@ -274,10 +285,6 @@ app.get("/orders/:id/update", (req, res) => {
 });
 
 app.post("/orders/:id/update", (req, res) => {
-	console.log(req.body);
-	const updates = Object.keys(req.body);
-	console.log(updates);
-
 	Order.findByIdAndUpdate(req.params.id, req.body, {
 		new: true,
 		runValidators: true,
@@ -286,8 +293,6 @@ app.post("/orders/:id/update", (req, res) => {
 			if (!order) {
 				return res.send("Not found any product matching the ID!");
 			}
-			console.log(req.body);
-			console.log("Document updated");
 
 			res.redirect('http://127.0.0.1:5500/shipper.html');
 		})
@@ -297,7 +302,7 @@ app.post("/orders/:id/update", (req, res) => {
 // ------------- Loading image file to the mongodb -------------
 
 
-// start server
+// Start server
 app.listen(3000, () => {
 	console.log("Server started on port 3000");
 });
