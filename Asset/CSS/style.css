@@ -220,6 +220,8 @@ dialog::backdrop {
 	z-index: 9999;
 	padding: 20px;
 	border-radius: 10px;
+	max-width: 80%;
+	width: 900px;
 	border: var(--primary-color) 2px solid;
 	background-color: #faf7f4;
 }
@@ -252,3 +254,8 @@ dialog::backdrop {
 		width: 100%;
 	}
 }
+
+.hover:hover {
+	background-color: var(--primary-color);
+  }
+  
