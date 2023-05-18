@@ -35,7 +35,7 @@ fetch("http://localhost:3000/orders")
 						.then((res) => res.json())
 						.then((data) => {
 							totalPrice += parseFloat(data.price);
-							price.textContent = totalPrice.toFixed(2);
+							price.textContent = "$" + totalPrice.toFixed(2);
 						})
 						.catch((error) => {
 							console.log(error.message);
