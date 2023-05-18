@@ -3,20 +3,17 @@ const businessName = JSON.parse(localStorage.getItem("currentUser")).businessNam
 const itemBoxTemplate = document.querySelector("[item-box-template]");
 const itemBoxContainer = document.querySelector("[item-box-container]");
 
+const detailContainer = document.querySelector(".detail-body");
 const detailModal = document.querySelector("[detail-dialog]");
 
 const noProduct = document.querySelector("#no-product");
 
 function showData(id) {
-	const detailTemplate = document.getElementById("detail-template");
-	const detailContainer = document.querySelector(".detail-body");
 
-	const templateClone = detailTemplate.content.cloneNode(true);
-
-	const productImage = templateClone.querySelector(".product-image");
-	const productName = templateClone.querySelector(".product-name");
-	const productPrice = templateClone.querySelector(".price");
-	const productDescription = templateClone.querySelector(".description");
+	const productImage = detailContainer.querySelector(".product-image");
+	const productName = detailContainer.querySelector(".product-name");
+	const productPrice = detailContainer.querySelector(".price");
+	const productDescription = detailContainer.querySelector(".description");
 
 	fetch("http://localhost:3000/products/" + id)
 		.then((res) => res.json())
@@ -29,14 +26,20 @@ function showData(id) {
 			detailModal.showModal();
 		})
 		.catch((error) => console.error(error));
-
-	detailContainer.appendChild(templateClone);
 }
 
 const closeDataButton = document.querySelector("[closeData]");
 
 closeDataButton.addEventListener("click", () => {
-	document.querySelector(".detail-body").innerHTML = "";
+	const productImage = detailContainer.querySelector(".product-image");
+	const productName = detailContainer.querySelector(".product-name");
+	const productPrice = detailContainer.querySelector(".price");
+	const productDescription = detailContainer.querySelector(".description");
+
+	productImage.src = '';
+	productName.textContent = '';
+	productPrice.textContent = '';
+	productDescription.textContent = '';
 
 	detailModal.close();
 });
