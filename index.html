@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Web</title>
-	
+
 	<link rel="stylesheet" href="Asset/CSS/style.css" />
 	<link rel="stylesheet" href="Asset/CSS/index.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -43,13 +43,14 @@
 				</div>
 				<button class="hover" type="submit">Login</button>
 			</form>
-			<p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
+			<p>Don't have an account? <button onclick="openModal()" id="open-register" class="hover"
+					href="#">Register</button></p>
 		</div>
 		<!-- Form to register for an anccount -->
-		<div class="form-modal" id="modal">
+		<dialog class="form-modal" id="modal">
 			<div class="form-header">
 				<div class="form-title">Register for an Account</div>
-				<button data-close-button="" class="close-button">×</button>
+				<button data-close-button class="close-button" onclick="closeModal()">×</button>
 			</div>
 
 			<!-- body modal -->
@@ -78,11 +79,27 @@
 								<label for="username">Username:</label>
 								<input required type="text" id="username" name="username"
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
+
+								<div id="username-message">
+									<h3>Password must contain the following:</h3>
+									<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
+									<p id="u-number" class="invalid">A <b>number</b></p>
+									<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
+								</div>
 							</div>
+
 							<div>
 								<label for="password">Password:</label>
 								<input required type="password" id="passwordNew" name="password"
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+								<div id="password-message">
+									<h3>Password must contain the following:</h3>
+									<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
+									<p id="p-capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+									<p id="p-number" class="invalid">A <b>number</b></p>
+									<p id="p-special" class="invalid">A <b>special character</b> (!@#$%^&)</p>
+									<p id="p-length" class="invalid">In range: <b>[8-20] characters</b></p>
+								</div>
 							</div>
 							<div>
 								<label for="profilePicture">Profile Picture:</label>
@@ -90,7 +107,7 @@
 							</div>
 						</div>
 						<!-- Vendor account -->
-						<div id="vendor-div" style="display: none;" class="vendor">
+						<div id="vendor-div" class="vendor hide">
 							<div>
 								<label for="businessName">Business Name:</label>
 								<input type="text" id="businessName" name="businessName" pattern=".{5,}" />
@@ -101,7 +118,7 @@
 							</div>
 						</div>
 						<!-- Customer account -->
-						<div id="customer-div" style="display: none;" class="customer">
+						<div id="customer-div" class="customer hide">
 							<div>
 								<label for="address">Address:</label>
 								<input type="text" id="address" name="address" pattern=".{5,}" />
@@ -112,7 +129,7 @@
 							</div>
 						</div>
 						<!-- Shipper account -->
-						<div id="shipper-div" style="display: none;" class="shipper">
+						<div id="shipper-div" class="shipper hide">
 							<label for="distributionHub">Distribution Hub:</label>
 							<select id="distributionHub" name="distributionHub" required>
 								<option value="none"></option>
@@ -121,6 +138,11 @@
 								<option value="New York Distribution Hub">New York Distribution Hub</option>
 							</select>
 						</div>
+
+						<div id="user-type" class="hide">
+							<label for="type">Name:</label>
+							<input type="text" id="type" name="type" />
+						</div>
 						<!-- Submit account -->
 						<div class="submit-button">
 							<button class="hover" id="submit-btn" onclick="submitRegisterForm()">Submit</button>
@@ -128,8 +150,7 @@
 					</form>
 				</div>
 			</div>
-		</div>
-		<div id="overlay" class="overlay"></div>
+		</dialog>
 	</div>
 	<!-- Footer of the page -->
 

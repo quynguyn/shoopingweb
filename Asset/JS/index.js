@@ -8,36 +8,18 @@ const customerDiv = document.querySelector("#customer-div");
 const shipperDiv = document.querySelector("#shipper-div");
 
 // to open and close the modal
-const openModalButtons = document.querySelectorAll("[data-modal-target]");
+const openModalButtons = document.querySelector("#open-register");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
-const overlay = document.getElementById("overlay");
 
 const registerForm = document.querySelector('#register-form')
 
-openModalButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		const modal = document.querySelector(button.dataset.modalTarget);
-		openModal(modal);
-	});
-});
-
-closeModalButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		const modal = button.closest(".form-modal");
-		closeModal(modal);
-	});
-});
-
-function openModal(modal) {
-	if (modal == null) return;
-	modal.classList.add("active");
-	// overlay.classList.add("active");
+const registerDialog = document.querySelector('#modal')
+function openModal() {
+	registerDialog.showModal()
 }
 
-function closeModal(modal) {
-	if (modal == null) return;
-	modal.classList.remove("active");
-	// overlay.classList.remove("active");
+function closeModal() {
+	registerDialog.close()
 	uncheck();
 }
 
@@ -45,26 +27,31 @@ function closeModal(modal) {
 function showDiv() {
 	var accountUserType = "";
 
+	vendorDiv.classList.toggle("hide", !vendorRadio.checked);
+	customerDiv.classList.toggle("hide", !customerRadio.checked);
+	shipperDiv.classList.toggle("hide", !shipperRadio.checked);
+
 	if (vendorRadio.checked) {
-		vendorDiv.style.display = "block";
 		accountUserType = "vendor";
 	} else {
-		vendorDiv.style.display = "none";
+		document.getElementById("businessName").value = '';
+		document.getElementById("businessAddress").value = '';
 	}
 
 	if (customerRadio.checked) {
-		customerDiv.style.display = "block";
 		accountUserType = "customer";
 	} else {
-		customerDiv.style.display = "none";
+		document.getElementById("address").value = '';
+		document.getElementById("name").value = '';
 	}
 
 	if (shipperRadio.checked) {
-		shipperDiv.style.display = "block";
 		accountUserType = "shipper";
 	} else {
-		shipperDiv.style.display = "none";
+		document.getElementById("distribution-hub").value = '';
 	}
+
+	document.querySelector('#type').value = accountUserType
 
 	return accountUserType;
 }
@@ -119,7 +106,7 @@ function logIn(event) {
 
 				form.email.value = '';
 				form.password.value = '';
-		
+
 				window.location.href = accountCheck.type + ".html";
 			}
 		})
@@ -159,6 +146,31 @@ function onlyLettersAndNumbers(str) {
 }
 
 const usernameInput = document.getElementById("username");
+usernameInput.onfocus = function () {
+	document.querySelector("#username-message").style.display = "block";
+}
+usernameInput.onblur = function () {
+	document.querySelector("#username-message").style.display = "none";
+}
+usernameInput.addEventListener("input", (e) => {
+	const username = e.target.value
+	var letter = document.querySelector("#username-message #u-letter");
+	var number = document.querySelector("#username-message #u-number");
+	var length = document.querySelector("#username-message #u-length");
+
+	const lowerCaseLetters = /[a-zA-z]/g;
+	const numbers = /[0-9]/g;
+	const minimumLength = (username.length >= 8) && (username.length <= 15)
+
+	letter.classList.toggle("valid", username.match(lowerCaseLetters));
+	letter.classList.toggle("invalid", !username.match(lowerCaseLetters));
+
+	number.classList.toggle("valid", username.match(numbers));
+	number.classList.toggle("invalid", !username.match(numbers));
+
+	length.classList.toggle("valid", minimumLength);
+	length.classList.toggle("invalid", !minimumLength);
+});
 usernameInput.addEventListener("input", (e) => {
 	const username = e.target.value
 
@@ -180,6 +192,45 @@ usernameInput.addEventListener("input", (e) => {
 			})
 	}
 });
+
+const passwordInput = document.querySelector("#passwordNew");
+passwordInput.onfocus = function () {
+	document.querySelector("#password-message").style.display = "block";
+}
+passwordInput.onblur = function () {
+	document.querySelector("#password-message").style.display = "none";
+}
+
+passwordInput.addEventListener("input", (e) => {
+	const password = e.target.value
+	var letter = document.querySelector("#password-message #p-letter");
+	var capital = document.querySelector("#password-message #p-capital");
+	var number = document.querySelector("#password-message #p-number");
+	var special = document.querySelector("#password-message #p-special");
+	var length = document.querySelector("#password-message #p-length");
+
+	const lowerCaseLetters = /[a-z]/g;
+	const upperCaseLetters = /[A-Z]/g;
+	const numbers = /[0-9]/g;
+	const specialLetters = /[!@#$%^&]/g;
+	const minimumLength = (password.length >= 8) && (password.length <= 20)
+
+	letter.classList.toggle("valid", password.match(lowerCaseLetters));
+	letter.classList.toggle("invalid", !password.match(lowerCaseLetters));
+
+	capital.classList.toggle("valid", password.match(upperCaseLetters));
+	capital.classList.toggle("invalid", !password.match(upperCaseLetters));
+
+	number.classList.toggle("valid", password.match(numbers));
+	number.classList.toggle("invalid", !password.match(numbers));
+
+	special.classList.toggle("valid", password.match(specialLetters));
+	special.classList.toggle("invalid", !password.match(specialLetters));
+
+	length.classList.toggle("valid", minimumLength);
+	length.classList.toggle("invalid", !minimumLength);
+});
+
 
 function submitRegisterForm() {
 	var message = "congratulation, please log in your account";

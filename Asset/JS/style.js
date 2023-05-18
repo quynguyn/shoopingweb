@@ -7,11 +7,15 @@ const currentPage = currentURL[currentURL.length - 1].split(".")[0]
 const hideDialog = document.querySelector("#hide-dialog");
 
 const homepage = document.querySelector('header .logo a')
-
-homepage.href = user.type + ".html";
+const homepageHome = document.querySelector('header #home-link')
 
 if (cU != undefined) {
-	if (user.type != currentPage && (currentPage != "myAccount" && currentPage != "index")) {
+	homepage.href = user.type + ".html";
+	if (homepageHome != null) {
+		homepageHome.href = user.type + ".html";
+	}
+
+	if (user.type != currentPage && hideDialog != null) {
 		hideDialog.showModal();
 	}
 } else {
