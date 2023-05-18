@@ -287,8 +287,7 @@ dialog::backdrop {
 	border: 1px solid var(--primary-color);
 	border-radius: 5px;
 	box-sizing: border-box;
-	width: 22vw;
-	min-width: 250px;
+	width: 250px;
 	flex-direction: column;
 	justify-content: space-evenly;
 	padding: 10px;
