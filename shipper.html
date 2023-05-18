@@ -52,10 +52,6 @@
 						<input type="text" id="ordererAddress" name="ordererAddress"></input>
 						<br>
 
-						<label for="ordererPhone">Phone:</label>
-						<input type="text" id="ordererPhone" name="ordererPhone"></input>
-						<br>
-
 						<label class="hide" for="productList"></label>
 						<input id="productList" class="productList hide" name="productList"></input>
 
@@ -67,7 +63,7 @@
 
 						<div class="information">
 							<label>Total prices: $</label>
-							<p class="total-price"></p>
+							<p class="total-price price"></p>
 						</div>
 
 						<label for="activity">Activity:</label>
@@ -88,12 +84,6 @@
 
 		<template class="order-box">
 			<div class="order hover" onclick="openModal(this.id)">
-				<div class="activity">
-					<svg height="30" width="30">
-						<circle cx="15" cy="15" r="10" fill="green" />
-					</svg>
-				</div>
-
 				<div class="information-container">
 					<div class="information">
 						<pre>Name: </pre>
@@ -106,9 +96,13 @@
 					</div>
 
 					<div class="information">
-						<pre>Phone: </pre>
-						<p class="phone"></p>
+						<pre>Total price: $</pre>
+						<p class="order-price price"></p>
 					</div>
+				</div>
+
+				<div class="avatar">
+					<img id="avatar" src="" alt="">
 				</div>
 			</div>
 		</template>

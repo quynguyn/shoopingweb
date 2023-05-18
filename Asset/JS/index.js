@@ -72,9 +72,18 @@ function uncheck() {
 }
 
 // password toggle
-function togglePasswordVisibility() {
-	const passwordInput = document.getElementById("password");
-	const toggleButton = document.querySelector(".toggle-password");
+function togglePasswordVisibility(i) {
+	var passwordInput
+	var toggleButton
+
+	if (i === 1) {
+		passwordInput = document.getElementById("password");
+		toggleButton = document.querySelector(".toggle-password");
+	} else {
+		passwordInput = document.getElementById("passwordNew");
+		toggleButton = document.querySelector(".toggle-passwordNew");
+		console.log(toggleButton);
+	}
 
 	if (passwordInput.type === "password") {
 		passwordInput.type = "text";
