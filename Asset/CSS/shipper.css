@@ -105,3 +105,9 @@ input {
 	font-size: inherit;
 	color: inherit;
 }
+
+.price{
+	border-bottom: none;
+	font-size: 20px;
+	margin-bottom: 0px;
+}
