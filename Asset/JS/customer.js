@@ -22,7 +22,6 @@ const cartDetails = cartBody.querySelector(".order-detail")
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 descendButton.onclick = function () {
-	console.log("descend")
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/descending')
@@ -49,7 +48,6 @@ descendButton.onclick = function () {
 }
 
 ascendButton.onclick = function () {
-	console.log("acends")
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/ascending')
@@ -263,6 +261,7 @@ function closeCart() {
 function checkOutCart() {
 	cartBody.submit()
 	var items = JSON.parse(localStorage.getItem("item"));
+	console.log(items);
 
 	if (items == null) {
 		alert("Cart is empty.");

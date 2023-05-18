@@ -2,25 +2,38 @@
 	margin: 5px;
 }
 
-.orders-container {
-	margin: 5px;
-	border: 1px solid black;
-}
-
 .order {
-	margin: 5px;
-	border: 1px solid black;
+	margin: 25px;
+	border-radius: 5%;
+	border: 3px solid var(--primary-color);
 	padding: 5px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-
-.activity {
-	width: fit-content;
-	height: fit-content;
-	margin-right: 10px;
-}
+/* For the circle */
+#activity {
+	width: 200px;
+	height: 30px;
+	font-size: 14px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #333;
+  }
+  
+  #activity:hover {
+	border-color: #999;
+  }
+  
+  #activity:focus {
+	outline: none;
+	border-color: var(--primary-color);
+	box-shadow: 0 0 5px var(--primary-color);
+  }
+  
+/* Information */
 
 .information {
 	display: flex;
@@ -31,7 +44,11 @@
 .info-body .information {
 	margin-bottom: 5px;
 }
-
+.info-body label{
+	font-weight: bold;
+	margin-right: 15px;
+	font-size: 20px;
+}
 .info-body .information-column {
 	margin-bottom: 5px;
 }
@@ -44,7 +61,7 @@
 	margin-left: 5px;
 }
 
-.info-header .close-button:hover {
+.close-button:hover {
 	background-color: var(--main-color);
 	color: #faf7f4;
 }
@@ -53,17 +70,44 @@
 	padding: 10px 15px;
 }
 
-.submit-button button {
-	background-color: var(--secondary-color);
-	color: white;
-	border: none;
-	border-radius: 5px;
-	padding: 10px 20px;
-	margin-top: 10px;
-	cursor: pointer;
+.submit-button {
+	text-align: end;
 }
 
 .button-group {
 	display: flex;
 	justify-content: space-around;
+}
+
+.order:hover{
+
+	background-color: #fff;
+}
+
+/* display information */
+pre,.name{
+	font-size: 16px;
+	font-weight: bold;
+	height: auto;
+	margin: 10px;
+	overflow-wrap: break-word;
+}
+
+pre{
+	color: var(--main-color);
+}
+
+input {
+	border: none;
+	background: none;
+	outline: none;
+	padding: 0;
+	font-size: inherit;
+	color: inherit;
+}
+
+.price{
+	border-bottom: none;
+	font-size: 20px;
+	margin-bottom: 0px;
 }

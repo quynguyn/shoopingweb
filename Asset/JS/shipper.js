@@ -7,7 +7,6 @@ const confirmDialog = document.querySelector("#confirm-dialog");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const userHub = currentUser.distributionHub;
-console.log(currentUser)
 
 fetch("http://localhost:3000/orders")
 	.then((res) => res.json())
@@ -17,13 +16,32 @@ fetch("http://localhost:3000/orders")
 				const box = orderTemplate.content.cloneNode(true).children[0];
 				box.id = order._id;
 
+				var totalPrice = 0;
 				const name = box.querySelector(".name");
 				const address = box.querySelector(".address");
-				const phone = box.querySelector(".phone");
+				const price = box.querySelector(".order-price");
 
 				name.textContent = order.ordererName;
 				address.textContent = order.ordererAddress;
-				phone.textContent = order.ordererPhone;
+				price.textContent = ''
+
+				const listProduct = JSON.stringify(order.productList)
+					.split('"')[1]
+					.split("/");
+				listProduct.pop();
+
+				listProduct.forEach((product) => {
+					fetch("http://localhost:3000/products/" + product)
+						.then((res) => res.json())
+						.then((data) => {
+							totalPrice += parseFloat(data.price);
+							price.textContent = "$" + totalPrice.toFixed(2);
+						})
+						.catch((error) => {
+							console.log(error.message);
+						});
+				});
+				price.textContent = order.ordererPhone;
 
 				orderContainer.appendChild(box);
 			}
@@ -44,7 +62,6 @@ function openModal(id) {
 			const hubName = form.querySelector("#hubName");
 			const name = form.querySelector("#ordererName");
 			const address = form.querySelector("#ordererAddress");
-			const phone = form.querySelector("#ordererPhone");
 			const productList = form.querySelector(".information-column .order-list");
 			const orderList = form.querySelector("#productList");
 			const price = form.querySelector(".total-price");
@@ -54,7 +71,6 @@ function openModal(id) {
 			var totalPrice = 0;
 			name.value = data.ordererName;
 			address.value = data.ordererAddress;
-			phone.value = data.ordererPhone;
 			orderList.value = "";
 			const listProduct = JSON.stringify(data.productList)
 				.split('"')[1]
@@ -72,7 +88,7 @@ function openModal(id) {
 						productList.appendChild(product);
 
 						totalPrice += parseFloat(data.price);
-						price.textContent = totalPrice.toFixed(2);
+						price.textContent = "$" + totalPrice.toFixed(2);
 					})
 					.catch((error) => {
 						console.log(error.message);
@@ -87,7 +103,6 @@ function openModal(id) {
 	fetch("http://localhost:3000/orders/" + id + "/update")
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 		})
 		.catch((error) => {
 			console.log(error.message);
@@ -97,10 +112,11 @@ function openModal(id) {
 }
 
 function closeModal() {
+	console.log("close modal")
 	detailContainer.querySelector("#ordererName").value = "";
 	detailContainer.querySelector("#ordererAddress").value = "";
-	detailContainer.querySelector("#ordererPhone").value = "";
 	detailContainer.querySelector(".order-list").innerHTML = "";
+	console.log(detailContainer.querySelector(".total-price"))
 	detailContainer.querySelector(".total-price").textContent = "0";
 
 	infoDialog.close();
@@ -108,18 +124,15 @@ function closeModal() {
 
 function confirmCancel(activity) {
 	const box = document.querySelector(".orders-container");
-	box.querySelector("#activity option[value='" + activity + "']").selected =
-		"selected";
+	box.querySelector("#activity option[value='" + activity + "']").selected = "selected";
 
-	console.log(box.querySelector("#activity"));
 	if (activity == "canceled") {
 		confirmDialog.showModal();
 	}
 }
 
 function closeConfirm() {
-	const activity = document.querySelector("#activities option[value='active']");
-	console.log(activity);
+	const activity = document.querySelector("#activity option[value='active']");
 	activity.selected = "selected";
 	confirmDialog.close();
 }

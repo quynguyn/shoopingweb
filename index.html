@@ -41,7 +41,7 @@
 				<div class="password-container">
 					<input required style="width: 90%;" type="password" id="password" name="password"
 						placeholder="Enter Password" />
-					<button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">
+					<button type="button" class="hover toggle-password" onclick="togglePasswordVisibility(1)">
 						&#8892
 					</button>
 				</div>
@@ -50,7 +50,7 @@
 			<p>Don't have an account? <button onclick="openModal()" id="open-register" class="hover"
 					href="#">Register</button></p>
 		</div>
-		<!-- Form to register for an anccount -->
+		<!-- Form to register for an account -->
 		<dialog class="form-modal" id="modal">
 			<div class="form-header">
 				<div class="form-title">Register for an Account</div>
@@ -85,7 +85,7 @@
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
 
 								<div id="username-message">
-									<h3>Password must contain the following:</h3>
+									<h3>Username must contain the following:</h3>
 									<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
 									<p id="u-number" class="invalid">A <b>number</b></p>
 									<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
@@ -96,6 +96,10 @@
 								<label for="password">Password:</label>
 								<input required type="password" id="passwordNew" name="password"
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+								<button type="button" class="btn hover toggle-passwordNew"
+									onclick="togglePasswordVisibility(2)">
+									&#8892
+								</button>
 								<div id="password-message">
 									<h3>Password must contain the following:</h3>
 									<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
