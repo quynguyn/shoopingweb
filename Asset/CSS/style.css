@@ -5,6 +5,47 @@
 	--secondary-color: #f05e16;
 	--white-color: #f2f2f2;
 	/* change the name */
+	--white: white;
+	--black: black;
+	--gray: #fafafa;
+}
+
+[data-theme="dark"] {
+	--white: black;
+	--black: white;
+	--gray: black;
+
+	--main-color: #f58216;
+	--primary-color: #ffb347;
+	--secondary-color: #f05e16;
+	--white-color: #0A2647;
+}
+
+.dark-mode {
+	background-color: var(--white-color);
+	color: var(--black) !important;
+}
+
+.dark-div {
+	background-color: var(--white-color) !important;
+	color: var(--black) !important;
+}
+
+body {
+	background-color: white;
+	color: black;
+	font-size: 25px;
+}
+
+header div h1 {
+	font-size: 4vw;
+}
+
+.password-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	text-align: center;
 }
 
 /* Reset CSS  */
@@ -34,6 +75,11 @@ header {
 .logo img {
 	height: 60px;
 	margin-right: 10px;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
 }
 
 nav ul {
@@ -85,6 +131,7 @@ body {
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	background-clip: content-box;
 	background-color: var(--white-color);
 	padding: 30px 0;
 }
@@ -155,12 +202,12 @@ body {
 }
 
 .footer-col .help ul li a:hover {
-	color: var(--secondary-color);
+	color: var(--secondary-color) !important;
 }
 
 .footer-col .social a:hover {
-	color: var(--white-color);
-	background-color: var(--secondary-color);
+	color: var(--white-color) !important;
+	background-color: var(--secondary-color) !important;
 }
 
 .hide,
@@ -267,7 +314,7 @@ dialog::backdrop {
 	box-shadow: 0 0.4rem 1.4rem 0 rgba(245, 130, 22, 0.5);
 	transform: translateY(-0.1rem);
 	transition: transform 150ms;
-	background-color: var(--primary-color);
+	background-color: var(--primary-color) !important;
 }
 
 /* display iteam in the vendor and custumer */
@@ -322,4 +369,60 @@ dialog::backdrop {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
+}
+
+.theme-switch-wrapper {
+	display: flex;
+	align-items: center;
+	z-index: 1000;
+	margin-left: 30px;
+}
+
+.theme-switch {
+	display: inline-block;
+	height: 34px;
+	position: relative;
+	width: 60px;
+}
+
+.theme-switch input {
+	display: none;
+}
+
+.slider {
+	background-color: #999;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: .4s;
+}
+
+.slider:before {
+	background-color: white;
+	bottom: 4px;
+	content: "";
+	height: 26px;
+	left: 4px;
+	position: absolute;
+	transition: .4s;
+	width: 26px;
+}
+
+input:checked+.slider {
+	background-color: #eee;
+}
+
+input:checked+.slider:before {
+	transform: translateX(26px);
+}
+
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }

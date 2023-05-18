@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="Asset/CSS/style.css" />
 	<link rel="stylesheet" href="Asset/CSS/myAccount.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
 	<script defer src="Asset/JS/myAccount.js"></script>
 	<script defer src="Asset/JS/style.js"></script>
 </head>
@@ -26,6 +27,12 @@
 			<ul>
 				<li><a id='home-link'>HOME</a></li>
 			</ul>
+			<div class="theme-switch-wrapper">
+				<label class="theme-switch" for="checkbox">
+					<input type="checkbox" id="checkbox" />
+					<div class="slider round"></div>
+				</label>
+			</div>
 		</nav>
 	</header>
 	<!-- Main body in the page -->
@@ -42,12 +49,34 @@
 				</div>
 				<div>
 					<label for="username">Username:</label>
-					<input type="text" id="username" name="username" />
+					<!-- <input type="text" id="username" name="username" /> -->
+					<input required type="text" id="username" name="username"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
+
+					<div id="username-message">
+						<h3>Username must contain the following:</h3>
+						<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
+						<p id="u-number" class="invalid">A <b>number</b></p>
+						<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
+					</div>
 				</div>
 				<div>
 					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" />
-					<button type="button" class="hover toggle-password" onclick="togglePasswordVisibility()">⊼</button>
+					<div class="password-row">
+						<input required type="password" id="password" name="password"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+						<button type="button" class="hover toggle-password"
+							onclick="togglePasswordVisibility()">⊼</button>
+					</div>
+
+					<div id="password-message">
+						<h3>Password must contain the following:</h3>
+						<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
+						<p id="p-capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+						<p id="p-number" class="invalid">A <b>number</b></p>
+						<p id="p-special" class="invalid">A <b>special character</b> (!@#$%^&)</p>
+						<p id="p-length" class="invalid">In range: <b>[8-20] characters</b></p>
+					</div>
 				</div>
 				<!-- Vendor account -->
 				<div id="vendor-div" class="vendor" user-type>
@@ -82,13 +111,13 @@
 					</select>
 				</div>
 				<!-- Submit account -->
-			<div class="submit-button">
-				<button class="hover" type="submit">Submit</button>
-				<button type="button" class="btn hover" onclick="logOut()">Log Out</button>
-			</div>
+				<div class="submit-button">
+					<button class="hover" type="submit">Submit</button>
+					<button type="button" class="btn hover" onclick="logOut()">Log Out</button>
+				</div>
 			</div>
 
-			
+
 		</form>
 	</div>
 
@@ -140,7 +169,8 @@
 						<img src="https://marcas-logos.net/wp-content/uploads/2020/03/RMIT-LOGO-600x338.png"
 							alt="RMIT Logo" class="rmit-logo" />
 						<ul>
-							<li><a href="tel:+61399252000">Phone: +61 3 9925 2000</a></li>
+							<li>Phone: +61 3 9925 2000
+							</li>
 						</ul>
 						<div class="address">
 							<ul>

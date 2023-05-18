@@ -38,6 +38,22 @@ const distributionHub = document.querySelector('#distributionHub')
 
 const form = document.getElementById("account-information")
 
+const usernameInput = document.getElementById("username");
+usernameInput.onfocus = function () {
+	document.querySelector("#username-message").style.display = "block";
+}
+usernameInput.onblur = function () {
+	document.querySelector("#username-message").style.display = "none";
+}
+
+const passwordInput = document.querySelector("#password");
+passwordInput.onfocus = function () {
+	document.querySelector("#password-message").style.display = "block";
+}
+passwordInput.onblur = function () {
+	document.querySelector("#password-message").style.display = "none";
+}
+
 fillData()
 
 function fillData() {

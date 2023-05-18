@@ -10,6 +10,7 @@
 	width: inherit;
 	justify-content: space-evenly;
 }
+
 .description {
 	font-size: 16px;
 	line-height: 1.5;
@@ -86,4 +87,41 @@ textarea {
 
 #container .hover:hover {
 	background-color: #fff;
+}
+
+.form-dialog .detail-body {
+	padding-top: 5px;
+}
+
+.form-dialog .detail-body .product-images {
+	flex: 0 0 auto;
+	margin-right: 10px;
+}
+
+.form-dialog .detail-body .product-images .product-image {
+	max-width: 300px;
+	max-height: 400px;
+}
+
+.form-dialog .form-information-detail {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.detail {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.form-body .detail .content {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.detail .content .product-name {
+	font-weight: bold;
+	font-size: 24px;
 }
