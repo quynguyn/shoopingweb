@@ -45,26 +45,31 @@ function closeModal(modal) {
 function showDiv() {
 	var accountUserType = "";
 
+	vendorDiv.classList.toggle("hide", !vendorRadio.checked);
+	customerDiv.classList.toggle("hide", !customerRadio.checked);
+	shipperDiv.classList.toggle("hide", !shipperRadio.checked);
+
 	if (vendorRadio.checked) {
-		vendorDiv.style.display = "block";
 		accountUserType = "vendor";
 	} else {
-		vendorDiv.style.display = "none";
+		document.getElementById("businessName").value = '';
+		document.getElementById("businessAddress").value = '';
 	}
 
 	if (customerRadio.checked) {
-		customerDiv.style.display = "block";
 		accountUserType = "customer";
 	} else {
-		customerDiv.style.display = "none";
+		document.getElementById("address").value = '';
+		document.getElementById("name").value = '';
 	}
 
 	if (shipperRadio.checked) {
-		shipperDiv.style.display = "block";
 		accountUserType = "shipper";
 	} else {
-		shipperDiv.style.display = "none";
+		document.getElementById("distribution-hub").value = '';
 	}
+
+	document.querySelector('#type').value = accountUserType
 
 	return accountUserType;
 }
@@ -119,7 +124,7 @@ function logIn(event) {
 
 				form.email.value = '';
 				form.password.value = '';
-		
+
 				window.location.href = accountCheck.type + ".html";
 			}
 		})
@@ -180,6 +185,51 @@ usernameInput.addEventListener("input", (e) => {
 			})
 	}
 });
+
+const passwordInput = document.getElementById("passwordNew");
+passwordInput.addEventListener("input", (e) => {
+	const password = e.target.value
+	if (password != '') {
+		var lowerCaseLetters = /[a-z]/g;
+		if (password.match(lowerCaseLetters)) {
+			console.log('lowercase valid')
+		} else {
+			console.log('lowercase invalid')
+		}
+
+		// Validate capital letters
+		var upperCaseLetters = /[A-Z]/g;
+		if (password.match(upperCaseLetters)) {
+			console.log('upperCase valid')
+		} else {
+			console.log('upperCase invalid')
+		}
+
+		// Validate numbers
+		var numbers = /[0-9]/g;
+		if (password.match(numbers)) {
+			console.log('numbers valid')
+		} else {
+			console.log('numbers invalid')
+		}
+
+		// Validate special letters
+		var specialLetters = /[!@#$%^&]/g;
+		if (password.match(specialLetters)) {
+			console.log('special letters valid')
+		} else {
+			console.log('special letters invalid')
+		}
+
+		// Validate length
+		if (password.length >= 8 && password.length <= 20) {
+			console.log('length valid')
+		} else {
+			console.log('length invalid')
+		}
+	}
+});
+
 
 function submitRegisterForm() {
 	var message = "congratulation, please log in your account";

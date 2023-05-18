@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Web</title>
-	
+
 	<link rel="stylesheet" href="Asset/CSS/style.css" />
 	<link rel="stylesheet" href="Asset/CSS/index.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 						<!-- Vendor account -->
-						<div id="vendor-div" style="display: none;" class="vendor">
+						<div id="vendor-div" class="vendor hide">
 							<div>
 								<label for="businessName">Business Name:</label>
 								<input type="text" id="businessName" name="businessName" pattern=".{5,}" />
@@ -101,7 +101,7 @@
 							</div>
 						</div>
 						<!-- Customer account -->
-						<div id="customer-div" style="display: none;" class="customer">
+						<div id="customer-div" class="customer hide">
 							<div>
 								<label for="address">Address:</label>
 								<input type="text" id="address" name="address" pattern=".{5,}" />
@@ -112,7 +112,7 @@
 							</div>
 						</div>
 						<!-- Shipper account -->
-						<div id="shipper-div" style="display: none;" class="shipper">
+						<div id="shipper-div" class="shipper hide">
 							<label for="distributionHub">Distribution Hub:</label>
 							<select id="distributionHub" name="distributionHub" required>
 								<option value="none"></option>
@@ -120,6 +120,11 @@
 								<option value="Los Angeles Distribution Hub">Los Angeles Distribution Hub</option>
 								<option value="New York Distribution Hub">New York Distribution Hub</option>
 							</select>
+						</div>
+
+						<div id="user-type" class="hide">
+							<label for="type">Name:</label>
+							<input type="text" id="type" name="type" />
 						</div>
 						<!-- Submit account -->
 						<div class="submit-button">
