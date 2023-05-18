@@ -39,7 +39,7 @@
 
 /* CSS for the filter */
 .filter-range {
-  width: 30vw;
+  width: auto;
   border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom: 2px solid var(--primary-color);
