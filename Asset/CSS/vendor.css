@@ -10,46 +10,6 @@
 	width: inherit;
 	justify-content: space-evenly;
 }
-
-.box {
-	display: flex;
-	margin-bottom: 25px;
-	border: 1px solid #ddd;
-	box-sizing: border-box;
-	width: 22vw;
-	min-width: 250px;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.name {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px;
-	overflow-wrap: break-word;
-}
-
-.price {
-	color: #147919;
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 10px;
-	text-align: end;
-	margin-right: 10px;
-}
-
-.image {
-	/* max-width: 250px; */
-	width: 100%;
-	padding: 10px;
-}
-
-.image img {
-	width: 100%;
-	max-width: 400px;
-	max-height: 400px;
-}
-
 .description {
 	font-size: 16px;
 	line-height: 1.5;
@@ -80,6 +40,8 @@ button {
 .sub-title {
 	color: var(--main-color);
 }
+
+/* Add new product */
 
 dialog[data-modal] {
 	position: fixed;
@@ -124,34 +86,4 @@ textarea {
 
 #container .hover:hover {
 	background-color: #fff;
-}
-
-.detail {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.detail-body .detail img {
-	width: 300px;
-	height: auto;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-.detail-body .detail .content {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-}
-
-.detail .content .product-name {
-	font-weight: bold;
-	font-size: 24px;
-}
-
-.price {
-	color: #147919;
-	font-size: 24px;
-	text-align: end;
 }

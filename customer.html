@@ -126,10 +126,11 @@
 			</template>
 		</dialog>
 
-		<button class="cart-button" onclick="openCart()">
-			<img src="Asset/IMG/cart.svg" alt="Web Group Logo" />
+		<button class="cart-button hover" onclick="openCart()">
+			<img src="Asset/IMG/cart.svg" alt="Web Group Logo cart" />
 		</button>
 
+		<!-- Cart -->
 		<dialog class="form-dialog" id="cart-modal">
 			<div class="form-header">
 				<div class="form-title">Cart</div>
@@ -165,26 +166,25 @@
 			</form>
 
 			<div class="cart-footer">
-				<div class="total-price">Total: $<span id="total-price"></span></div>
-				<button class="checkout-button" onclick="checkOutCart()">
+				<div class="total-price">Total: $<span id="total-price" class="price"></span></div>
+				<button class="checkout-button btn hover" onclick="checkOutCart()">
 					Checkout
 				</button>
 			</div>
 		</dialog>
 
 		<template id="cart-template">
-			<div class="cart-item">
+			<div class="cart-item hover">
 				<div class="product-image-container">
 					<img src="" alt="Image" class="product-image" />
 				</div>
 				<div class="product-details">
-					<h3 class="product-name"></h3>
-					<p class="product-price"></p>
+					<h3 class="product-name name"></h3>
+					<p class="product-price price"></p>
 					<button class="close-button" onclick="removeItem(this.parentNode.id)">
 						<img src="Asset/IMG/trash-bin.png" alt="Web Group Logo" />
 					</button>
 				</div>
-				<hr class="item-separator" />
 			</div>
 		</template>
 
