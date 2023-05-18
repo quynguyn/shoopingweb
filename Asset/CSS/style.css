@@ -285,7 +285,7 @@ dialog::backdrop {
 	box-shadow: 0 0.4rem 1.4rem 0 rgba(245, 130, 22, 0.5);
 	transform: translateY(-0.1rem);
 	transition: transform 150ms;
-	background-color: var(--primary-color);
+	background-color: var(--primary-color) !important;
 }
 
 /* display iteam in the vendor and custumer */
@@ -340,6 +340,4 @@ dialog::backdrop {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-}
-	background-color: var(--primary-color) !important;
 }
