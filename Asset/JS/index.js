@@ -8,36 +8,18 @@ const customerDiv = document.querySelector("#customer-div");
 const shipperDiv = document.querySelector("#shipper-div");
 
 // to open and close the modal
-const openModalButtons = document.querySelectorAll("[data-modal-target]");
+const openModalButtons = document.querySelector("#open-register");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
-const overlay = document.getElementById("overlay");
 
 const registerForm = document.querySelector('#register-form')
 
-openModalButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		const modal = document.querySelector(button.dataset.modalTarget);
-		openModal(modal);
-	});
-});
-
-closeModalButtons.forEach((button) => {
-	button.addEventListener("click", () => {
-		const modal = button.closest(".form-modal");
-		closeModal(modal);
-	});
-});
-
-function openModal(modal) {
-	if (modal == null) return;
-	modal.classList.add("active");
-	// overlay.classList.add("active");
+const registerDialog = document.querySelector('#modal')
+function openModal() {
+	registerDialog.showModal()
 }
 
-function closeModal(modal) {
-	if (modal == null) return;
-	modal.classList.remove("active");
-	// overlay.classList.remove("active");
+function closeModal() {
+	registerDialog.close()
 	uncheck();
 }
 
@@ -164,6 +146,31 @@ function onlyLettersAndNumbers(str) {
 }
 
 const usernameInput = document.getElementById("username");
+usernameInput.onfocus = function () {
+	document.querySelector("#username-message").style.display = "block";
+}
+usernameInput.onblur = function () {
+	document.querySelector("#username-message").style.display = "none";
+}
+usernameInput.addEventListener("input", (e) => {
+	const username = e.target.value
+	var letter = document.querySelector("#username-message #u-letter");
+	var number = document.querySelector("#username-message #u-number");
+	var length = document.querySelector("#username-message #u-length");
+
+	const lowerCaseLetters = /[a-zA-z]/g;
+	const numbers = /[0-9]/g;
+	const minimumLength = (username.length >= 8) && (username.length <= 15)
+
+	letter.classList.toggle("valid", username.match(lowerCaseLetters));
+	letter.classList.toggle("invalid", !username.match(lowerCaseLetters));
+
+	number.classList.toggle("valid", username.match(numbers));
+	number.classList.toggle("invalid", !username.match(numbers));
+
+	length.classList.toggle("valid", minimumLength);
+	length.classList.toggle("invalid", !minimumLength);
+});
 usernameInput.addEventListener("input", (e) => {
 	const username = e.target.value
 
@@ -186,48 +193,42 @@ usernameInput.addEventListener("input", (e) => {
 	}
 });
 
-const passwordInput = document.getElementById("passwordNew");
+const passwordInput = document.querySelector("#passwordNew");
+passwordInput.onfocus = function () {
+	document.querySelector("#password-message").style.display = "block";
+}
+passwordInput.onblur = function () {
+	document.querySelector("#password-message").style.display = "none";
+}
+
 passwordInput.addEventListener("input", (e) => {
 	const password = e.target.value
-	if (password != '') {
-		var lowerCaseLetters = /[a-z]/g;
-		if (password.match(lowerCaseLetters)) {
-			console.log('lowercase valid')
-		} else {
-			console.log('lowercase invalid')
-		}
+	var letter = document.querySelector("#password-message #p-letter");
+	var capital = document.querySelector("#password-message #p-capital");
+	var number = document.querySelector("#password-message #p-number");
+	var special = document.querySelector("#password-message #p-special");
+	var length = document.querySelector("#password-message #p-length");
 
-		// Validate capital letters
-		var upperCaseLetters = /[A-Z]/g;
-		if (password.match(upperCaseLetters)) {
-			console.log('upperCase valid')
-		} else {
-			console.log('upperCase invalid')
-		}
+	const lowerCaseLetters = /[a-z]/g;
+	const upperCaseLetters = /[A-Z]/g;
+	const numbers = /[0-9]/g;
+	const specialLetters = /[!@#$%^&]/g;
+	const minimumLength = (password.length >= 8) && (password.length <= 20)
 
-		// Validate numbers
-		var numbers = /[0-9]/g;
-		if (password.match(numbers)) {
-			console.log('numbers valid')
-		} else {
-			console.log('numbers invalid')
-		}
+	letter.classList.toggle("valid", password.match(lowerCaseLetters));
+	letter.classList.toggle("invalid", !password.match(lowerCaseLetters));
 
-		// Validate special letters
-		var specialLetters = /[!@#$%^&]/g;
-		if (password.match(specialLetters)) {
-			console.log('special letters valid')
-		} else {
-			console.log('special letters invalid')
-		}
+	capital.classList.toggle("valid", password.match(upperCaseLetters));
+	capital.classList.toggle("invalid", !password.match(upperCaseLetters));
 
-		// Validate length
-		if (password.length >= 8 && password.length <= 20) {
-			console.log('length valid')
-		} else {
-			console.log('length invalid')
-		}
-	}
+	number.classList.toggle("valid", password.match(numbers));
+	number.classList.toggle("invalid", !password.match(numbers));
+
+	special.classList.toggle("valid", password.match(specialLetters));
+	special.classList.toggle("invalid", !password.match(specialLetters));
+
+	length.classList.toggle("valid", minimumLength);
+	length.classList.toggle("invalid", !minimumLength);
 });
 
 

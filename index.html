@@ -43,13 +43,14 @@
 				</div>
 				<button class="hover" type="submit">Login</button>
 			</form>
-			<p>Don't have an account? <button data-modal-target="#modal" class="hover" href="#">Register</button></p>
+			<p>Don't have an account? <button onclick="openModal()" id="open-register" class="hover"
+					href="#">Register</button></p>
 		</div>
 		<!-- Form to register for an anccount -->
-		<div class="form-modal" id="modal">
+		<dialog class="form-modal" id="modal">
 			<div class="form-header">
 				<div class="form-title">Register for an Account</div>
-				<button data-close-button="" class="close-button">×</button>
+				<button data-close-button class="close-button" onclick="closeModal()">×</button>
 			</div>
 
 			<!-- body modal -->
@@ -78,11 +79,27 @@
 								<label for="username">Username:</label>
 								<input required type="text" id="username" name="username"
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" />
+
+								<div id="username-message">
+									<h3>Password must contain the following:</h3>
+									<p id="u-letter" class="invalid">A <b>letter</b> letter</p>
+									<p id="u-number" class="invalid">A <b>number</b></p>
+									<p id="u-length" class="invalid">In range: <b>[8-15] characters</b></p>
+								</div>
 							</div>
+
 							<div>
 								<label for="password">Password:</label>
 								<input required type="password" id="passwordNew" name="password"
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+								<div id="password-message">
+									<h3>Password must contain the following:</h3>
+									<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
+									<p id="p-capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+									<p id="p-number" class="invalid">A <b>number</b></p>
+									<p id="p-special" class="invalid">A <b>special character</b> (!@#$%^&)</p>
+									<p id="p-length" class="invalid">In range: <b>[8-20] characters</b></p>
+								</div>
 							</div>
 							<div>
 								<label for="profilePicture">Profile Picture:</label>
@@ -133,8 +150,7 @@
 					</form>
 				</div>
 			</div>
-		</div>
-		<div id="overlay" class="overlay"></div>
+		</dialog>
 	</div>
 	<!-- Footer of the page -->
 

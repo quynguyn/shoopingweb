@@ -1,4 +1,3 @@
-// const { FindCursor } = require("mongodb");
 const businessName = JSON.parse(localStorage.getItem("currentUser")).businessName;
 
 const itemBoxTemplate = document.querySelector("[item-box-template]");
@@ -30,8 +29,6 @@ function showData(id) {
 			detailModal.showModal();
 		})
 		.catch((error) => console.error(error));
-
-	// console.log(products[position]);
 
 	detailContainer.appendChild(templateClone);
 }
@@ -85,34 +82,6 @@ closeButton.addEventListener("click", () => {
 
 // submit data form modal
 const form = document.querySelector(".inputData");
-
-// form.addEventListener("submit", function (e) {
-// 	e.preventDefault(); // prevent the default form submission
-
-// 	var newProduct = {
-// 		nameValue: "",
-// 		priceValue: 0,
-// 		imageFile: "",
-// 		descriptionValue: "",
-// 		vendor: ""
-// 	};
-
-// 	const nameValue = document.getElementById("name").value;
-// 	const priceValue = Number(document.getElementById("price").value); // convert to number
-// 	const imageFile = document.getElementById("image").value; // get the first file selected (if any)
-// 	const descriptionValue = document.getElementById("description").value;
-
-// 	newProduct.nameValue = nameValue;
-// 	newProduct.priceValue = priceValue;
-// 	newProduct.imageFile = imageFile;
-// 	newProduct.descriptionValue = descriptionValue;
-// 	// neimage.png
-// 	localStorage.setItem("newProduct", JSON.stringify(newProduct));
-
-// 	newProductBox(nameValue, priceValue, imageFile, descriptionValue);
-// 	// reset the form
-// 	// form.reset();
-// });
 
 // display new product dynamic
 function newProductBox(nameValue, priceValue, imageFile, descriptionValue) {

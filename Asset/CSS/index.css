@@ -63,22 +63,42 @@ input::placeholder {
 	text-decoration: underline;
 }
 
-/* CSS for the register */
-#overlay {
-	position: fixed;
-	transition: 200ms ease-in-out;
-	opacity: 0;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	pointer-events: none;
+/* The message box is shown when the user clicks on the password field */
+#password-message,
+#username-message {
+	display: none;
+	color: #000;
+	position: relative;
+	padding: 20px;
+	margin-top: 10px;
 }
 
-#overlay.active {
-	opacity: 1;
-	pointer-events: all;
+#password-message p,
+#username-message p {
+	padding: 10px 35px;
+	font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+	color: green;
+}
+
+.valid:before {
+	position: relative;
+	left: -35px;
+	content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+	color: red;
+}
+
+.invalid:before {
+	position: relative;
+	left: -35px;
+	content: "✖";
 }
 
 /* Form modol */
@@ -86,7 +106,7 @@ input::placeholder {
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%) scale(0);
+	transform: translate(-50%, -50%);
 	transition: 200ms ease-in-out;
 	border: var(--primary-color) 2px solid;
 	border-radius: 10px;

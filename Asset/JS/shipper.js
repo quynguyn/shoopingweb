@@ -49,7 +49,6 @@ function openModal(id) {
 			const orderList = form.querySelector("#productList");
 			const price = form.querySelector(".total-price");
 			const activity = form.querySelector("#activity option[value=delivered]");
-			const submitButton = form.querySelector("#submit-button button");
 
 			hubName.value = userHub;
 			var totalPrice = 0;
@@ -80,12 +79,10 @@ function openModal(id) {
 					});
 			});
 			activity.selected = "selected";
-
-			// detailContainer.addEventListener("submit", changeActivity, false)
-		});
-	// .catch((error) => {
-	// 	console.log(error.message)
-	// })
+		})
+		.catch((error) => {
+			console.log(error.message)
+		})
 
 	fetch("http://localhost:3000/orders/" + id + "/update")
 		.then((res) => res.json())
@@ -108,13 +105,6 @@ function closeModal() {
 
 	infoDialog.close();
 }
-
-// function changeActivity() {
-// 	const box = document.querySelector(".orders-container")
-// 	const chosenActivity = box.querySelector("#activities option").textContent
-// 	const activity = box.querySelector("#activities option[value='" + chosenActivity + "']")
-// 	activity.selected = "selected"
-// }
 
 function confirmCancel(activity) {
 	const box = document.querySelector(".orders-container");
