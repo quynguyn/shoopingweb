@@ -7,6 +7,23 @@
 	/* change the name */
 }
 
+.dark-mode {
+	background-color: black;
+	color: white !important;
+}
+
+.dark-div {
+	background-color: #413F42 !important;
+	color: white !important;
+}
+
+body {
+	padding: 25px;
+	background-color: white;
+	color: black;
+	font-size: 25px;
+  }
+
 /* Reset CSS  */
 * {
 	padding: 0;
@@ -80,6 +97,7 @@ body {
 }
 
 .footer {
+	background-clip: content-box;
 	background-color: var(--white-color);
 	padding: 30px 0;
 }
@@ -147,12 +165,12 @@ body {
 }
 
 .footer-col .help ul li a:hover {
-	color: var(--secondary-color);
+	color: var(--secondary-color)  !important;
 }
 
 .footer-col .social a:hover {
-	color: var(--white-color);
-	background-color: var(--secondary-color);
+	color: var(--white-color) !important;
+	background-color: var(--secondary-color) !important;
 }
 
 .hide,
@@ -256,6 +274,5 @@ dialog::backdrop {
 }
 
 .hover:hover {
-	background-color: var(--primary-color);
-  }
-  
+	background-color: var(--primary-color) !important;
+}
