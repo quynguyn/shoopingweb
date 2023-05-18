@@ -347,13 +347,6 @@ button {
 	}
 }
 
-/* 
-.hover:hover {
-  box-shadow: 0 0.4rem 1.4rem 0 rgba(245, 130, 22, 1);
-    transform: translateY(-0.1rem);
-    transition: transform 150ms;
-} */
-
 .close-button:hover {
   background-color: var(--main-color);
   color: #faf7f4;

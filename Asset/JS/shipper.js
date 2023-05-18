@@ -7,7 +7,6 @@ const confirmDialog = document.querySelector("#confirm-dialog");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const userHub = currentUser.distributionHub;
-console.log(currentUser)
 
 fetch("http://localhost:3000/orders")
 	.then((res) => res.json())
@@ -87,7 +86,6 @@ function openModal(id) {
 	fetch("http://localhost:3000/orders/" + id + "/update")
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 		})
 		.catch((error) => {
 			console.log(error.message);
@@ -111,7 +109,6 @@ function confirmCancel(activity) {
 	box.querySelector("#activity option[value='" + activity + "']").selected =
 		"selected";
 
-	console.log(box.querySelector("#activity"));
 	if (activity == "canceled") {
 		confirmDialog.showModal();
 	}
@@ -119,7 +116,6 @@ function confirmCancel(activity) {
 
 function closeConfirm() {
 	const activity = document.querySelector("#activities option[value='active']");
-	console.log(activity);
 	activity.selected = "selected";
 	confirmDialog.close();
 }

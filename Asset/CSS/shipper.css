@@ -2,25 +2,22 @@
 	margin: 5px;
 }
 
-.orders-container {
-	margin: 5px;
-	border: 1px solid black;
-}
-
 .order {
-	margin: 5px;
-	border: 1px solid black;
+	margin: 25px;
+	border-radius: 5%;
+	border: 3px solid var(--primary-color);
 	padding: 5px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-
+/* For the circle */
 .activity {
-	width: fit-content;
-	height: fit-content;
-	margin-right: 10px;
-}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+/* Information */
 
 .information {
 	display: flex;
@@ -66,4 +63,21 @@
 .button-group {
 	display: flex;
 	justify-content: space-around;
+}
+
+.hover:hover{
+	background-color: #fff;
+}
+
+/* display information */
+pre,.name{
+	font-size: 16px;
+	font-weight: bold;
+	height: auto;
+	margin: 10px;
+	overflow-wrap: break-word;
+}
+
+pre{
+	color: var(--main-color);
 }
