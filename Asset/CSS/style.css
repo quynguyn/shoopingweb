@@ -72,6 +72,8 @@ body {
 .footer-container {
 	max-width: 1170px;
 	margin: auto;
+	/* padding: 0 15px; */
+
 }
 
 .row {
@@ -80,11 +82,17 @@ body {
 }
 
 .footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
 	background-color: var(--white-color);
 	padding: 30px 0;
 }
 
 .footer-col {
+	position: relative;
+	overflow: hidden;
+
 	width: 33%;
 	padding: 0 15px;
 }
@@ -231,9 +239,7 @@ dialog::backdrop {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom: var(--primary-color) 3px solid;
+	border-bottom: var(--primary-color) 1px groove;
 	min-width: 400px;
 }
 
@@ -246,7 +252,7 @@ dialog::backdrop {
 /*responsive footer*/
 @media (max-width: 767px) {
 	.footer-col {
-		width: 50%;
+		width: 100%;
 		margin-bottom: 30px;
 	}
 }
