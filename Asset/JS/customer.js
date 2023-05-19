@@ -11,15 +11,19 @@ const ascendButton = document.querySelector('#ascend')
 
 const searchBar = document.querySelector('.search-bar #search')
 
-const slider = document.querySelector("#range-slider");
-const currentValue = document.querySelector(".current-value");
-currentValue.innerHTML = "$" + slider.value;
-
 const cartBody = document.querySelector(".cart-body");
 const cartTemplate = document.getElementById("cart-template");
 const cartDetails = cartBody.querySelector(".order-detail")
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+let rangeMin = 10;
+const rangeInput = document.querySelectorAll(".range-input input");
+const rangePrice = document.querySelectorAll(".range-price input");
+
+const range = document.querySelector(".range-selected");
+range.style.left =  "0%";
+range.style.right = "0%";
 
 descendButton.onclick = function () {
 	itemBoxContainer.innerHTML = ''
@@ -41,7 +45,7 @@ descendButton.onclick = function () {
 				image.querySelector("img").src = product.image
 
 				itemBoxContainer.append(box)
-				priceSlider(slider.value)
+				priceSlider(rangePrice[0].value, rangePrice[1].value)
 				searchItem(searchBar.value)
 			})
 		})
@@ -67,7 +71,7 @@ ascendButton.onclick = function () {
 				image.querySelector("img").src = product.image
 
 				itemBoxContainer.append(box)
-				priceSlider(slider.value)
+				priceSlider(rangePrice[0].value, rangePrice[1].value)
 				searchItem(searchBar.value)
 			})
 		})
@@ -147,20 +151,53 @@ function searchItem(value) {
 	}
 }
 
-slider.oninput = function () {
-	priceSlider(this.value)
-};
+rangeInput.forEach((input) => {
+	input.addEventListener("input", (e) => {
+		let minRange = parseInt(rangeInput[0].value);
+		let maxRange = parseInt(rangeInput[1].value);
+		if (maxRange - minRange < rangeMin) {
+			if (e.target.className === "min") {
+				rangeInput[0].value = maxRange - rangeMin;
+			} else {
+				rangeInput[1].value = minRange + rangeMin;
+			}
+		} else {
+			rangePrice[0].value = minRange;
+			rangePrice[1].value = maxRange;
+			range.style.left = (minRange / rangeInput[0].max) * 100 + "%";
+			range.style.right = 100 - (maxRange / rangeInput[1].max) * 100 + "%";
+		}
 
-function priceSlider(value) {
-	currentValue.innerHTML = "$" + value;
+		priceSlider(rangePrice[0].value, rangePrice[1].value)
+	});
+});
+
+rangePrice.forEach((input) => {
+	input.addEventListener("input", (e) => {
+		let minPrice = rangePrice[0].value;
+		let maxPrice = rangePrice[1].value;
+		if (maxPrice - minPrice >= rangeMin && maxPrice <= rangeInput[1].max) {
+			if (e.target.className === "min") {
+				rangeInput[0].value = minPrice;
+				range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+			} else {
+				rangeInput[1].value = maxPrice;
+				range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+			}
+		}
+
+		priceSlider(rangePrice[0].value, rangePrice[1].value)
+	});
+});
+
+function priceSlider(minPrice, maxPrice) {
 	const itemBoxes = document.querySelector(".item-boxes");
 	const boxes = itemBoxes.querySelectorAll(".box");
 	const price = itemBoxes.querySelectorAll(".price");
-	const sliderValue = parseFloat(value);
 
 	for (var i = 0; i < price.length; i++) {
 		const productPrice = parseFloat(price[i].textContent.replace("$", ""));
-		const isVisible = productPrice <= sliderValue;
+		const isVisible = productPrice <= maxPrice && productPrice >= minPrice;
 		boxes[i].classList.toggle("slider-hide", !isVisible);
 	}
 }

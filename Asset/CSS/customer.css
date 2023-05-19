@@ -39,57 +39,6 @@
 
 
 /* CSS for the filter */
-.filter-range {
-  width: auto;
-  border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom: 2px solid var(--primary-color);
-}
-
-.filter-range h3 {
-	margin-top: 0;
-	color: var(--main-color);
-	font-size: 20px;
-	text-transform: capitalize;
-}
-
-.slider {
-	width: 100%;
-	height: 25px;
-	display: flex;
-	align-items: center;
-	margin-right: 15px;
-}
-
-.slider input {
-	height: 10px;
-	width: 100%;
-	-webkit-appearance: none;
-	outline: none;
-	background: #f2f2f2;
-	border-radius: 25px;
-	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-}
-
-.slider:hover {
-	opacity: 1;
-}
-
-.slider input::-moz-range-progress {
-	height: 10px;
-	border-radius: 25px;
-	background: var(--main-color);
-}
-
-.slider input::-moz-range-thumb {
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	border: 4px solid var(--main-color);
-	background: white;
-	-webkit-appearance: none;
-	cursor: pointer;
-}
 
 .range-values {
 	display: flex;
@@ -228,8 +177,6 @@ button {
 	font-size: 24px;
 }
 
-
-
 /* Cart css */
 
 .form-body b {
@@ -361,4 +308,93 @@ button {
 
 .items-list .hover:hover {
 	background-color: #fff;
+}
+
+.range {
+	width: auto;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom: 2px solid var(--primary-color);
+}
+
+.range h3 {
+	margin-top: 0;
+	color: var(--main-color);
+	font-size: 20px;
+	text-transform: capitalize;
+	margin-bottom: 15px;
+}
+
+.range-slider {
+	height: 5px;
+	position: relative;
+	background-color: #e1e9f6;
+	border-radius: 2px;
+}
+
+.range-selected {
+	height: 100%;
+	left: 30%;
+	right: 30%;
+	position: absolute;
+	border-radius: 5px;
+	background-color: #1b53c0;
+}
+
+.range-input {
+	position: relative;
+}
+
+.range-input input {
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	top: -7px;
+	background: none;
+	pointer-events: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.range-input input::-webkit-slider-thumb {
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 3px solid #1b53c0;
+	background-color: #fff;
+	pointer-events: auto;
+	-webkit-appearance: none;
+}
+
+.range-input input::-moz-range-thumb {
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	border: 3px solid #1b53c0;
+	background-color: #fff;
+	pointer-events: auto;
+	-moz-appearance: none;
+}
+
+.range-price {
+	margin: 30px 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.range-price label {
+	margin-right: 5px;
+}
+
+.range-price input {
+	width: 80px;
+	padding: 5px;
+	font-size: 23px;
+	border: none;
+}
+
+.range-price input:first-of-type {
+	margin-right: 15px;
 }
