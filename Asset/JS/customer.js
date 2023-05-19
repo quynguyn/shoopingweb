@@ -17,13 +17,11 @@ const cartDetails = cartBody.querySelector(".order-detail")
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-let rangeMin = 10;
+let rangeMin = 20;
 const rangeInput = document.querySelectorAll(".range-input input");
 const rangePrice = document.querySelectorAll(".range-price input");
 
 const range = document.querySelector(".range-selected");
-range.style.left =  "0%";
-range.style.right = "0%";
 
 descendButton.onclick = function () {
 	itemBoxContainer.innerHTML = ''
