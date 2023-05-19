@@ -23,7 +23,19 @@ const rangePrice = document.querySelectorAll(".range-price input");
 
 const range = document.querySelector(".range-selected");
 
+// Show the loader
+function showLoader() {
+	document.getElementById("loader").style.display = "block";
+  }
+  
+  // Hide the loader
+  function hideLoader() {
+	document.getElementById("loader").style.display = "none";
+  }
+  
+
 descendButton.onclick = function () {
+	showLoader()
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/descending')
@@ -46,10 +58,12 @@ descendButton.onclick = function () {
 				priceSlider(rangePrice[0].value, rangePrice[1].value)
 				searchItem(searchBar.value)
 			})
+			hideLoader()
 		})
 }
 
 ascendButton.onclick = function () {
+	showLoader()
 	itemBoxContainer.innerHTML = ''
 
 	fetch('http://localhost:3000/products/ascending')
@@ -72,13 +86,18 @@ ascendButton.onclick = function () {
 				priceSlider(rangePrice[0].value, rangePrice[1].value)
 				searchItem(searchBar.value)
 			})
+			hideLoader()
 		})
 }
 
 setCartDetails()
 
 fetch('http://localhost:3000/products')
-	.then(res => res.json())
+	.then(res =>
+		
+		res.json()
+		
+	)
 	.then(data => {
 		data.map(product => {
 			const box = itemBoxTemplate.content.cloneNode(true).children[0]
@@ -247,6 +266,7 @@ function addToCart(id) {
 }
 
 function fillData(id) {
+	showLoader()
 	const itemTemplate = document.getElementById('item-template');
 	const cartContainer = document.querySelector('.detail-body');
 	cartContainer.id = id;
@@ -269,6 +289,7 @@ function fillData(id) {
 		.catch(error => console.error(error));
 
 	cartContainer.appendChild(templateClone);
+	hideLoader()
 }
 
 var isCartOpen = false;

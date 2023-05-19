@@ -8,6 +8,16 @@ const confirmDialog = document.querySelector("#confirm-dialog");
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 const userHub = currentUser.distributionHub;
 
+// Show the loader
+function showLoader() {
+	document.getElementById("loader").style.display = "block";
+  }
+  
+  // Hide the loader
+  function hideLoader() {
+	document.getElementById("loader").style.display = "none";
+  }
+  
 fetch("http://localhost:3000/orders")
 	.then((res) => res.json())
 	.then((data) => {
@@ -52,6 +62,7 @@ fetch("http://localhost:3000/orders")
 	});
 
 function openModal(id) {
+	showLoader()
 	fetch("http://localhost:3000/orders/" + id + "/update")
 		.then((res) => res.json())
 		.then((data) => {
@@ -94,7 +105,6 @@ function openModal(id) {
 						console.log(error.message);
 					});
 			});
-			activity.selected = "selected";
 		})
 		.catch((error) => {
 			console.log(error.message)
@@ -107,7 +117,7 @@ function openModal(id) {
 		.catch((error) => {
 			console.log(error.message);
 		});
-
+	hideLoader()
 	infoDialog.showModal();
 }
 

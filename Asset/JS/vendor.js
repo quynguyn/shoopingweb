@@ -7,9 +7,18 @@ const detailContainer = document.querySelector(".detail-body");
 const detailModal = document.querySelector("[detail-dialog]");
 
 const noProduct = document.querySelector("#no-product");
-
+// Show the loader
+function showLoader() {
+	document.getElementById("loader").style.display = "block";
+  }
+  
+  // Hide the loader
+  function hideLoader() {
+	document.getElementById("loader").style.display = "none";
+  }
+  
 function showData(id) {
-
+	showLoader()
 	const productImage = detailContainer.querySelector(".product-image");
 	const productName = detailContainer.querySelector(".product-name");
 	const productPrice = detailContainer.querySelector(".price");
@@ -22,10 +31,11 @@ function showData(id) {
 			productName.textContent = data.name;
 			productPrice.textContent = "$" + data.price;
 			productDescription.textContent = data.description;
-
+			hideLoader() 
 			detailModal.showModal();
 		})
 		.catch((error) => console.error(error));
+	
 }
 
 const closeDataButton = document.querySelector("[closeData]");
