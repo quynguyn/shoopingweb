@@ -51,6 +51,7 @@ function toggleDark() {
 	}
 
 }
+const helpImg = document.querySelector('.help img');
 
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 const currentTheme = localStorage.getItem('theme');
@@ -89,6 +90,7 @@ function toggleDark() {
 	}
 	localStorage.setItem('theme', 'dark');
 	document.documentElement.setAttribute('data-theme', 'dark');
+	helpImg.src = "Asset/IMG/Logo/logo-white.png"
 }
 
 function toggleLight() {
@@ -106,4 +108,5 @@ function toggleLight() {
 	}
 	localStorage.setItem('theme', 'light');
 	document.documentElement.setAttribute('data-theme', 'light');
+	helpImg.src = "Asset/IMG/Logo/logo-black.png"
 }

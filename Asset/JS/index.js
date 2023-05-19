@@ -48,7 +48,7 @@ function showDiv() {
 	if (shipperRadio.checked) {
 		accountUserType = "shipper";
 	} else {
-		document.getElementById("distribution-hub").value = '';
+		document.getElementById("distributionHub").value = '';
 	}
 
 	document.querySelector('#type').value = accountUserType

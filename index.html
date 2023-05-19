@@ -41,10 +41,10 @@
 				<label for="email">Email</label>
 				<input type="text" name="email" placeholder="Enter Email" required />
 				<label for="password">Password:</label>
-				<div class="password-container">
+				<div class="password-row">
 					<input required style="width: 90%;" type="password" id="password" name="password"
 						placeholder="Enter Password" />
-					<button type="button" class="hover toggle-password" onclick="togglePasswordVisibility(1)">
+					<button type="button" class="btn hover toggle-password" onclick="togglePasswordVisibility(1)">
 						&#8892
 					</button>
 				</div>
@@ -66,7 +66,7 @@
 				<div class="question-radio">
 					<!-- selection -->
 					<div>
-						<labe class="accountType" for="questionType">Type of question:</labe>
+						<labe class="accountType" for="questionType">Type of account:</labe>
 						<div class="radio-group">
 							<label for="vendor"><input required type="radio" name="role" id="vendor" value="vendor" />
 								Vendor</label>
@@ -97,12 +97,14 @@
 
 							<div>
 								<label for="password">Password:</label>
-								<input required type="password" id="passwordNew" name="password"
-									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
-								<button type="button" class="btn hover toggle-passwordNew"
-									onclick="togglePasswordVisibility(2)">
-									&#8892
-								</button>
+								<div class="password-row">
+									<input required type="password" id="passwordNew" name="password"
+										pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&]).{8,20}" />
+									<button type="button" class="btn hover toggle-passwordNew"
+										onclick="togglePasswordVisibility(2)">
+										&#8892
+									</button>
+								</div>
 								<div id="password-message">
 									<h3>Password must contain the following:</h3>
 									<p id="p-letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -192,7 +194,7 @@
 				<div class="footer-col">
 					<h4>Help</h4>
 					<div class="help">
-						<img src="https://marcas-logos.net/wp-content/uploads/2020/03/RMIT-LOGO-600x338.png"
+						<img src=""
 							alt="RMIT Logo" class="rmit-logo">
 						<ul>
 							<li>Phone: +61 3 9925 2000
