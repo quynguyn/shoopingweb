@@ -443,4 +443,21 @@ input:checked+.slider:before {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
   }
-  
+
+
+@media only screen and (max-width: 768px){
+	/* Add your CSS styles here */
+	header div h1{
+		display: none;
+	}
+	nav{
+		flex-direction: column;
+		align-items: center;
+	}
+	.form{
+		margin: 10px;
+	}
+	.form p{
+		flex-direction: column;
+	}
+  }
