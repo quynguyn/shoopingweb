@@ -218,6 +218,7 @@ app.get("/accounts/:id/update", (req, res) => {
 app.post('/accounts/:id/update', (req, res) => {
 	Account.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, })
 		.then(account => {
+			account.profilePicture = `http://localhost:3000/image/${req.file.filename}`
 			if (!account) {
 				return res.send('Not found any product matching the ID!');
 			}
